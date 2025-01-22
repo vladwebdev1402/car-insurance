@@ -13,7 +13,7 @@ import Modules.ChooseTransportBrand
 
 calcPriceInsurance :: IO ()
 calcPriceInsurance = do
-  policyTypes <- getPolicyTypes "database/PolicyTypes.hdb" :: IO [PolicyType]
+  policyTypes <- getPolicyTypes
   putStrLn "Выберите тип страховки:"
   index <- chooseData policyTypes (\array -> generateLogData array Enteties.PolicyTypes.name)
   let policyType = policyTypes !! (index - 1)
@@ -26,7 +26,7 @@ calcPriceInsurance = do
 calcOsagoPrice :: IO ()
 calcOsagoPrice = do
   callCommand "cls" 
-  transportBrand <- chooseTransportBrand 1 ""
+  transportBrand <- chooseTransportBrand
   putStrLn $ (Enteties.TransportBrands.name transportBrand)
 
   -- age <- inputRangeNumber "Выбран тип страховки: ОСАГО" "Введите возраст: " 16 100

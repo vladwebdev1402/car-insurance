@@ -1,10 +1,11 @@
-module Shared.Inputs.ChooseData (chooseData, choosePaginatedData) where
+module Shared.Inputs.ChooseData (chooseData, choosePaginatedData, chooseApiPaginatedData) where
 
 import System.Console.ANSI
 import System.Process (callCommand)
-import Shared.Validators.ValidateNumberRangeInput
 import Data.List.Split 
 import Data.List
+import Shared.Validators.ValidateNumberRangeInput
+import Shared.Logs.LogData
 
 chooseData :: [a] -> ([a] -> IO ()) -> IO Int
 chooseData arrayData displayFunction = do
@@ -29,6 +30,7 @@ choosePaginatedData arrayData displayFunction = do
             case input of
                 "назад" -> return (-1, "назад")
                 "вперёд" -> return (-1, "вперёд")
+                "сбросить" -> return (-1, "сбросить")
                 _ -> do
                     if "поиск" `isInfixOf` input then do
                         let parts = splitOn " " input
@@ -47,3 +49,22 @@ choosePaginatedData arrayData displayFunction = do
                         putStrLn $ "Ошибка: введите число от 1 до " ++ show (length arrayData) ++ "."
                         setSGR [Reset]
                         choosePaginatedData arrayData displayFunction
+
+-- страница, поисковое имя, функция запроса, куда передаётся максимальный и минимальный индекс, функция для получении имени
+chooseApiPaginatedData :: Int -> String -> (Int -> Int -> String -> IO [a]) -> (a -> String) -> IO a
+chooseApiPaginatedData page search getData getName = do 
+    callCommand "cls"
+    putStrLn "Команды:\nназад - предыдущая страница,\nвперёд - следующая страница,\nпоиск %name%- поиск по названию,\nсбросить - сбросить фильтры"
+    putStrLn $ "\nТекущая страница: " ++ show (page + 1)
+    arrayData <- getData (page * 10) (page * 10 + 9) search
+    (index, command) <- choosePaginatedData arrayData (\array -> generateLogData array getName) 
+    case command of 
+        "назад" -> do 
+            if page == 0 then chooseApiPaginatedData 0 "" getData getName 
+            else chooseApiPaginatedData (page - 1) "" getData getName
+        "сбросить" -> chooseApiPaginatedData 0 "" getData getName
+        "вперёд" -> chooseApiPaginatedData (page + 1) "" getData getName
+        _ -> do 
+            if index == -1 then chooseApiPaginatedData 0 command getData getName
+            else return (arrayData !! (index - 1))
+          
