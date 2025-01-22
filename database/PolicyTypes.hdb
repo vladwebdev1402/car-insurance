@@ -1,0 +1,3 @@
+PolicyType {uid = 0, name = "ОСАГО"}
+PolicyType {uid = 1, name = "КАСКО"}
+PolicyType {uid = 2, name = "ДСАГО"}

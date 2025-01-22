@@ -1,0 +1,2 @@
+TypeKO {id = 0, isLimited = true, coefOsago = 1}
+TypeKO {id = 1, isLimited = false, coefOsago = 2.32}

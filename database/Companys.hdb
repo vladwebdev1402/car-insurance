@@ -1,0 +1,10 @@
+Company {id = 0, name = "Т-Страхование"}
+Company {id = 1, name = "СберСтрахование"}
+Company {id = 2, name = "Югория"}
+Company {id = 3, name = "ВСК"}
+Company {id = 4, name = "Росгосстрах"}
+Company {id = 5, name = "СОГАЗ"}
+Company {id = 6, name = "Согласие"}
+Company {id = 7, name = "АльфаСтрахование"}
+Company {id = 8, name = "Ингосстрах"}
+Company {id = 9, name = "Энергогарант"}

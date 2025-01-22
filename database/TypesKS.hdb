@@ -1,0 +1,10 @@
+TypeKS {id = 0, countMonths = 0.5, description = "До 15 дней", isIsago = true, coefOsago = 0.3}
+TypeKS {id = 1, countMonths = 1, description = "До 1 месяца", isIsago = true, coefOsago = 0.4}
+TypeKS {id = 2, countMonths = 2, description = "До 2 месяцев", isIsago = true, coefOsago = 0.5}
+TypeKS {id = 3, countMonths = 3, description = "До 3 месяцев", isIsago = true, coefOsago = 0.6}
+TypeKS {id = 4, countMonths = 4, description = "До 4 месяцев", isIsago = true, coefOsago = 0.65}
+TypeKS {id = 5, countMonths = 5, description = "До 5 месяцев", isIsago = true, coefOsago = 0.7}
+TypeKS {id = 6, countMonths = 6, description = "До 6 месяцев", isIsago = true, coefOsago = 0.8}
+TypeKS {id = 7, countMonths = 7, description = "До 7 месяцев", isIsago = true, coefOsago = 0.9}
+TypeKS {id = 8, countMonths = 8, description = "До 8 месяцев", isIsago = true, coefOsago = 0.95}
+TypeKS {id = 9, countMonths = 12, description = "До 12 месяцев", isIsago = true, coefOsago = 1}

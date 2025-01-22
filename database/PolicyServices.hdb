@@ -1,0 +1,4 @@
+PolicyService {id = 0, name = "Угон автомобиля"}
+PolicyService {id = 1, name = "ДТП"}
+PolicyService {id = 2, name = "Природные катаклизмы"}
+PolicyService {id = 3, name = "Хищение деталей"}

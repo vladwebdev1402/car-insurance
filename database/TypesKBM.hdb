@@ -1,0 +1,15 @@
+TypeKBM {id = 0, driverLevel = -1, coefOsago = 3.92}
+TypeKBM {id = 1, driverLevel = 0, coefOsago = 2.94}
+TypeKBM {id = 2, driverLevel = 1, coefOsago = 2.25}
+TypeKBM {id = 3, driverLevel = 2, coefOsago = 1.76}
+TypeKBM {id = 4, driverLevel = 3, coefOsago = 1.17}
+TypeKBM {id = 5, driverLevel = 4, coefOsago = 1}
+TypeKBM {id = 6, driverLevel = 5, coefOsago = 0.91}
+TypeKBM {id = 7, driverLevel = 6, coefOsago = 0.83}
+TypeKBM {id = 8, driverLevel = 7, coefOsago = 0.78}
+TypeKBM {id = 9, driverLevel = 8, coefOsago = 0.74}
+TypeKBM {id = 10, driverLevel = 9, coefOsago = 0.68}
+TypeKBM {id = 11, driverLevel = 10, coefOsago = 0.63}
+TypeKBM {id = 12, driverLevel = 11, coefOsago = 0.57}
+TypeKBM {id = 13, driverLevel = 12, coefOsago = 0.52}
+TypeKBM {id = 14, driverLevel = 13, coefOsago = 0.46}

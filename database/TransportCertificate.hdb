@@ -1,0 +1,3 @@
+TransportCertificate {id = 0, transportId = 1, driverId = 0, registrationNumber = "A123BC77"}
+TransportCertificate {id = 1, transportId = 2, driverId = 1, registrationNumber = "B456CD99"}
+TransportCertificate {id = 2, transportId = 3, driverId = 2, registrationNumber = "C789DE33"}
