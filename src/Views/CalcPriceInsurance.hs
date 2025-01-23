@@ -27,6 +27,7 @@ import Modules.ChoosePolicyType
 import Modules.ChooseTypeKS
 import Modules.ChooseTypeKO
 import Views.Helpers.InputAutoInfo
+import Views.Helpers.GetAutoInfo
 
 calcPriceInsurance :: IO ()
 calcPriceInsurance = do
@@ -41,25 +42,27 @@ calcOsagoPrice :: IO ()
 calcOsagoPrice = do
   callCommand "cls" 
   (age, birthDate) <- inputDayOfBirth 16 100
+  let infoMessage1 = "Выбран тип страховки: ОСАГО\nДата рождения: " ++ birthDate ++ "\nВозраст: " ++ show age
   callCommand "cls" 
-  drivingExpirience <- inputRangeNumber ("Выбран тип страховки: ОСАГО\nВведённый возраст: " ++ show age) "Введите стаж вождения: " 0 (getMaximumDrivingExpirience age)
+  drivingExpirience <- inputRangeNumber infoMessage1 "Введите стаж вождения: " 0 (getMaximumDrivingExpirience age)
   callCommand "cls" 
-  putStrLn $ "Выбран тип страховки: ОСАГО\nВведённый возраст: " ++ show age ++ "\nВведённый стаж вождения: " ++ show drivingExpirience
+  let infoMessage2 = infoMessage1 ++ "\nСтаж вождения: " ++ show drivingExpirience
+  putStrLn $ infoMessage2
   
   (enginePower, transportBrand, transportModel, transport, category) <- inputAutoInfo False
 
-  putStrLn (show enginePower)
+  let infoMessage3 = infoMessage2 ++ (getAutoInfo enginePower transportBrand transportModel transport category)
+
+  putStrLn infoMessage3
   
-  putStrLn $ "Выбран тип страховки: ОСАГО\nВведённый возраст: " ++ show age ++ "\nВведённый стаж вождения: " ++ show drivingExpirience ++ "\nВведённая мощность двигателя: " ++ show enginePower
-  
-  region <- chooseRegion
-  putStrLn $ (Enteties.Regions.name region)
-  territorie <- chooseTerritorie (Enteties.Regions.uid region)
-  putStrLn $ (Enteties.Territories.name territorie)
-  typeKs <- сhooseTypeKS
-  putStrLn $ (show (Enteties.TypeKS.countMonths typeKs))
-  typeKo <- сhooseTypeKO
-  putStrLn $ (Enteties.TypeKO.description typeKo)
+  -- region <- chooseRegion
+  -- putStrLn $ (Enteties.Regions.name region)
+  -- territorie <- chooseTerritorie (Enteties.Regions.uid region)
+  -- putStrLn $ (Enteties.Territories.name territorie)
+  -- typeKs <- сhooseTypeKS
+  -- putStrLn $ (show (Enteties.TypeKS.countMonths typeKs))
+  -- typeKo <- сhooseTypeKO
+  -- putStrLn $ (Enteties.TypeKO.description typeKo)
   
 calcKaskoPrice :: IO ()
 calcKaskoPrice = do

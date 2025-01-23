@@ -29,7 +29,7 @@ validateYear year = year >= 1920
 
 inputDate :: IO String
 inputDate = do
-    putStrLn "Введите дату через точку (.) в формате ДД.ММ.ГГГГ:"
+    putStrLn "Введите дату рождения через точку (.) в формате ДД.ММ.ГГГГ:"
     input <- getLine
     let parts = splitOn "." input
     if length parts /= 3 then do

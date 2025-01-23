@@ -57,6 +57,7 @@ library
       Shared.Validators.IsNumber
       Shared.Validators.ValidateNumberRangeInput
       Views.CalcPriceInsurance
+      Views.Helpers.GetAutoInfo
       Views.Helpers.InputAutoInfo
       Views.InformationInsurance
       Views.RegistrationInsurance
