@@ -68,8 +68,8 @@ chooseApiPaginatedData page search getData getName = do
             if index == -1 then chooseApiPaginatedData 0 command getData getName
             else return (arrayData !! (index - 1))
 
--- страница, поисковое имя, функция запроса, куда передаётся максимальный и минимальный индекс, функция для получении имени
-chooseApiParamPaginatedData :: Int -> String -> Int -> (Int -> Int -> String -> Int -> IO [a]) -> (a -> String) -> IO a
+-- страница, поисковое имя,  функция запроса, куда передаётся максимальный и минимальный индекс, функция для получении имени
+chooseApiParamPaginatedData :: Int -> String -> b -> (Int -> Int -> String -> b -> IO [a]) -> (a -> String) -> IO a
 chooseApiParamPaginatedData page search paramId getData getName = do 
     callCommand "cls"
     putStrLn "Команды:\nназад - предыдущая страница,\nвперёд - следующая страница,\nпоиск %name%- поиск по названию,\nсбросить - сбросить фильтры"

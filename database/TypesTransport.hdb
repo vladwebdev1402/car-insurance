@@ -1,11 +1,11 @@
-TypeTransport {id = 0, description = "A, M", minPriceCoefOsago = 324, maxPriceCoefOsago = 2536}
-TypeTransport {id = 1, description = "B, BE для физических лиц", minPriceCoefOsago = 1646, maxPriceCoefOsago = 7535}
-TypeTransport {id = 2, description = "B, BE для юридеских лиц", minPriceCoefOsago = 852, maxPriceCoefOsago = 5722}
-TypeTransport {id = 3, description = "B, BE для такси", minPriceCoefOsago = 1490, maxPriceCoefOsago = 15756}
-TypeTransport {id = 4, description = "C, CE с разрешенной максимальной массой 16 тонн и менее", minPriceCoefOsago = 1163, maxPriceCoefOsago = 9934}
-TypeTransport {id = 5, description = "C, CE с разрешенной максимальной более 16 тонн", minPriceCoefOsago = 1752, maxPriceCoefOsago = 14957}
-TypeTransport {id = 6, description = "D1", minPriceCoefOsago = 1106, maxPriceCoefOsago = 6823}
-TypeTransport {id = 7, description = "D, DE", minPriceCoefOsago = 1382, maxPriceCoefOsago = 8526}
-TypeTransport {id = 8, description = "Tb", minPriceCoefOsago = 3053, maxPriceCoefOsago = 9144}
-TypeTransport {id = 9, description = "Tm", minPriceCoefOsago = 1668, maxPriceCoefOsago = 4997}
-TypeTransport {id = 10, description = "Используется для пассажирских перевозок", minPriceCoefOsago = 1041, maxPriceCoefOsago = 3116}
+TypeTransport {uid = 0, description = "A, M", minPriceCoefOsago = 324, maxPriceCoefOsago = 2536}
+TypeTransport {uid = 1, description = "B, BE для физических лиц", minPriceCoefOsago = 1646, maxPriceCoefOsago = 7535}
+TypeTransport {uid = 2, description = "B, BE для юридеских лиц", minPriceCoefOsago = 852, maxPriceCoefOsago = 5722}
+TypeTransport {uid = 3, description = "B, BE для такси", minPriceCoefOsago = 1490, maxPriceCoefOsago = 15756}
+TypeTransport {uid = 4, description = "C, CE с разрешенной максимальной массой 16 тонн и менее", minPriceCoefOsago = 1163, maxPriceCoefOsago = 9934}
+TypeTransport {uid = 5, description = "C, CE с разрешенной максимальной более 16 тонн", minPriceCoefOsago = 1752, maxPriceCoefOsago = 14957}
+TypeTransport {uid = 6, description = "D1", minPriceCoefOsago = 1106, maxPriceCoefOsago = 6823}
+TypeTransport {uid = 7, description = "D, DE", minPriceCoefOsago = 1382, maxPriceCoefOsago = 8526}
+TypeTransport {uid = 8, description = "Tb", minPriceCoefOsago = 3053, maxPriceCoefOsago = 9144}
+TypeTransport {uid = 9, description = "Tm", minPriceCoefOsago = 1668, maxPriceCoefOsago = 4997}
+TypeTransport {uid = 10, description = "Используется для пассажирских перевозок", minPriceCoefOsago = 1041, maxPriceCoefOsago = 3116}

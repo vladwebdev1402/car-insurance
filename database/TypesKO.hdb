@@ -1,2 +1,2 @@
-TypeKO {id = 0, isLimited = true, coefOsago = 1}
-TypeKO {id = 1, isLimited = false, coefOsago = 2.32}
+TypeKO {uid = 0, isLimited = True, description = "Только один водитель", coefOsago = 1}
+TypeKO {uid = 1, isLimited = False, description = "Несколько водителей", coefOsago = 2.32}

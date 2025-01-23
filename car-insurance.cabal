@@ -31,11 +31,16 @@ library
       Enteties.TransportBrands
       Enteties.TransportModels
       Enteties.Transports
+      Enteties.TypeKO
+      Enteties.TypeKS
+      Modules.ChoosePolicyType
       Modules.ChooseRegion
       Modules.ChooseTerritorie
       Modules.ChooseTransport
       Modules.ChooseTransportBrand
       Modules.ChooseTransportModel
+      Modules.ChooseTypeKO
+      Modules.ChooseTypeKS
       Shared.Api.GetAllData
       Shared.Api.GetFilterData
       Shared.Calc.GetMaximumDrivingExpirience

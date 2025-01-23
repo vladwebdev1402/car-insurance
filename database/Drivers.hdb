@@ -1,3 +1,3 @@
-Driver {id = 0, surName = "Иванов", firstName = "Иван", patroName = "Иванович", experience = 5, driverLevel = 3, numberPassport = 123456, seriePassport = 654321, phone = "+79261234567", birthday = "1985-07-10"}
-Driver {id = 1, surName = "Петров", firstName = "Петр", patroName = "Петрович", experience = 10, driverLevel = 5, numberPassport = 234567, seriePassport = 765432, phone = "+79269876543", birthday = "1978-03-25"}
-Driver {id = 2, surName = "Сидоров", firstName = "Сергей", patroName = "Алексеевич", experience = 2, driverLevel = 2, numberPassport = 345678, seriePassport = 876543, phone = "+79265554433", birthday = "1990-12-15"}
+Driver {uid = 0, surName = "Иванов", firstName = "Иван", patroName = "Иванович", experience = 5, driverLevel = 3, numberPassport = 123456, seriePassport = 654321, phone = "+79261234567", birthday = "1985-07-10"}
+Driver {uid = 1, surName = "Петров", firstName = "Петр", patroName = "Петрович", experience = 10, driverLevel = 5, numberPassport = 234567, seriePassport = 765432, phone = "+79269876543", birthday = "1978-03-25"}
+Driver {uid = 2, surName = "Сидоров", firstName = "Сергей", patroName = "Алексеевич", experience = 2, driverLevel = 2, numberPassport = 345678, seriePassport = 876543, phone = "+79265554433", birthday = "1990-12-15"}

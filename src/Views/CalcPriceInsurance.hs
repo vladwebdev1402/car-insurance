@@ -8,6 +8,8 @@ import Enteties.TransportModels
 import Enteties.Transports
 import Enteties.Regions
 import Enteties.Territories
+import Enteties.TypeKS
+import Enteties.TypeKO
 import Shared.Logs.LogData
 import Shared.Validators.ValidateNumberRangeInput
 import Shared.Inputs.ChooseData
@@ -18,13 +20,13 @@ import Modules.ChooseTransportModel
 import Modules.ChooseTransport
 import Modules.ChooseRegion
 import Modules.ChooseTerritorie
+import Modules.ChoosePolicyType
+import Modules.ChooseTypeKS
+import Modules.ChooseTypeKO
 
 calcPriceInsurance :: IO ()
 calcPriceInsurance = do
-  policyTypes <- getPolicyTypes
-  putStrLn "Выберите тип страховки:"
-  index <- chooseData policyTypes (\array -> generateLogData array Enteties.PolicyTypes.name)
-  let policyType = policyTypes !! (index - 1)
+  policyType <- choosePolicyType
 
   case (Enteties.PolicyTypes.uid policyType) of
     0 -> calcOsagoPrice
@@ -61,7 +63,10 @@ calcOsagoPrice = do
   putStrLn $ (Enteties.Regions.name region)
   territorie <- chooseTerritorie (Enteties.Regions.uid region)
   putStrLn $ (Enteties.Territories.name territorie)
-
+  typeKs <- сhooseTypeKS
+  putStrLn $ (show (Enteties.TypeKS.countMonths typeKs))
+  typeKo <- сhooseTypeKO
+  putStrLn $ (Enteties.TypeKO.description typeKo)
   
 calcKaskoPrice :: IO ()
 calcKaskoPrice = do

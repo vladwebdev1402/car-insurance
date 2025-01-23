@@ -1,6 +1,6 @@
-TypeKM {id = 0, minEnginePower = 0, maxEnginePower = 50, isOsago = true, coefOsago = 0.6}
-TypeKM {id = 1, minEnginePower = 51, maxEnginePower = 70, isOsago = true, coefOsago = 1}
-TypeKM {id = 2, minEnginePower = 71, maxEnginePower = 100, isOsago = true, coefOsago = 1.1}
-TypeKM {id = 3, minEnginePower = 101, maxEnginePower = 120, isOsago = true, coefOsago = 1.2}
-TypeKM {id = 4, minEnginePower = 121, maxEnginePower = 150, isOsago = true, coefOsago = 1.4}
-TypeKM {id = 5, minEnginePower = 151, maxEnginePower = 10000, isOsago = true, coefOsago = 1.6}
+TypeKM {uid = 0, minEnginePower = 0, maxEnginePower = 50, isOsago = True, coefOsago = 0.6}
+TypeKM {uid = 1, minEnginePower = 51, maxEnginePower = 70, isOsago = True, coefOsago = 1}
+TypeKM {uid = 2, minEnginePower = 71, maxEnginePower = 100, isOsago = True, coefOsago = 1.1}
+TypeKM {uid = 3, minEnginePower = 101, maxEnginePower = 120, isOsago = True, coefOsago = 1.2}
+TypeKM {uid = 4, minEnginePower = 121, maxEnginePower = 150, isOsago = True, coefOsago = 1.4}
+TypeKM {uid = 5, minEnginePower = 151, maxEnginePower = 10000, isOsago = True, coefOsago = 1.6}

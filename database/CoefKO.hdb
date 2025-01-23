@@ -1,4 +1,4 @@
-CoefKO {id = 0, companyPolicyLinkId = 10, typeKOId = 0, value = 1}
-CoefKO {id = 0, companyPolicyLinkId = 10, typeKOId = 1, value = 2.4}
-CoefKO {id = 0, companyPolicyLinkId = 11, typeKOId = 0, value = 1}
-CoefKO {id = 0, companyPolicyLinkId = 11, typeKOId = 1, value = 3.2}
+CoefKO {uid = 0, companyPolicyLinkId = 10, typeKOId = 0, value = 1}
+CoefKO {uid = 0, companyPolicyLinkId = 10, typeKOId = 1, value = 2.4}
+CoefKO {uid = 0, companyPolicyLinkId = 11, typeKOId = 0, value = 1}
+CoefKO {uid = 0, companyPolicyLinkId = 11, typeKOId = 1, value = 3.2}
