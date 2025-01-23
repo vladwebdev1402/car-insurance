@@ -1,361 +1,361 @@
-Territorie {id = 0, regionId = 0, name = "Вся местность", coefOsago = 1.24}
-Territorie {id = 1, regionId = 1, name = "Горно-Алтайск", coefOsago = 1.24}
-Territorie {id = 2, regionId = 1, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 3, regionId = 2, name = "Октябрьский", coefOsago = 1.16}
-Territorie {id = 4, regionId = 2, name = "Благовещенск", coefOsago = 1.16}
-Territorie {id = 5, regionId = 2, name = "Салават", coefOsago = 1.08}
-Territorie {id = 6, regionId = 2, name = "Кумертау", coefOsago = 1.08}
-Territorie {id = 7, regionId = 2, name = "Ишимбай", coefOsago = 1.08}
-Territorie {id = 8, regionId = 2, name = "Туймазы", coefOsago = 1.24}
-Territorie {id = 9, regionId = 2, name = "Стерлитамак", coefOsago = 1.24}
-Territorie {id = 10, regionId = 2, name = "Уфа", coefOsago = 1.64}
-Territorie {id = 11, regionId = 2, name = "Прочие города и населенные пункты", coefOsago = 1}
-Territorie {id = 12, regionId = 3, name = "Улан-Удэ", coefOsago = 1.24}
-Territorie {id = 13, regionId = 3, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 14, regionId = 4, name = "Хасавюрт", coefOsago = 0.96}
-Territorie {id = 15, regionId = 4, name = "Махачкала", coefOsago = 0.96}
-Territorie {id = 16, regionId = 4, name = "Каспийск", coefOsago = 0.96}
-Territorie {id = 17, regionId = 4, name = "Дербент", coefOsago = 0.96}
-Territorie {id = 18, regionId = 4, name = "Буйнакск", coefOsago = 0.96}
-Territorie {id = 19, regionId = 4, name = "Прочие города и населенные пункты", coefOsago = 0.9}
-Territorie {id = 20, regionId = 5, name = "Малгобек", coefOsago = 0.94}
-Territorie {id = 21, regionId = 5, name = "Назрань", coefOsago = 0.82}
-Territorie {id = 22, regionId = 5, name = "Прочие города и населенные пункты", coefOsago = 0.82}
-Territorie {id = 23, regionId = 6, name = "Прохладный", coefOsago = 1}
-Territorie {id = 24, regionId = 6, name = "Нальчик", coefOsago = 1}
-Territorie {id = 25, regionId = 6, name = "Прочие города и населенные пункты", coefOsago = 0.88}
-Territorie {id = 26, regionId = 7, name = "Элиста", coefOsago = 1.24}
-Territorie {id = 27, regionId = 7, name = "Прочие города и населенные пункты", coefOsago = 0.82}
-Territorie {id = 28, regionId = 8, name = "Вся местность", coefOsago = 1}
-Territorie {id = 29, regionId = 9, name = "Петрозаводск", coefOsago = 1.24}
-Territorie {id = 30, regionId = 9, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 31, regionId = 10, name = "Сыктывкар", coefOsago = 1.48}
-Territorie {id = 32, regionId = 10, name = "Ухта", coefOsago = 1.24}
-Territorie {id = 33, regionId = 10, name = "Прочие города и населенные пункты", coefOsago = 1}
-Territorie {id = 34, regionId = 11, name = "Симферополь", coefOsago = 0.76}
-Territorie {id = 35, regionId = 11, name = "Прочие города и населенные пункты", coefOsago = 0.68}
-Territorie {id = 36, regionId = 12, name = "Волжск", coefOsago = 1}
-Territorie {id = 37, regionId = 12, name = "Йошкар-Ола", coefOsago = 1.32}
-Territorie {id = 38, regionId = 12, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 39, regionId = 13, name = "Рузаевка", coefOsago = 1.16}
-Territorie {id = 40, regionId = 13, name = "Саранск", coefOsago = 1.4}
-Territorie {id = 41, regionId = 13, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 42, regionId = 14, name = "Нерюнгри", coefOsago = 0.84}
-Territorie {id = 43, regionId = 14, name = "Якутск", coefOsago = 1.16}
-Territorie {id = 44, regionId = 14, name = "Прочие города и населенные пункты", coefOsago = 0.68}
-Territorie {id = 45, regionId = 15, name = "Владикавказ", coefOsago = 1}
-Territorie {id = 46, regionId = 15, name = "Прочие города и населенные пункты", coefOsago = 0.94}
-Territorie {id = 47, regionId = 16, name = "Нижнекамск", coefOsago = 1.24}
-Territorie {id = 48, regionId = 16, name = "Зеленодольск", coefOsago = 1.24}
-Territorie {id = 49, regionId = 16, name = "Альметьевск", coefOsago = 1.24}
-Territorie {id = 50, regionId = 16, name = "Чистополь", coefOsago = 1}
-Territorie {id = 51, regionId = 16, name = "Лениногорск", coefOsago = 1}
-Territorie {id = 52, regionId = 16, name = "Бугульма", coefOsago = 1}
-Territorie {id = 53, regionId = 16, name = "Елабуга", coefOsago = 1.16}
-Territorie {id = 54, regionId = 16, name = "Казань", coefOsago = 1.8}
-Territorie {id = 55, regionId = 16, name = "Набережные Челны", coefOsago = 1.56}
-Territorie {id = 56, regionId = 16, name = "Прочие города и населенные пункты", coefOsago = 1.08}
-Territorie {id = 57, regionId = 17, name = "Кызыл", coefOsago = 0.82}
-Territorie {id = 58, regionId = 17, name = "Прочие города и населенные пункты", coefOsago = 0.82}
-Territorie {id = 59, regionId = 18, name = "Воткинск", coefOsago = 1.08}
-Territorie {id = 60, regionId = 18, name = "Сарапул", coefOsago = 1}
-Territorie {id = 61, regionId = 18, name = "Глазов", coefOsago = 1}
-Territorie {id = 62, regionId = 18, name = "Ижевск", coefOsago = 1.48}
-Territorie {id = 63, regionId = 18, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 64, regionId = 19, name = "Черногорск", coefOsago = 1}
-Territorie {id = 65, regionId = 19, name = "Саяногорск", coefOsago = 1}
-Territorie {id = 66, regionId = 19, name = "Абакан", coefOsago = 1}
-Territorie {id = 67, regionId = 19, name = "Прочие города и населенные пункты", coefOsago = 0.82}
-Territorie {id = 68, regionId = 20, name = "Вся местность", coefOsago = 0.82}
-Territorie {id = 69, regionId = 21, name = "Канаш", coefOsago = 1.08}
-Territorie {id = 70, regionId = 21, name = "Новочебоксарск", coefOsago = 1.16}
-Territorie {id = 71, regionId = 21, name = "Чебоксары", coefOsago = 1.56}
-Territorie {id = 72, regionId = 21, name = "Прочие города и населенные пункты", coefOsago = 0.88}
-Territorie {id = 73, regionId = 22, name = "Барнаул", coefOsago = 1.56}
-Territorie {id = 74, regionId = 22, name = "Бийск", coefOsago = 1.16}
-Territorie {id = 75, regionId = 22, name = "Рубцовск", coefOsago = 1.08}
-Territorie {id = 76, regionId = 22, name = "Новоалтайск", coefOsago = 1.08}
-Territorie {id = 77, regionId = 22, name = "Заринск", coefOsago = 1.08}
-Territorie {id = 78, regionId = 22, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 79, regionId = 23, name = "Краснокаменск", coefOsago = 0.82}
-Territorie {id = 80, regionId = 23, name = "Чита", coefOsago = 0.82}
-Territorie {id = 81, regionId = 23, name = "Прочие города и населенные пункты", coefOsago = 0.68}
-Territorie {id = 82, regionId = 24, name = "Петропавловск-Камчатский", coefOsago = 1.24}
-Territorie {id = 83, regionId = 24, name = "Прочие города и населенные пункты", coefOsago = 1}
-Territorie {id = 84, regionId = 25, name = "Геленджик", coefOsago = 1.24}
-Territorie {id = 85, regionId = 25, name = "Анапа", coefOsago = 1.24}
-Territorie {id = 86, regionId = 25, name = "Туапсе", coefOsago = 1.16}
-Territorie {id = 87, regionId = 25, name = "Сочи", coefOsago = 1.16}
-Territorie {id = 88, regionId = 25, name = "Армавир", coefOsago = 1.16}
-Territorie {id = 89, regionId = 25, name = "Тихорецк", coefOsago = 1.08}
-Territorie {id = 90, regionId = 25, name = "Тимашевск", coefOsago = 1.08}
-Territorie {id = 91, regionId = 25, name = "Славянск-на-Кубани", coefOsago = 1.08}
-Territorie {id = 92, regionId = 25, name = "Лабинск", coefOsago = 1.08}
-Territorie {id = 93, regionId = 25, name = "Крымск", coefOsago = 1.08}
-Territorie {id = 94, regionId = 25, name = "Кропоткин", coefOsago = 1.08}
-Territorie {id = 95, regionId = 25, name = "Курганинск", coefOsago = 1.08}
-Territorie {id = 96, regionId = 25, name = "Ейск", coefOsago = 1.08}
-Territorie {id = 97, regionId = 25, name = "Белореченск", coefOsago = 1.08}
-Territorie {id = 98, regionId = 25, name = "Новороссийск", coefOsago = 1.64}
-Territorie {id = 99, regionId = 25, name = "Краснодар", coefOsago = 1.64}
-Territorie {id = 100, regionId = 25, name = "Прочие города и населенные пункты", coefOsago = 1}
-Territorie {id = 101, regionId = 26, name = "Зеленогорск", coefOsago = 1.08}
-Territorie {id = 102, regionId = 26, name = "Ачинск", coefOsago = 1.08}
-Territorie {id = 103, regionId = 26, name = "Норильск", coefOsago = 1.24}
-Territorie {id = 104, regionId = 26, name = "Железногорск", coefOsago = 1.24}
-Territorie {id = 105, regionId = 26, name = "Назарово", coefOsago = 1}
-Territorie {id = 106, regionId = 26, name = "Минусинск", coefOsago = 1}
-Territorie {id = 107, regionId = 26, name = "Лесосибирск", coefOsago = 1}
-Territorie {id = 108, regionId = 26, name = "Канск", coefOsago = 1}
-Territorie {id = 109, regionId = 26, name = "Красноярск", coefOsago = 1.64}
-Territorie {id = 110, regionId = 26, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 111, regionId = 27, name = "Краснокамск", coefOsago = 1.24}
-Territorie {id = 112, regionId = 27, name = "Березники", coefOsago = 1.24}
-Territorie {id = 113, regionId = 27, name = "Чайковский", coefOsago = 1}
-Territorie {id = 114, regionId = 27, name = "Лысьва", coefOsago = 1}
-Territorie {id = 115, regionId = 27, name = "Пермь", coefOsago = 1.8}
-Territorie {id = 116, regionId = 27, name = "Соликамск", coefOsago = 1.16}
-Territorie {id = 117, regionId = 27, name = "Прочие города и населенные пункты", coefOsago = 1.08}
-Territorie {id = 118, regionId = 28, name = "Уссурийск", coefOsago = 1}
-Territorie {id = 119, regionId = 28, name = "Спасск-Дальний", coefOsago = 1}
-Territorie {id = 120, regionId = 28, name = "Находка", coefOsago = 1}
-Territorie {id = 121, regionId = 28, name = "Артем", coefOsago = 1}
-Territorie {id = 122, regionId = 28, name = "Арсеньев", coefOsago = 1}
-Territorie {id = 123, regionId = 28, name = "Владивосток", coefOsago = 1.36}
-Territorie {id = 124, regionId = 28, name = "Прочие города и населенные пункты", coefOsago = 0.96}
-Territorie {id = 125, regionId = 29, name = "Пятигорск", coefOsago = 1}
-Territorie {id = 126, regionId = 29, name = "Невинномысск", coefOsago = 1}
-Territorie {id = 127, regionId = 29, name = "Минеральные", coefOsago = 1}
-Territorie {id = 128, regionId = 29, name = "Ессентуки", coefOsago = 1}
-Territorie {id = 129, regionId = 29, name = "Георгиевск", coefOsago = 1}
-Territorie {id = 130, regionId = 29, name = "Воды", coefOsago = 1}
-Territorie {id = 131, regionId = 29, name = "Буденновск", coefOsago = 1}
-Territorie {id = 132, regionId = 29, name = "Ставрополь", coefOsago = 1.16}
-Territorie {id = 133, regionId = 29, name = "Михайловск", coefOsago = 1.16}
-Territorie {id = 134, regionId = 29, name = "Кисловодск", coefOsago = 1.16}
-Territorie {id = 135, regionId = 29, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 136, regionId = 30, name = "Амурск", coefOsago = 1}
-Territorie {id = 137, regionId = 30, name = "Комсомольск-на-Амуре", coefOsago = 1.27}
-Territorie {id = 138, regionId = 30, name = "Хабаровск", coefOsago = 1.56}
-Territorie {id = 139, regionId = 30, name = "Прочие города и населенные пункты", coefOsago = 0.88}
-Territorie {id = 140, regionId = 31, name = "Свободный", coefOsago = 1.08}
-Territorie {id = 141, regionId = 31, name = "Белогорск", coefOsago = 1.08}
-Territorie {id = 142, regionId = 31, name = "Благовещенск", coefOsago = 1.48}
-Territorie {id = 143, regionId = 31, name = "Прочие города и населенные пункты", coefOsago = 1}
-Territorie {id = 144, regionId = 32, name = "Архангельск", coefOsago = 1.64}
-Territorie {id = 145, regionId = 32, name = "Котлас", coefOsago = 1.48}
-Territorie {id = 146, regionId = 32, name = "Северодвинск", coefOsago = 1.56}
-Territorie {id = 147, regionId = 32, name = "Прочие города и населенные пункты", coefOsago = 0.88}
-Territorie {id = 148, regionId = 33, name = "Астрахань", coefOsago = 1.32}
-Territorie {id = 149, regionId = 33, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 150, regionId = 34, name = "Белгород", coefOsago = 1.24}
-Territorie {id = 151, regionId = 34, name = "Старый Оскол", coefOsago = 1}
-Territorie {id = 152, regionId = 34, name = "Губкин", coefOsago = 1}
-Territorie {id = 153, regionId = 34, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 154, regionId = 35, name = "Брянск", coefOsago = 1.4}
-Territorie {id = 155, regionId = 35, name = "Клинцы", coefOsago = 1}
-Territorie {id = 156, regionId = 35, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 157, regionId = 36, name = "Владимир", coefOsago = 1.48}
-Territorie {id = 158, regionId = 36, name = "Гусь-Хрустальный", coefOsago = 1.08}
-Territorie {id = 159, regionId = 36, name = "Муром", coefOsago = 1.16}
-Territorie {id = 160, regionId = 36, name = "Прочие города и населенные пункты", coefOsago = 1}
-Territorie {id = 161, regionId = 37, name = "Волгоград", coefOsago = 1.24}
-Territorie {id = 162, regionId = 37, name = "Волжский", coefOsago = 1.08}
-Territorie {id = 163, regionId = 37, name = "Михайловка", coefOsago = 1}
-Territorie {id = 164, regionId = 37, name = "Камыши", coefOsago = 1}
-Territorie {id = 165, regionId = 37, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 166, regionId = 38, name = "Вологда", coefOsago = 1.56}
-Territorie {id = 167, regionId = 38, name = "Череповец", coefOsago = 1.64}
-Territorie {id = 168, regionId = 38, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 169, regionId = 39, name = "Россошь", coefOsago = 1.08}
-Territorie {id = 170, regionId = 39, name = "Лиски", coefOsago = 1.08}
-Territorie {id = 171, regionId = 39, name = "Борисоглебск", coefOsago = 1.08}
-Territorie {id = 172, regionId = 39, name = "Воронеж", coefOsago = 1.4}
-Territorie {id = 173, regionId = 39, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 174, regionId = 40, name = "Иваново", coefOsago = 1.64}
-Territorie {id = 175, regionId = 40, name = "Кинешма", coefOsago = 1.08}
-Territorie {id = 176, regionId = 40, name = "Шуя", coefOsago = 1}
-Territorie {id = 177, regionId = 40, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 178, regionId = 41, name = "Ангарск", coefOsago = 1.16}
-Territorie {id = 179, regionId = 41, name = "Черемхово", coefOsago = 1}
-Territorie {id = 180, regionId = 41, name = "Усть-Кут", coefOsago = 1}
-Territorie {id = 181, regionId = 41, name = "Усть-Илимск", coefOsago = 1}
-Territorie {id = 182, regionId = 41, name = "Тулун", coefOsago = 1}
-Territorie {id = 183, regionId = 41, name = "Братск", coefOsago = 1}
-Territorie {id = 184, regionId = 41, name = "Иркутск", coefOsago = 1.56}
-Territorie {id = 185, regionId = 41, name = "Усолье-Сибирское", coefOsago = 1.08}
-Territorie {id = 186, regionId = 41, name = "Шелехов", coefOsago = 1.24}
-Territorie {id = 187, regionId = 41, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 188, regionId = 42, name = "Калининград", coefOsago = 1.08}
-Territorie {id = 189, regionId = 42, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 190, regionId = 43, name = "Калуга", coefOsago = 1.16}
-Territorie {id = 191, regionId = 43, name = "Обнинск", coefOsago = 1.24}
-Territorie {id = 192, regionId = 43, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 193, regionId = 44, name = "Юрга", coefOsago = 1.16}
-Territorie {id = 194, regionId = 44, name = "Киселевск", coefOsago = 1.16}
-Territorie {id = 195, regionId = 44, name = "Анжеро-Судженск", coefOsago = 1.16}
-Territorie {id = 196, regionId = 44, name = "Прокопьевск", coefOsago = 1.24}
-Territorie {id = 197, regionId = 44, name = "Осинники", coefOsago = 1.24}
-Territorie {id = 198, regionId = 44, name = "Междуреченск", coefOsago = 1.24}
-Territorie {id = 199, regionId = 44, name = "Березовский", coefOsago = 1.24}
-Territorie {id = 200, regionId = 44, name = "Белово", coefOsago = 1.24}
-Territorie {id = 201, regionId = 44, name = "Кемерово", coefOsago = 1.72}
-Territorie {id = 202, regionId = 44, name = "Новокузнецк", coefOsago = 1.64}
-Territorie {id = 203, regionId = 44, name = "Прочие города и населенные пункты", coefOsago = 1.08}
-Territorie {id = 204, regionId = 45, name = "Киров", coefOsago = 1.32}
-Territorie {id = 205, regionId = 45, name = "Кирово-Чепецк", coefOsago = 1.16}
-Territorie {id = 206, regionId = 45, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 207, regionId = 46, name = "Кострома", coefOsago = 1.24}
-Territorie {id = 208, regionId = 46, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 209, regionId = 47, name = "Курган", coefOsago = 1.32}
-Territorie {id = 210, regionId = 47, name = "Шадринск", coefOsago = 1.08}
-Territorie {id = 211, regionId = 47, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 212, regionId = 48, name = "Железногорск", coefOsago = 1}
-Territorie {id = 213, regionId = 48, name = "Курск", coefOsago = 1.16}
-Territorie {id = 214, regionId = 48, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 215, regionId = 49, name = "Вся местность", coefOsago = 1.24}
-Territorie {id = 216, regionId = 50, name = "Елец", coefOsago = 1}
-Territorie {id = 217, regionId = 50, name = "Липецк", coefOsago = 1.4}
-Territorie {id = 218, regionId = 50, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 219, regionId = 51, name = "Магадан", coefOsago = 0.82}
-Territorie {id = 220, regionId = 51, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 221, regionId = 52, name = "Вся местность", coefOsago = 1.56}
-Territorie {id = 222, regionId = 53, name = "Мончегорск", coefOsago = 1.24}
-Territorie {id = 223, regionId = 53, name = "Апатиты", coefOsago = 1.24}
-Territorie {id = 224, regionId = 53, name = "Мурманск", coefOsago = 1.88}
-Territorie {id = 225, regionId = 53, name = "Североморск", coefOsago = 1.48}
-Territorie {id = 226, regionId = 53, name = "Прочие города и населенные пункты", coefOsago = 1.16}
-Territorie {id = 227, regionId = 54, name = "Выкса", coefOsago = 1.08}
-Territorie {id = 228, regionId = 54, name = "Саров", coefOsago = 1.08}
-Territorie {id = 229, regionId = 54, name = "Арзамас", coefOsago = 1.08}
-Territorie {id = 230, regionId = 54, name = "Дзержинск", coefOsago = 1.24}
-Territorie {id = 231, regionId = 54, name = "Бор", coefOsago = 1.24}
-Territorie {id = 232, regionId = 54, name = "Балахна", coefOsago = 1.24}
-Territorie {id = 233, regionId = 54, name = "Кстово", coefOsago = 1.16}
-Territorie {id = 234, regionId = 54, name = "Нижний Новгород", coefOsago = 1.64}
-Territorie {id = 235, regionId = 54, name = "Прочие города и населенные пункты", coefOsago = 1}
-Territorie {id = 236, regionId = 55, name = "Боровичи", coefOsago = 1}
-Territorie {id = 237, regionId = 55, name = "Великий Новгород", coefOsago = 1.24}
-Territorie {id = 238, regionId = 55, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 239, regionId = 56, name = "Бердск", coefOsago = 1.24}
-Territorie {id = 240, regionId = 56, name = "Искитим", coefOsago = 1.16}
-Territorie {id = 241, regionId = 56, name = "Куйбышев", coefOsago = 1}
-Territorie {id = 242, regionId = 56, name = "Новосибирск", coefOsago = 1.63}
-Territorie {id = 243, regionId = 56, name = "Прочие города и населенные пункты", coefOsago = 1}
-Territorie {id = 244, regionId = 57, name = "Омск", coefOsago = 1.48}
-Territorie {id = 245, regionId = 57, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 246, regionId = 58, name = "Новотроицк", coefOsago = 1}
-Territorie {id = 247, regionId = 58, name = "Бузулук", coefOsago = 1}
-Territorie {id = 248, regionId = 58, name = "Бугуруслан", coefOsago = 1}
-Territorie {id = 249, regionId = 58, name = "Оренбург", coefOsago = 1.56}
-Territorie {id = 250, regionId = 58, name = "Орск", coefOsago = 1.08}
-Territorie {id = 251, regionId = 58, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 252, regionId = 59, name = "Орел", coefOsago = 1.16}
-Territorie {id = 253, regionId = 59, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 254, regionId = 60, name = "Заречный", coefOsago = 1.16}
-Territorie {id = 255, regionId = 60, name = "Кузнецк", coefOsago = 1}
-Territorie {id = 256, regionId = 60, name = "Пенза", coefOsago = 1.32}
-Territorie {id = 257, regionId = 60, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 258, regionId = 61, name = "Великие Луки", coefOsago = 1}
-Territorie {id = 259, regionId = 61, name = "Псков", coefOsago = 1.16}
-Territorie {id = 260, regionId = 61, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 261, regionId = 62, name = "Азов", coefOsago = 1.16}
-Territorie {id = 262, regionId = 62, name = "Батайск", coefOsago = 1.24}
-Territorie {id = 263, regionId = 62, name = "Таганрог", coefOsago = 1}
-Territorie {id = 264, regionId = 62, name = "Сальск", coefOsago = 1}
-Territorie {id = 265, regionId = 62, name = "Новошахтинск", coefOsago = 1}
-Territorie {id = 266, regionId = 62, name = "Новочеркасск", coefOsago = 1}
-Territorie {id = 267, regionId = 62, name = "Гуково", coefOsago = 1}
-Territorie {id = 268, regionId = 62, name = "Каменск-Шахтинский", coefOsago = 1}
-Territorie {id = 269, regionId = 62, name = "Волгодонск", coefOsago = 1}
-Territorie {id = 270, regionId = 62, name = "Ростов-на-Дону", coefOsago = 1.64}
-Territorie {id = 271, regionId = 62, name = "Шахты", coefOsago = 1.08}
-Territorie {id = 272, regionId = 62, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 273, regionId = 63, name = "Рязань", coefOsago = 1.32}
-Territorie {id = 274, regionId = 63, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 275, regionId = 64, name = "Сызрань", coefOsago = 1.08}
-Territorie {id = 276, regionId = 64, name = "Новокуйбышевск", coefOsago = 1.08}
-Territorie {id = 277, regionId = 64, name = "Самара", coefOsago = 1.48}
-Territorie {id = 278, regionId = 64, name = "Тольятти", coefOsago = 1.4}
-Territorie {id = 279, regionId = 64, name = "Чапаевск", coefOsago = 1.16}
-Territorie {id = 280, regionId = 64, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 281, regionId = 65, name = "Вольск", coefOsago = 1}
-Territorie {id = 282, regionId = 65, name = "Балашов", coefOsago = 1}
-Territorie {id = 283, regionId = 65, name = "Балаково", coefOsago = 1}
-Territorie {id = 284, regionId = 65, name = "Саратов", coefOsago = 1.48}
-Territorie {id = 285, regionId = 65, name = "Энгельс", coefOsago = 1.16}
-Territorie {id = 286, regionId = 65, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 287, regionId = 66, name = "Южно-Сахалинск", coefOsago = 1.4}
-Territorie {id = 288, regionId = 66, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 289, regionId = 67, name = "Ревда", coefOsago = 1.08}
-Territorie {id = 290, regionId = 67, name = "Асбест", coefOsago = 1.08}
-Territorie {id = 291, regionId = 67, name = "Первоуральск", coefOsago = 1.24}
-Territorie {id = 292, regionId = 67, name = "Новоуральск", coefOsago = 1.24}
-Territorie {id = 293, regionId = 67, name = "Верхняя Пышма", coefOsago = 1.24}
-Territorie {id = 294, regionId = 67, name = "Березовский", coefOsago = 1.24}
-Territorie {id = 295, regionId = 67, name = "Полевской", coefOsago = 1.16}
-Territorie {id = 296, regionId = 67, name = "Верхняя Салда", coefOsago = 1.16}
-Territorie {id = 297, regionId = 67, name = "Екатеринбург", coefOsago = 1.64}
-Territorie {id = 298, regionId = 67, name = "Прочие города и населенные пункты", coefOsago = 1}
-Territorie {id = 299, regionId = 68, name = "Ярцево", coefOsago = 1}
-Territorie {id = 300, regionId = 68, name = "Сафоново", coefOsago = 1}
-Territorie {id = 301, regionId = 68, name = "Рославль", coefOsago = 1}
-Territorie {id = 302, regionId = 68, name = "Вязьма", coefOsago = 1}
-Territorie {id = 303, regionId = 68, name = "Смоленск", coefOsago = 1.16}
-Territorie {id = 304, regionId = 68, name = "Прочие города и населенные пункты", coefOsago = 0.76}
-Territorie {id = 305, regionId = 69, name = "Мичуринск", coefOsago = 1}
-Territorie {id = 306, regionId = 69, name = "Тамбов", coefOsago = 1.16}
-Territorie {id = 307, regionId = 69, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 308, regionId = 70, name = "Ржев", coefOsago = 1}
-Territorie {id = 309, regionId = 70, name = "Кимры", coefOsago = 1}
-Territorie {id = 310, regionId = 70, name = "Вышний Волочек", coefOsago = 1}
-Territorie {id = 311, regionId = 70, name = "Тверь", coefOsago = 1.4}
-Territorie {id = 312, regionId = 70, name = "Прочие города и населенные пункты", coefOsago = 0.84}
-Territorie {id = 313, regionId = 71, name = "Северск", coefOsago = 1.16}
-Territorie {id = 314, regionId = 71, name = "Томск", coefOsago = 1.48}
-Territorie {id = 315, regionId = 71, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 316, regionId = 72, name = "Новомосковск", coefOsago = 1}
-Territorie {id = 317, regionId = 72, name = "Ефремов", coefOsago = 1}
-Territorie {id = 318, regionId = 72, name = "Алексин", coefOsago = 1}
-Territorie {id = 319, regionId = 72, name = "Тула", coefOsago = 1.4}
-Territorie {id = 320, regionId = 72, name = "Щекино", coefOsago = 1.16}
-Territorie {id = 321, regionId = 72, name = "Узловая", coefOsago = 1.16}
-Territorie {id = 322, regionId = 72, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 323, regionId = 73, name = "Тобольск", coefOsago = 1.24}
-Territorie {id = 324, regionId = 73, name = "Тюмень", coefOsago = 1.8}
-Territorie {id = 325, regionId = 73, name = "Прочие города и населенные пункты", coefOsago = 1.08}
-Territorie {id = 326, regionId = 74, name = "Димитровград", coefOsago = 1.16}
-Territorie {id = 327, regionId = 74, name = "Ульяновск", coefOsago = 1.4}
-Territorie {id = 328, regionId = 74, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 329, regionId = 75, name = "Миасс", coefOsago = 1.32}
-Territorie {id = 330, regionId = 75, name = "Златоуст", coefOsago = 1.32}
-Territorie {id = 331, regionId = 75, name = "Копейск", coefOsago = 1.48}
-Territorie {id = 332, regionId = 75, name = "Магнитогорск", coefOsago = 1.64}
-Territorie {id = 333, regionId = 75, name = "Чебаркуль", coefOsago = 1.16}
-Territorie {id = 334, regionId = 75, name = "Сатка", coefOsago = 1.16}
-Territorie {id = 335, regionId = 75, name = "Челябинск", coefOsago = 1.88}
-Territorie {id = 336, regionId = 75, name = "Прочие города и населенные пункты", coefOsago = 1}
-Territorie {id = 337, regionId = 76, name = "Ярославль", coefOsago = 1.4}
-Territorie {id = 338, regionId = 76, name = "Прочие города и населенные пункты", coefOsago = 0.92}
-Territorie {id = 339, regionId = 77, name = "Вся местность", coefOsago = 1.8}
-Territorie {id = 340, regionId = 78, name = "Вся местность", coefOsago = 1.64}
-Territorie {id = 341, regionId = 79, name = "Вся местность", coefOsago = 0.82}
-Territorie {id = 342, regionId = 80, name = "Биробиджан", coefOsago = 0.82}
-Territorie {id = 343, regionId = 80, name = "Прочие города и населенные пункты", coefOsago = 0.82}
-Territorie {id = 344, regionId = 81, name = "Вся местность", coefOsago = 0.84}
-Territorie {id = 345, regionId = 82, name = "Когалым", coefOsago = 1}
-Territorie {id = 346, regionId = 82, name = "Нягань", coefOsago = 1.24}
-Territorie {id = 347, regionId = 82, name = "Нефтеюганск", coefOsago = 1.24}
-Territorie {id = 348, regionId = 82, name = "Сургут", coefOsago = 1.8}
-Territorie {id = 349, regionId = 82, name = "Нижневартовск", coefOsago = 1.64}
-Territorie {id = 350, regionId = 82, name = "Ханты-Мансийск", coefOsago = 1.4}
-Territorie {id = 351, regionId = 82, name = "Прочие города и населенные пункты", coefOsago = 1.08}
-Territorie {id = 352, regionId = 83, name = "Вся местность", coefOsago = 0.76}
-Territorie {id = 353, regionId = 84, name = "Новый Уренгой", coefOsago = 1}
-Territorie {id = 354, regionId = 84, name = "Ноябрьск", coefOsago = 1.56}
-Territorie {id = 355, regionId = 84, name = "Прочие города и населенные пункты", coefOsago = 1.08}
-Territorie {id = 356, regionId = 85, name = "Вся местность", coefOsago = 0.82}
-Territorie {id = 357, regionId = 86, name = "Вся местность", coefOsago = 0.68}
-Territorie {id = 358, regionId = 87, name = "Вся местность", coefOsago = 0.68}
-Territorie {id = 359, regionId = 88, name = "Вся местность", coefOsago = 0.68}
-Territorie {id = 360, regionId = 89, name = "Вся местность", coefOsago = 0.68}
+Territorie {uid = 0, regionId = 0, name = "Вся местность", coefOsago = 1.24}
+Territorie {uid = 1, regionId = 1, name = "Горно-Алтайск", coefOsago = 1.24}
+Territorie {uid = 2, regionId = 1, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 3, regionId = 2, name = "Октябрьский", coefOsago = 1.16}
+Territorie {uid = 4, regionId = 2, name = "Благовещенск", coefOsago = 1.16}
+Territorie {uid = 5, regionId = 2, name = "Салават", coefOsago = 1.08}
+Territorie {uid = 6, regionId = 2, name = "Кумертау", coefOsago = 1.08}
+Territorie {uid = 7, regionId = 2, name = "Ишимбай", coefOsago = 1.08}
+Territorie {uid = 8, regionId = 2, name = "Туймазы", coefOsago = 1.24}
+Territorie {uid = 9, regionId = 2, name = "Стерлитамак", coefOsago = 1.24}
+Territorie {uid = 10, regionId = 2, name = "Уфа", coefOsago = 1.64}
+Territorie {uid = 11, regionId = 2, name = "Прочие города и населенные пункты", coefOsago = 1}
+Territorie {uid = 12, regionId = 3, name = "Улан-Удэ", coefOsago = 1.24}
+Territorie {uid = 13, regionId = 3, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 14, regionId = 4, name = "Хасавюрт", coefOsago = 0.96}
+Territorie {uid = 15, regionId = 4, name = "Махачкала", coefOsago = 0.96}
+Territorie {uid = 16, regionId = 4, name = "Каспийск", coefOsago = 0.96}
+Territorie {uid = 17, regionId = 4, name = "Дербент", coefOsago = 0.96}
+Territorie {uid = 18, regionId = 4, name = "Буйнакск", coefOsago = 0.96}
+Territorie {uid = 19, regionId = 4, name = "Прочие города и населенные пункты", coefOsago = 0.9}
+Territorie {uid = 20, regionId = 5, name = "Малгобек", coefOsago = 0.94}
+Territorie {uid = 21, regionId = 5, name = "Назрань", coefOsago = 0.82}
+Territorie {uid = 22, regionId = 5, name = "Прочие города и населенные пункты", coefOsago = 0.82}
+Territorie {uid = 23, regionId = 6, name = "Прохладный", coefOsago = 1}
+Territorie {uid = 24, regionId = 6, name = "Нальчик", coefOsago = 1}
+Territorie {uid = 25, regionId = 6, name = "Прочие города и населенные пункты", coefOsago = 0.88}
+Territorie {uid = 26, regionId = 7, name = "Элиста", coefOsago = 1.24}
+Territorie {uid = 27, regionId = 7, name = "Прочие города и населенные пункты", coefOsago = 0.82}
+Territorie {uid = 28, regionId = 8, name = "Вся местность", coefOsago = 1}
+Territorie {uid = 29, regionId = 9, name = "Петрозаводск", coefOsago = 1.24}
+Territorie {uid = 30, regionId = 9, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 31, regionId = 10, name = "Сыктывкар", coefOsago = 1.48}
+Territorie {uid = 32, regionId = 10, name = "Ухта", coefOsago = 1.24}
+Territorie {uid = 33, regionId = 10, name = "Прочие города и населенные пункты", coefOsago = 1}
+Territorie {uid = 34, regionId = 11, name = "Симферополь", coefOsago = 0.76}
+Territorie {uid = 35, regionId = 11, name = "Прочие города и населенные пункты", coefOsago = 0.68}
+Territorie {uid = 36, regionId = 12, name = "Волжск", coefOsago = 1}
+Territorie {uid = 37, regionId = 12, name = "Йошкар-Ола", coefOsago = 1.32}
+Territorie {uid = 38, regionId = 12, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 39, regionId = 13, name = "Рузаевка", coefOsago = 1.16}
+Territorie {uid = 40, regionId = 13, name = "Саранск", coefOsago = 1.4}
+Territorie {uid = 41, regionId = 13, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 42, regionId = 14, name = "Нерюнгри", coefOsago = 0.84}
+Territorie {uid = 43, regionId = 14, name = "Якутск", coefOsago = 1.16}
+Territorie {uid = 44, regionId = 14, name = "Прочие города и населенные пункты", coefOsago = 0.68}
+Territorie {uid = 45, regionId = 15, name = "Владикавказ", coefOsago = 1}
+Territorie {uid = 46, regionId = 15, name = "Прочие города и населенные пункты", coefOsago = 0.94}
+Territorie {uid = 47, regionId = 16, name = "Нижнекамск", coefOsago = 1.24}
+Territorie {uid = 48, regionId = 16, name = "Зеленодольск", coefOsago = 1.24}
+Territorie {uid = 49, regionId = 16, name = "Альметьевск", coefOsago = 1.24}
+Territorie {uid = 50, regionId = 16, name = "Чистополь", coefOsago = 1}
+Territorie {uid = 51, regionId = 16, name = "Лениногорск", coefOsago = 1}
+Territorie {uid = 52, regionId = 16, name = "Бугульма", coefOsago = 1}
+Territorie {uid = 53, regionId = 16, name = "Елабуга", coefOsago = 1.16}
+Territorie {uid = 54, regionId = 16, name = "Казань", coefOsago = 1.8}
+Territorie {uid = 55, regionId = 16, name = "Набережные Челны", coefOsago = 1.56}
+Territorie {uid = 56, regionId = 16, name = "Прочие города и населенные пункты", coefOsago = 1.08}
+Territorie {uid = 57, regionId = 17, name = "Кызыл", coefOsago = 0.82}
+Territorie {uid = 58, regionId = 17, name = "Прочие города и населенные пункты", coefOsago = 0.82}
+Territorie {uid = 59, regionId = 18, name = "Воткинск", coefOsago = 1.08}
+Territorie {uid = 60, regionId = 18, name = "Сарапул", coefOsago = 1}
+Territorie {uid = 61, regionId = 18, name = "Глазов", coefOsago = 1}
+Territorie {uid = 62, regionId = 18, name = "Ижевск", coefOsago = 1.48}
+Territorie {uid = 63, regionId = 18, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 64, regionId = 19, name = "Черногорск", coefOsago = 1}
+Territorie {uid = 65, regionId = 19, name = "Саяногорск", coefOsago = 1}
+Territorie {uid = 66, regionId = 19, name = "Абакан", coefOsago = 1}
+Territorie {uid = 67, regionId = 19, name = "Прочие города и населенные пункты", coefOsago = 0.82}
+Territorie {uid = 68, regionId = 20, name = "Вся местность", coefOsago = 0.82}
+Territorie {uid = 69, regionId = 21, name = "Канаш", coefOsago = 1.08}
+Territorie {uid = 70, regionId = 21, name = "Новочебоксарск", coefOsago = 1.16}
+Territorie {uid = 71, regionId = 21, name = "Чебоксары", coefOsago = 1.56}
+Territorie {uid = 72, regionId = 21, name = "Прочие города и населенные пункты", coefOsago = 0.88}
+Territorie {uid = 73, regionId = 22, name = "Барнаул", coefOsago = 1.56}
+Territorie {uid = 74, regionId = 22, name = "Бийск", coefOsago = 1.16}
+Territorie {uid = 75, regionId = 22, name = "Рубцовск", coefOsago = 1.08}
+Territorie {uid = 76, regionId = 22, name = "Новоалтайск", coefOsago = 1.08}
+Territorie {uid = 77, regionId = 22, name = "Заринск", coefOsago = 1.08}
+Territorie {uid = 78, regionId = 22, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 79, regionId = 23, name = "Краснокаменск", coefOsago = 0.82}
+Territorie {uid = 80, regionId = 23, name = "Чита", coefOsago = 0.82}
+Territorie {uid = 81, regionId = 23, name = "Прочие города и населенные пункты", coefOsago = 0.68}
+Territorie {uid = 82, regionId = 24, name = "Петропавловск-Камчатский", coefOsago = 1.24}
+Territorie {uid = 83, regionId = 24, name = "Прочие города и населенные пункты", coefOsago = 1}
+Territorie {uid = 84, regionId = 25, name = "Геленджик", coefOsago = 1.24}
+Territorie {uid = 85, regionId = 25, name = "Анапа", coefOsago = 1.24}
+Territorie {uid = 86, regionId = 25, name = "Туапсе", coefOsago = 1.16}
+Territorie {uid = 87, regionId = 25, name = "Сочи", coefOsago = 1.16}
+Territorie {uid = 88, regionId = 25, name = "Армавир", coefOsago = 1.16}
+Territorie {uid = 89, regionId = 25, name = "Тихорецк", coefOsago = 1.08}
+Territorie {uid = 90, regionId = 25, name = "Тимашевск", coefOsago = 1.08}
+Territorie {uid = 91, regionId = 25, name = "Славянск-на-Кубани", coefOsago = 1.08}
+Territorie {uid = 92, regionId = 25, name = "Лабинск", coefOsago = 1.08}
+Territorie {uid = 93, regionId = 25, name = "Крымск", coefOsago = 1.08}
+Territorie {uid = 94, regionId = 25, name = "Кропоткин", coefOsago = 1.08}
+Territorie {uid = 95, regionId = 25, name = "Курганинск", coefOsago = 1.08}
+Territorie {uid = 96, regionId = 25, name = "Ейск", coefOsago = 1.08}
+Territorie {uid = 97, regionId = 25, name = "Белореченск", coefOsago = 1.08}
+Territorie {uid = 98, regionId = 25, name = "Новороссийск", coefOsago = 1.64}
+Territorie {uid = 99, regionId = 25, name = "Краснодар", coefOsago = 1.64}
+Territorie {uid = 100, regionId = 25, name = "Прочие города и населенные пункты", coefOsago = 1}
+Territorie {uid = 101, regionId = 26, name = "Зеленогорск", coefOsago = 1.08}
+Territorie {uid = 102, regionId = 26, name = "Ачинск", coefOsago = 1.08}
+Territorie {uid = 103, regionId = 26, name = "Норильск", coefOsago = 1.24}
+Territorie {uid = 104, regionId = 26, name = "Железногорск", coefOsago = 1.24}
+Territorie {uid = 105, regionId = 26, name = "Назарово", coefOsago = 1}
+Territorie {uid = 106, regionId = 26, name = "Минусинск", coefOsago = 1}
+Territorie {uid = 107, regionId = 26, name = "Лесосибирск", coefOsago = 1}
+Territorie {uid = 108, regionId = 26, name = "Канск", coefOsago = 1}
+Territorie {uid = 109, regionId = 26, name = "Красноярск", coefOsago = 1.64}
+Territorie {uid = 110, regionId = 26, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 111, regionId = 27, name = "Краснокамск", coefOsago = 1.24}
+Territorie {uid = 112, regionId = 27, name = "Березники", coefOsago = 1.24}
+Territorie {uid = 113, regionId = 27, name = "Чайковский", coefOsago = 1}
+Territorie {uid = 114, regionId = 27, name = "Лысьва", coefOsago = 1}
+Territorie {uid = 115, regionId = 27, name = "Пермь", coefOsago = 1.8}
+Territorie {uid = 116, regionId = 27, name = "Соликамск", coefOsago = 1.16}
+Territorie {uid = 117, regionId = 27, name = "Прочие города и населенные пункты", coefOsago = 1.08}
+Territorie {uid = 118, regionId = 28, name = "Уссурийск", coefOsago = 1}
+Territorie {uid = 119, regionId = 28, name = "Спасск-Дальний", coefOsago = 1}
+Territorie {uid = 120, regionId = 28, name = "Находка", coefOsago = 1}
+Territorie {uid = 121, regionId = 28, name = "Артем", coefOsago = 1}
+Territorie {uid = 122, regionId = 28, name = "Арсеньев", coefOsago = 1}
+Territorie {uid = 123, regionId = 28, name = "Владивосток", coefOsago = 1.36}
+Territorie {uid = 124, regionId = 28, name = "Прочие города и населенные пункты", coefOsago = 0.96}
+Territorie {uid = 125, regionId = 29, name = "Пятигорск", coefOsago = 1}
+Territorie {uid = 126, regionId = 29, name = "Невинномысск", coefOsago = 1}
+Territorie {uid = 127, regionId = 29, name = "Минеральные", coefOsago = 1}
+Territorie {uid = 128, regionId = 29, name = "Ессентуки", coefOsago = 1}
+Territorie {uid = 129, regionId = 29, name = "Георгиевск", coefOsago = 1}
+Territorie {uid = 130, regionId = 29, name = "Воды", coefOsago = 1}
+Territorie {uid = 131, regionId = 29, name = "Буденновск", coefOsago = 1}
+Territorie {uid = 132, regionId = 29, name = "Ставрополь", coefOsago = 1.16}
+Territorie {uid = 133, regionId = 29, name = "Михайловск", coefOsago = 1.16}
+Territorie {uid = 134, regionId = 29, name = "Кисловодск", coefOsago = 1.16}
+Territorie {uid = 135, regionId = 29, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 136, regionId = 30, name = "Амурск", coefOsago = 1}
+Territorie {uid = 137, regionId = 30, name = "Комсомольск-на-Амуре", coefOsago = 1.27}
+Territorie {uid = 138, regionId = 30, name = "Хабаровск", coefOsago = 1.56}
+Territorie {uid = 139, regionId = 30, name = "Прочие города и населенные пункты", coefOsago = 0.88}
+Territorie {uid = 140, regionId = 31, name = "Свободный", coefOsago = 1.08}
+Territorie {uid = 141, regionId = 31, name = "Белогорск", coefOsago = 1.08}
+Territorie {uid = 142, regionId = 31, name = "Благовещенск", coefOsago = 1.48}
+Territorie {uid = 143, regionId = 31, name = "Прочие города и населенные пункты", coefOsago = 1}
+Territorie {uid = 144, regionId = 32, name = "Архангельск", coefOsago = 1.64}
+Territorie {uid = 145, regionId = 32, name = "Котлас", coefOsago = 1.48}
+Territorie {uid = 146, regionId = 32, name = "Северодвинск", coefOsago = 1.56}
+Territorie {uid = 147, regionId = 32, name = "Прочие города и населенные пункты", coefOsago = 0.88}
+Territorie {uid = 148, regionId = 33, name = "Астрахань", coefOsago = 1.32}
+Territorie {uid = 149, regionId = 33, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 150, regionId = 34, name = "Белгород", coefOsago = 1.24}
+Territorie {uid = 151, regionId = 34, name = "Старый Оскол", coefOsago = 1}
+Territorie {uid = 152, regionId = 34, name = "Губкин", coefOsago = 1}
+Territorie {uid = 153, regionId = 34, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 154, regionId = 35, name = "Брянск", coefOsago = 1.4}
+Territorie {uid = 155, regionId = 35, name = "Клинцы", coefOsago = 1}
+Territorie {uid = 156, regionId = 35, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 157, regionId = 36, name = "Владимир", coefOsago = 1.48}
+Territorie {uid = 158, regionId = 36, name = "Гусь-Хрустальный", coefOsago = 1.08}
+Territorie {uid = 159, regionId = 36, name = "Муром", coefOsago = 1.16}
+Territorie {uid = 160, regionId = 36, name = "Прочие города и населенные пункты", coefOsago = 1}
+Territorie {uid = 161, regionId = 37, name = "Волгоград", coefOsago = 1.24}
+Territorie {uid = 162, regionId = 37, name = "Волжский", coefOsago = 1.08}
+Territorie {uid = 163, regionId = 37, name = "Михайловка", coefOsago = 1}
+Territorie {uid = 164, regionId = 37, name = "Камыши", coefOsago = 1}
+Territorie {uid = 165, regionId = 37, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 166, regionId = 38, name = "Вологда", coefOsago = 1.56}
+Territorie {uid = 167, regionId = 38, name = "Череповец", coefOsago = 1.64}
+Territorie {uid = 168, regionId = 38, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 169, regionId = 39, name = "Россошь", coefOsago = 1.08}
+Territorie {uid = 170, regionId = 39, name = "Лиски", coefOsago = 1.08}
+Territorie {uid = 171, regionId = 39, name = "Борисоглебск", coefOsago = 1.08}
+Territorie {uid = 172, regionId = 39, name = "Воронеж", coefOsago = 1.4}
+Territorie {uid = 173, regionId = 39, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 174, regionId = 40, name = "Иваново", coefOsago = 1.64}
+Territorie {uid = 175, regionId = 40, name = "Кинешма", coefOsago = 1.08}
+Territorie {uid = 176, regionId = 40, name = "Шуя", coefOsago = 1}
+Territorie {uid = 177, regionId = 40, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 178, regionId = 41, name = "Ангарск", coefOsago = 1.16}
+Territorie {uid = 179, regionId = 41, name = "Черемхово", coefOsago = 1}
+Territorie {uid = 180, regionId = 41, name = "Усть-Кут", coefOsago = 1}
+Territorie {uid = 181, regionId = 41, name = "Усть-Илимск", coefOsago = 1}
+Territorie {uid = 182, regionId = 41, name = "Тулун", coefOsago = 1}
+Territorie {uid = 183, regionId = 41, name = "Братск", coefOsago = 1}
+Territorie {uid = 184, regionId = 41, name = "Иркутск", coefOsago = 1.56}
+Territorie {uid = 185, regionId = 41, name = "Усолье-Сибирское", coefOsago = 1.08}
+Territorie {uid = 186, regionId = 41, name = "Шелехов", coefOsago = 1.24}
+Territorie {uid = 187, regionId = 41, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 188, regionId = 42, name = "Калининград", coefOsago = 1.08}
+Territorie {uid = 189, regionId = 42, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 190, regionId = 43, name = "Калуга", coefOsago = 1.16}
+Territorie {uid = 191, regionId = 43, name = "Обнинск", coefOsago = 1.24}
+Territorie {uid = 192, regionId = 43, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 193, regionId = 44, name = "Юрга", coefOsago = 1.16}
+Territorie {uid = 194, regionId = 44, name = "Киселевск", coefOsago = 1.16}
+Territorie {uid = 195, regionId = 44, name = "Анжеро-Судженск", coefOsago = 1.16}
+Territorie {uid = 196, regionId = 44, name = "Прокопьевск", coefOsago = 1.24}
+Territorie {uid = 197, regionId = 44, name = "Осинники", coefOsago = 1.24}
+Territorie {uid = 198, regionId = 44, name = "Междуреченск", coefOsago = 1.24}
+Territorie {uid = 199, regionId = 44, name = "Березовский", coefOsago = 1.24}
+Territorie {uid = 200, regionId = 44, name = "Белово", coefOsago = 1.24}
+Territorie {uid = 201, regionId = 44, name = "Кемерово", coefOsago = 1.72}
+Territorie {uid = 202, regionId = 44, name = "Новокузнецк", coefOsago = 1.64}
+Territorie {uid = 203, regionId = 44, name = "Прочие города и населенные пункты", coefOsago = 1.08}
+Territorie {uid = 204, regionId = 45, name = "Киров", coefOsago = 1.32}
+Territorie {uid = 205, regionId = 45, name = "Кирово-Чепецк", coefOsago = 1.16}
+Territorie {uid = 206, regionId = 45, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 207, regionId = 46, name = "Кострома", coefOsago = 1.24}
+Territorie {uid = 208, regionId = 46, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 209, regionId = 47, name = "Курган", coefOsago = 1.32}
+Territorie {uid = 210, regionId = 47, name = "Шадринск", coefOsago = 1.08}
+Territorie {uid = 211, regionId = 47, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 212, regionId = 48, name = "Железногорск", coefOsago = 1}
+Territorie {uid = 213, regionId = 48, name = "Курск", coefOsago = 1.16}
+Territorie {uid = 214, regionId = 48, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 215, regionId = 49, name = "Вся местность", coefOsago = 1.24}
+Territorie {uid = 216, regionId = 50, name = "Елец", coefOsago = 1}
+Territorie {uid = 217, regionId = 50, name = "Липецк", coefOsago = 1.4}
+Territorie {uid = 218, regionId = 50, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 219, regionId = 51, name = "Магадан", coefOsago = 0.82}
+Territorie {uid = 220, regionId = 51, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 221, regionId = 52, name = "Вся местность", coefOsago = 1.56}
+Territorie {uid = 222, regionId = 53, name = "Мончегорск", coefOsago = 1.24}
+Territorie {uid = 223, regionId = 53, name = "Апатиты", coefOsago = 1.24}
+Territorie {uid = 224, regionId = 53, name = "Мурманск", coefOsago = 1.88}
+Territorie {uid = 225, regionId = 53, name = "Североморск", coefOsago = 1.48}
+Territorie {uid = 226, regionId = 53, name = "Прочие города и населенные пункты", coefOsago = 1.16}
+Territorie {uid = 227, regionId = 54, name = "Выкса", coefOsago = 1.08}
+Territorie {uid = 228, regionId = 54, name = "Саров", coefOsago = 1.08}
+Territorie {uid = 229, regionId = 54, name = "Арзамас", coefOsago = 1.08}
+Territorie {uid = 230, regionId = 54, name = "Дзержинск", coefOsago = 1.24}
+Territorie {uid = 231, regionId = 54, name = "Бор", coefOsago = 1.24}
+Territorie {uid = 232, regionId = 54, name = "Балахна", coefOsago = 1.24}
+Territorie {uid = 233, regionId = 54, name = "Кстово", coefOsago = 1.16}
+Territorie {uid = 234, regionId = 54, name = "Нижний Новгород", coefOsago = 1.64}
+Territorie {uid = 235, regionId = 54, name = "Прочие города и населенные пункты", coefOsago = 1}
+Territorie {uid = 236, regionId = 55, name = "Боровичи", coefOsago = 1}
+Territorie {uid = 237, regionId = 55, name = "Великий Новгород", coefOsago = 1.24}
+Territorie {uid = 238, regionId = 55, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 239, regionId = 56, name = "Бердск", coefOsago = 1.24}
+Territorie {uid = 240, regionId = 56, name = "Искитим", coefOsago = 1.16}
+Territorie {uid = 241, regionId = 56, name = "Куйбышев", coefOsago = 1}
+Territorie {uid = 242, regionId = 56, name = "Новосибирск", coefOsago = 1.63}
+Territorie {uid = 243, regionId = 56, name = "Прочие города и населенные пункты", coefOsago = 1}
+Territorie {uid = 244, regionId = 57, name = "Омск", coefOsago = 1.48}
+Territorie {uid = 245, regionId = 57, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 246, regionId = 58, name = "Новотроицк", coefOsago = 1}
+Territorie {uid = 247, regionId = 58, name = "Бузулук", coefOsago = 1}
+Territorie {uid = 248, regionId = 58, name = "Бугуруслан", coefOsago = 1}
+Territorie {uid = 249, regionId = 58, name = "Оренбург", coefOsago = 1.56}
+Territorie {uid = 250, regionId = 58, name = "Орск", coefOsago = 1.08}
+Territorie {uid = 251, regionId = 58, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 252, regionId = 59, name = "Орел", coefOsago = 1.16}
+Territorie {uid = 253, regionId = 59, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 254, regionId = 60, name = "Заречный", coefOsago = 1.16}
+Territorie {uid = 255, regionId = 60, name = "Кузнецк", coefOsago = 1}
+Territorie {uid = 256, regionId = 60, name = "Пенза", coefOsago = 1.32}
+Territorie {uid = 257, regionId = 60, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 258, regionId = 61, name = "Великие Луки", coefOsago = 1}
+Territorie {uid = 259, regionId = 61, name = "Псков", coefOsago = 1.16}
+Territorie {uid = 260, regionId = 61, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 261, regionId = 62, name = "Азов", coefOsago = 1.16}
+Territorie {uid = 262, regionId = 62, name = "Батайск", coefOsago = 1.24}
+Territorie {uid = 263, regionId = 62, name = "Таганрог", coefOsago = 1}
+Territorie {uid = 264, regionId = 62, name = "Сальск", coefOsago = 1}
+Territorie {uid = 265, regionId = 62, name = "Новошахтинск", coefOsago = 1}
+Territorie {uid = 266, regionId = 62, name = "Новочеркасск", coefOsago = 1}
+Territorie {uid = 267, regionId = 62, name = "Гуково", coefOsago = 1}
+Territorie {uid = 268, regionId = 62, name = "Каменск-Шахтинский", coefOsago = 1}
+Territorie {uid = 269, regionId = 62, name = "Волгодонск", coefOsago = 1}
+Territorie {uid = 270, regionId = 62, name = "Ростов-на-Дону", coefOsago = 1.64}
+Territorie {uid = 271, regionId = 62, name = "Шахты", coefOsago = 1.08}
+Territorie {uid = 272, regionId = 62, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 273, regionId = 63, name = "Рязань", coefOsago = 1.32}
+Territorie {uid = 274, regionId = 63, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 275, regionId = 64, name = "Сызрань", coefOsago = 1.08}
+Territorie {uid = 276, regionId = 64, name = "Новокуйбышевск", coefOsago = 1.08}
+Territorie {uid = 277, regionId = 64, name = "Самара", coefOsago = 1.48}
+Territorie {uid = 278, regionId = 64, name = "Тольятти", coefOsago = 1.4}
+Territorie {uid = 279, regionId = 64, name = "Чапаевск", coefOsago = 1.16}
+Territorie {uid = 280, regionId = 64, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 281, regionId = 65, name = "Вольск", coefOsago = 1}
+Territorie {uid = 282, regionId = 65, name = "Балашов", coefOsago = 1}
+Territorie {uid = 283, regionId = 65, name = "Балаково", coefOsago = 1}
+Territorie {uid = 284, regionId = 65, name = "Саратов", coefOsago = 1.48}
+Territorie {uid = 285, regionId = 65, name = "Энгельс", coefOsago = 1.16}
+Territorie {uid = 286, regionId = 65, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 287, regionId = 66, name = "Южно-Сахалинск", coefOsago = 1.4}
+Territorie {uid = 288, regionId = 66, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 289, regionId = 67, name = "Ревда", coefOsago = 1.08}
+Territorie {uid = 290, regionId = 67, name = "Асбест", coefOsago = 1.08}
+Territorie {uid = 291, regionId = 67, name = "Первоуральск", coefOsago = 1.24}
+Territorie {uid = 292, regionId = 67, name = "Новоуральск", coefOsago = 1.24}
+Territorie {uid = 293, regionId = 67, name = "Верхняя Пышма", coefOsago = 1.24}
+Territorie {uid = 294, regionId = 67, name = "Березовский", coefOsago = 1.24}
+Territorie {uid = 295, regionId = 67, name = "Полевской", coefOsago = 1.16}
+Territorie {uid = 296, regionId = 67, name = "Верхняя Салда", coefOsago = 1.16}
+Territorie {uid = 297, regionId = 67, name = "Екатеринбург", coefOsago = 1.64}
+Territorie {uid = 298, regionId = 67, name = "Прочие города и населенные пункты", coefOsago = 1}
+Territorie {uid = 299, regionId = 68, name = "Ярцево", coefOsago = 1}
+Territorie {uid = 300, regionId = 68, name = "Сафоново", coefOsago = 1}
+Territorie {uid = 301, regionId = 68, name = "Рославль", coefOsago = 1}
+Territorie {uid = 302, regionId = 68, name = "Вязьма", coefOsago = 1}
+Territorie {uid = 303, regionId = 68, name = "Смоленск", coefOsago = 1.16}
+Territorie {uid = 304, regionId = 68, name = "Прочие города и населенные пункты", coefOsago = 0.76}
+Territorie {uid = 305, regionId = 69, name = "Мичуринск", coefOsago = 1}
+Territorie {uid = 306, regionId = 69, name = "Тамбов", coefOsago = 1.16}
+Territorie {uid = 307, regionId = 69, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 308, regionId = 70, name = "Ржев", coefOsago = 1}
+Territorie {uid = 309, regionId = 70, name = "Кимры", coefOsago = 1}
+Territorie {uid = 310, regionId = 70, name = "Вышний Волочек", coefOsago = 1}
+Territorie {uid = 311, regionId = 70, name = "Тверь", coefOsago = 1.4}
+Territorie {uid = 312, regionId = 70, name = "Прочие города и населенные пункты", coefOsago = 0.84}
+Territorie {uid = 313, regionId = 71, name = "Северск", coefOsago = 1.16}
+Territorie {uid = 314, regionId = 71, name = "Томск", coefOsago = 1.48}
+Territorie {uid = 315, regionId = 71, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 316, regionId = 72, name = "Новомосковск", coefOsago = 1}
+Territorie {uid = 317, regionId = 72, name = "Ефремов", coefOsago = 1}
+Territorie {uid = 318, regionId = 72, name = "Алексин", coefOsago = 1}
+Territorie {uid = 319, regionId = 72, name = "Тула", coefOsago = 1.4}
+Territorie {uid = 320, regionId = 72, name = "Щекино", coefOsago = 1.16}
+Territorie {uid = 321, regionId = 72, name = "Узловая", coefOsago = 1.16}
+Territorie {uid = 322, regionId = 72, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 323, regionId = 73, name = "Тобольск", coefOsago = 1.24}
+Territorie {uid = 324, regionId = 73, name = "Тюмень", coefOsago = 1.8}
+Territorie {uid = 325, regionId = 73, name = "Прочие города и населенные пункты", coefOsago = 1.08}
+Territorie {uid = 326, regionId = 74, name = "Димитровград", coefOsago = 1.16}
+Territorie {uid = 327, regionId = 74, name = "Ульяновск", coefOsago = 1.4}
+Territorie {uid = 328, regionId = 74, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 329, regionId = 75, name = "Миасс", coefOsago = 1.32}
+Territorie {uid = 330, regionId = 75, name = "Златоуст", coefOsago = 1.32}
+Territorie {uid = 331, regionId = 75, name = "Копейск", coefOsago = 1.48}
+Territorie {uid = 332, regionId = 75, name = "Магнитогорск", coefOsago = 1.64}
+Territorie {uid = 333, regionId = 75, name = "Чебаркуль", coefOsago = 1.16}
+Territorie {uid = 334, regionId = 75, name = "Сатка", coefOsago = 1.16}
+Territorie {uid = 335, regionId = 75, name = "Челябинск", coefOsago = 1.88}
+Territorie {uid = 336, regionId = 75, name = "Прочие города и населенные пункты", coefOsago = 1}
+Territorie {uid = 337, regionId = 76, name = "Ярославль", coefOsago = 1.4}
+Territorie {uid = 338, regionId = 76, name = "Прочие города и населенные пункты", coefOsago = 0.92}
+Territorie {uid = 339, regionId = 77, name = "Вся местность", coefOsago = 1.8}
+Territorie {uid = 340, regionId = 78, name = "Вся местность", coefOsago = 1.64}
+Territorie {uid = 341, regionId = 79, name = "Вся местность", coefOsago = 0.82}
+Territorie {uid = 342, regionId = 80, name = "Биробиджан", coefOsago = 0.82}
+Territorie {uid = 343, regionId = 80, name = "Прочие города и населенные пункты", coefOsago = 0.82}
+Territorie {uid = 344, regionId = 81, name = "Вся местность", coefOsago = 0.84}
+Territorie {uid = 345, regionId = 82, name = "Когалым", coefOsago = 1}
+Territorie {uid = 346, regionId = 82, name = "Нягань", coefOsago = 1.24}
+Territorie {uid = 347, regionId = 82, name = "Нефтеюганск", coefOsago = 1.24}
+Territorie {uid = 348, regionId = 82, name = "Сургут", coefOsago = 1.8}
+Territorie {uid = 349, regionId = 82, name = "Нижневартовск", coefOsago = 1.64}
+Territorie {uid = 350, regionId = 82, name = "Ханты-Мансийск", coefOsago = 1.4}
+Territorie {uid = 351, regionId = 82, name = "Прочие города и населенные пункты", coefOsago = 1.08}
+Territorie {uid = 352, regionId = 83, name = "Вся местность", coefOsago = 0.76}
+Territorie {uid = 353, regionId = 84, name = "Новый Уренгой", coefOsago = 1}
+Territorie {uid = 354, regionId = 84, name = "Ноябрьск", coefOsago = 1.56}
+Territorie {uid = 355, regionId = 84, name = "Прочие города и населенные пункты", coefOsago = 1.08}
+Territorie {uid = 356, regionId = 85, name = "Вся местность", coefOsago = 0.82}
+Territorie {uid = 357, regionId = 86, name = "Вся местность", coefOsago = 0.68}
+Territorie {uid = 358, regionId = 87, name = "Вся местность", coefOsago = 0.68}
+Territorie {uid = 359, regionId = 88, name = "Вся местность", coefOsago = 0.68}
+Territorie {uid = 360, regionId = 89, name = "Вся местность", coefOsago = 0.68}

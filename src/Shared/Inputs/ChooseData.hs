@@ -56,7 +56,7 @@ chooseApiPaginatedData page search getData getName = do
     callCommand "cls"
     putStrLn "Команды:\nназад - предыдущая страница,\nвперёд - следующая страница,\nпоиск %name%- поиск по названию,\nсбросить - сбросить фильтры"
     putStrLn $ "\nТекущая страница: " ++ show (page + 1)
-    arrayData <- getData (page * 10) (page * 10 + 9) search
+    arrayData <- getData (page * 20) (page * 20 + 19) search
     (index, command) <- choosePaginatedData arrayData (\array -> generateLogData array getName) 
     case command of 
         "назад" -> do 
@@ -74,7 +74,7 @@ chooseApiParamPaginatedData page search paramId getData getName = do
     callCommand "cls"
     putStrLn "Команды:\nназад - предыдущая страница,\nвперёд - следующая страница,\nпоиск %name%- поиск по названию,\nсбросить - сбросить фильтры"
     putStrLn $ "\nТекущая страница: " ++ show (page + 1)
-    arrayData <- getData (page * 10) (page * 10 + 9) search paramId
+    arrayData <- getData (page * 20) (page * 20 + 19) search paramId
     (index, command) <- choosePaginatedData arrayData (\array -> generateLogData array getName) 
     case command of 
         "назад" -> do 

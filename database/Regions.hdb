@@ -1,90 +1,90 @@
-Region {id = 0, name = "Республика Адыгея (Адыгея)"}
-Region {id = 1, name = "Республика Алтай"}
-Region {id = 2, name = "Республика Башкортостан"}
-Region {id = 3, name = "Республика Бурятия"}
-Region {id = 4, name = "Республика Дагестан"}
-Region {id = 5, name = "Республика Ингушетия"}
-Region {id = 6, name = "Кабардино-Балкарская Республика"}
-Region {id = 7, name = "Республика Калмыкия"}
-Region {id = 8, name = "Карачаево-Черкесская Республика"}
-Region {id = 9, name = "Республика Карелия"}
-Region {id = 10, name = "Республика Коми"}
-Region {id = 11, name = "Республика Крым"}
-Region {id = 12, name = "Республика Марий Эл"}
-Region {id = 13, name = "Республика Мордовия"}
-Region {id = 14, name = "Республика Саха (Якутия)"}
-Region {id = 15, name = "Республика Северная Осетия - Алания"}
-Region {id = 16, name = "Республика Татарстан (Татарстан)"}
-Region {id = 17, name = "Республика Тыва"}
-Region {id = 18, name = "Удмуртская Республика"}
-Region {id = 19, name = "Республика Хакасия"}
-Region {id = 20, name = "Чеченская Республика"}
-Region {id = 21, name = "Чувашская Республика - Чувашия"}
-Region {id = 22, name = "Алтайский край"}
-Region {id = 23, name = "Забайкальский край"}
-Region {id = 24, name = "Камчатский край"}
-Region {id = 25, name = "Краснодарский край"}
-Region {id = 26, name = "Красноярский край"}
-Region {id = 27, name = "Пермский край"}
-Region {id = 28, name = "Приморский край"}
-Region {id = 29, name = "Ставропольский край"}
-Region {id = 30, name = "Хабаровский край"}
-Region {id = 31, name = "Амурская область"}
-Region {id = 32, name = "Архангельская область"}
-Region {id = 33, name = "Астраханская область"}
-Region {id = 34, name = "Белгородская область"}
-Region {id = 35, name = "Брянская область"}
-Region {id = 36, name = "Владимирская область"}
-Region {id = 37, name = "Волгоградская область"}
-Region {id = 38, name = "Вологодская область"}
-Region {id = 39, name = "Воронежская область"}
-Region {id = 40, name = "Ивановская область"}
-Region {id = 41, name = "Иркутская область"}
-Region {id = 42, name = "Калининградская область"}
-Region {id = 43, name = "Калужская область"}
-Region {id = 44, name = "Кемеровская область - Кузбасс"}
-Region {id = 45, name = "Кировская область"}
-Region {id = 46, name = "Костромская область"}
-Region {id = 47, name = "Курганская область"}
-Region {id = 48, name = "Курская область"}
-Region {id = 49, name = "Ленинградская область"}
-Region {id = 50, name = "Липецкая область"}
-Region {id = 51, name = "Магаданская область"}
-Region {id = 52, name = "Московская область"}
-Region {id = 53, name = "Мурманская область"}
-Region {id = 54, name = "Нижегородская область"}
-Region {id = 55, name = "Новгородская область"}
-Region {id = 56, name = "Новосибирская область"}
-Region {id = 57, name = "Омская область"}
-Region {id = 58, name = "Оренбургская область"}
-Region {id = 59, name = "Орловская область"}
-Region {id = 60, name = "Пензенская область"}
-Region {id = 61, name = "Псковская область"}
-Region {id = 62, name = "Ростовская область"}
-Region {id = 63, name = "Рязанская область"}
-Region {id = 64, name = "Самарская область"}
-Region {id = 65, name = "Саратовская область"}
-Region {id = 66, name = "Сахалинская область"}
-Region {id = 67, name = "Свердловская область"}
-Region {id = 68, name = "Смоленская область"}
-Region {id = 69, name = "Тамбовская область"}
-Region {id = 70, name = "Тверская область"}
-Region {id = 71, name = "Томская область"}
-Region {id = 72, name = "Тульская область"}
-Region {id = 73, name = "Тюменская область"}
-Region {id = 74, name = "Ульяновская область"}
-Region {id = 75, name = "Челябинская область"}
-Region {id = 76, name = "Ярославская область"}
-Region {id = 77, name = "Москва"}
-Region {id = 78, name = "Санкт-Петербург"}
-Region {id = 79, name = "Севастополь"}
-Region {id = 80, name = "Еврейская автономная область"}
-Region {id = 81, name = "Ненецкий автономный округ"}
-Region {id = 82, name = "Ханты-Мансийский автономный округ - Югра"}
-Region {id = 83, name = "Чукотский автономный округ"}
-Region {id = 84, name = "Ямало-Ненецкий автономный округ"}
-Region {id = 85, name = "Байконур"}
-Region {id = 86, name = "Донецкая Народная Республика"}
-Region {id = 87, name = "Луганская Народная Республика"}
-Region {id = 88, name = "Херсонская область"}
-Region {id = 89, name = "Запорожская область"}
+Region {uid = 0, name = "Республика Адыгея (Адыгея)"}
+Region {uid = 1, name = "Республика Алтай"}
+Region {uid = 2, name = "Республика Башкортостан"}
+Region {uid = 3, name = "Республика Бурятия"}
+Region {uid = 4, name = "Республика Дагестан"}
+Region {uid = 5, name = "Республика Ингушетия"}
+Region {uid = 6, name = "Кабардино-Балкарская Республика"}
+Region {uid = 7, name = "Республика Калмыкия"}
+Region {uid = 8, name = "Карачаево-Черкесская Республика"}
+Region {uid = 9, name = "Республика Карелия"}
+Region {uid = 10, name = "Республика Коми"}
+Region {uid = 11, name = "Республика Крым"}
+Region {uid = 12, name = "Республика Марий Эл"}
+Region {uid = 13, name = "Республика Мордовия"}
+Region {uid = 14, name = "Республика Саха (Якутия)"}
+Region {uid = 15, name = "Республика Северная Осетия - Алания"}
+Region {uid = 16, name = "Республика Татарстан (Татарстан)"}
+Region {uid = 17, name = "Республика Тыва"}
+Region {uid = 18, name = "Удмуртская Республика"}
+Region {uid = 19, name = "Республика Хакасия"}
+Region {uid = 20, name = "Чеченская Республика"}
+Region {uid = 21, name = "Чувашская Республика - Чувашия"}
+Region {uid = 22, name = "Алтайский край"}
+Region {uid = 23, name = "Забайкальский край"}
+Region {uid = 24, name = "Камчатский край"}
+Region {uid = 25, name = "Краснодарский край"}
+Region {uid = 26, name = "Красноярский край"}
+Region {uid = 27, name = "Пермский край"}
+Region {uid = 28, name = "Приморский край"}
+Region {uid = 29, name = "Ставропольский край"}
+Region {uid = 30, name = "Хабаровский край"}
+Region {uid = 31, name = "Амурская область"}
+Region {uid = 32, name = "Архангельская область"}
+Region {uid = 33, name = "Астраханская область"}
+Region {uid = 34, name = "Белгородская область"}
+Region {uid = 35, name = "Брянская область"}
+Region {uid = 36, name = "Владимирская область"}
+Region {uid = 37, name = "Волгоградская область"}
+Region {uid = 38, name = "Вологодская область"}
+Region {uid = 39, name = "Воронежская область"}
+Region {uid = 40, name = "Ивановская область"}
+Region {uid = 41, name = "Иркутская область"}
+Region {uid = 42, name = "Калининградская область"}
+Region {uid = 43, name = "Калужская область"}
+Region {uid = 44, name = "Кемеровская область - Кузбасс"}
+Region {uid = 45, name = "Кировская область"}
+Region {uid = 46, name = "Костромская область"}
+Region {uid = 47, name = "Курганская область"}
+Region {uid = 48, name = "Курская область"}
+Region {uid = 49, name = "Ленинградская область"}
+Region {uid = 50, name = "Липецкая область"}
+Region {uid = 51, name = "Магаданская область"}
+Region {uid = 52, name = "Московская область"}
+Region {uid = 53, name = "Мурманская область"}
+Region {uid = 54, name = "Нижегородская область"}
+Region {uid = 55, name = "Новгородская область"}
+Region {uid = 56, name = "Новосибирская область"}
+Region {uid = 57, name = "Омская область"}
+Region {uid = 58, name = "Оренбургская область"}
+Region {uid = 59, name = "Орловская область"}
+Region {uid = 60, name = "Пензенская область"}
+Region {uid = 61, name = "Псковская область"}
+Region {uid = 62, name = "Ростовская область"}
+Region {uid = 63, name = "Рязанская область"}
+Region {uid = 64, name = "Самарская область"}
+Region {uid = 65, name = "Саратовская область"}
+Region {uid = 66, name = "Сахалинская область"}
+Region {uid = 67, name = "Свердловская область"}
+Region {uid = 68, name = "Смоленская область"}
+Region {uid = 69, name = "Тамбовская область"}
+Region {uid = 70, name = "Тверская область"}
+Region {uid = 71, name = "Томская область"}
+Region {uid = 72, name = "Тульская область"}
+Region {uid = 73, name = "Тюменская область"}
+Region {uid = 74, name = "Ульяновская область"}
+Region {uid = 75, name = "Челябинская область"}
+Region {uid = 76, name = "Ярославская область"}
+Region {uid = 77, name = "Москва"}
+Region {uid = 78, name = "Санкт-Петербург"}
+Region {uid = 79, name = "Севастополь"}
+Region {uid = 80, name = "Еврейская автономная область"}
+Region {uid = 81, name = "Ненецкий автономный округ"}
+Region {uid = 82, name = "Ханты-Мансийский автономный округ - Югра"}
+Region {uid = 83, name = "Чукотский автономный округ"}
+Region {uid = 84, name = "Ямало-Ненецкий автономный округ"}
+Region {uid = 85, name = "Байконур"}
+Region {uid = 86, name = "Донецкая Народная Республика"}
+Region {uid = 87, name = "Луганская Народная Республика"}
+Region {uid = 88, name = "Херсонская область"}
+Region {uid = 89, name = "Запорожская область"}

@@ -26,9 +26,13 @@ source-repository head
 library
   exposed-modules:
       Enteties.PolicyTypes
+      Enteties.Regions
+      Enteties.Territories
       Enteties.TransportBrands
       Enteties.TransportModels
       Enteties.Transports
+      Modules.ChooseRegion
+      Modules.ChooseTerritorie
       Modules.ChooseTransport
       Modules.ChooseTransportBrand
       Modules.ChooseTransportModel

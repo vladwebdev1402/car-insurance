@@ -6,6 +6,8 @@ import Enteties.PolicyTypes
 import Enteties.TransportBrands 
 import Enteties.TransportModels 
 import Enteties.Transports
+import Enteties.Regions
+import Enteties.Territories
 import Shared.Logs.LogData
 import Shared.Validators.ValidateNumberRangeInput
 import Shared.Inputs.ChooseData
@@ -14,6 +16,8 @@ import Shared.Calc.GetMaximumDrivingExpirience
 import Modules.ChooseTransportBrand
 import Modules.ChooseTransportModel
 import Modules.ChooseTransport
+import Modules.ChooseRegion
+import Modules.ChooseTerritorie
 
 calcPriceInsurance :: IO ()
 calcPriceInsurance = do
@@ -36,16 +40,11 @@ calcOsagoPrice = do
   callCommand "cls" 
   putStrLn $ "Выбран тип страховки: ОСАГО\nВведённый возраст: " ++ show age ++ "\nВведённый стаж вождения: " ++ show drivingExpirience
   autoInfoMode <- inputRangeNumber "Выберите режим ввода данных для информации об автомобиле:\n1. Ввод с клавиатуры\n2. Поиск автомобиля из базы данных" "" 1 2
-
-  case autoInfoMode of
+  
+  enginePower <- case autoInfoMode of
     1 -> do
         callCommand "cls" 
-        enginePower <- inputRangeNumber "Введите мощность двигателя: " "" 16 450
-        putStrLn $ "Выбран тип страховки: ОСАГО\n\
-           \Введённый возраст: " ++ show age ++ "\n\
-           \Введённый стаж вождения: " ++ show drivingExpirience ++ "\n\
-           \Мощность двигателя: " ++ show enginePower
-           
+        inputRangeNumber "Введите мощность двигателя: " "" 16 450
     2 -> do 
         callCommand "cls"
         transportBrand <- chooseTransportBrand
@@ -54,7 +53,14 @@ calcOsagoPrice = do
         putStrLn $ (Enteties.TransportModels.name transportModel)
         transport <- chooseTransport (Enteties.TransportModels.uid transportModel)
         putStrLn $ (show (Enteties.Transports.year transport))
-
+        return (Enteties.Transports.power transport)
+  
+  putStrLn $ "Выбран тип страховки: ОСАГО\nВведённый возраст: " ++ show age ++ "\nВведённый стаж вождения: " ++ show drivingExpirience ++ "\nВведённая мощность двигателя: " ++ show enginePower
+  
+  region <- chooseRegion
+  putStrLn $ (Enteties.Regions.name region)
+  territorie <- chooseTerritorie (Enteties.Regions.uid region)
+  putStrLn $ (Enteties.Territories.name territorie)
 
   
 calcKaskoPrice :: IO ()
