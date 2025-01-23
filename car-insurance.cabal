@@ -33,6 +33,7 @@ library
       Enteties.Transports
       Enteties.TypeKO
       Enteties.TypeKS
+      Enteties.TypesTransport
       Modules.ChoosePolicyType
       Modules.ChooseRegion
       Modules.ChooseTerritorie
@@ -41,6 +42,7 @@ library
       Modules.ChooseTransportModel
       Modules.ChooseTypeKO
       Modules.ChooseTypeKS
+      Modules.ChooseTypeTransport
       Shared.Api.GetAllData
       Shared.Api.GetFilterData
       Shared.Calc.CalcAgeFromDate
@@ -55,6 +57,7 @@ library
       Shared.Validators.IsNumber
       Shared.Validators.ValidateNumberRangeInput
       Views.CalcPriceInsurance
+      Views.Helpers.InputAutoInfo
       Views.InformationInsurance
       Views.RegistrationInsurance
   other-modules:
