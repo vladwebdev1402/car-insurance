@@ -4,9 +4,8 @@ import Enteties.TypesTransport
 import Shared.Inputs.ChooseData (chooseData)
 import Shared.Logs.LogData (generateLogData)
 
-chooseTypeTransport :: IO (TypeTransport)
-chooseTypeTransport = do
+chooseTypeTransport :: String -> IO (TypeTransport)
+chooseTypeTransport infoMessage = do
   typesTransport <- getTypesTransport
-  putStrLn "Выберите категорию автомобиля:"
-  index <- chooseData typesTransport (\array -> generateLogData array Enteties.TypesTransport.description)
+  index <- chooseData typesTransport (\array -> generateLogData array Enteties.TypesTransport.description) "\nВыберите категорию автомобиля:" infoMessage
   return $ typesTransport !! (index - 1)

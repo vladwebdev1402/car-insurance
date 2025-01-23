@@ -7,6 +7,5 @@ import Shared.Logs.LogData (generateLogData)
 choosePolicyType :: IO (PolicyType)
 choosePolicyType = do
   policyTypes <- getPolicyTypes
-  putStrLn "Выберите тип страховки:"
-  index <- chooseData policyTypes (\array -> generateLogData array Enteties.PolicyTypes.name)
+  index <- chooseData policyTypes (\array -> generateLogData array Enteties.PolicyTypes.name) "\nВыберите тип страховки:" ""
   return $ policyTypes !! (index - 1)

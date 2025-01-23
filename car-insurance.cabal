@@ -52,7 +52,7 @@ library
       Shared.Inputs.InputDayOfBirth
       Shared.Inputs.InputPassport
       Shared.Inputs.InputRangeNumber
-      Shared.Logs.ConsoleError
+      Shared.Logs.Console
       Shared.Logs.LogData
       Shared.Validators.IsNumber
       Shared.Validators.ValidateNumberRangeInput

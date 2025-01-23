@@ -3,7 +3,7 @@ module Shared.Inputs.InputDayOfBirth (inputDayOfBirth) where
 import System.Process (callCommand)
 import Shared.Inputs.InputDate
 import Shared.Calc.CalcAgeFromDate
-import Shared.Logs.ConsoleError
+import Shared.Logs.Console
 
 inputDayOfBirth :: Int -> Int -> IO (Int, String)
 inputDayOfBirth minAge maxAge = do

@@ -2,6 +2,7 @@ module Shared.Inputs.InputPassport (inputPassport) where
 
 import System.Console.ANSI
 import Shared.Validators.IsNumber
+import Shared.Logs.Console
 import Data.List.Split    
 
 inputPassport :: IO (String, String)
@@ -10,21 +11,15 @@ inputPassport = do
     input <- getLine
     let parts = splitOn " " input
     if length parts /= 2 then do
-        setSGR [SetColor Foreground Vivid Red]
-        putStrLn "Ошибка: должно быть введено два значения (серия и номер)."
-        setSGR [Reset]
+        consoleError "Ошибка: должно быть введено два значения (серия и номер)."
         inputPassport  
     else do
         let [series, number] = parts
         if not (isNumber series) || length series /= 4 then do
-            setSGR [SetColor Foreground Vivid Red]
-            putStrLn "Ошибка: серия должна содержать 4 цифры."
-            setSGR [Reset]
+            consoleError "Ошибка: должно быть введено два значения (серия и номер)."
             inputPassport  
         else if not (isNumber number) || length number /= 6 then do
-            setSGR [SetColor Foreground Vivid Red]
-            putStrLn "Ошибка: номер должен содержать 6 цифр."
-            setSGR [Reset]
+            consoleError "Ошибка: должно быть введено два значения (серия и номер)."
             inputPassport  
         else
             return (series, number)  

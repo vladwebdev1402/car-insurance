@@ -1,7 +1,7 @@
 module Shared.Inputs.InputDate (inputDate) where 
 
 import System.Process (callCommand)
-import Shared.Logs.ConsoleError
+import Shared.Logs.Console
 import Shared.Validators.IsNumber
 import Data.List.Split    
 

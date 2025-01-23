@@ -4,9 +4,8 @@ import Enteties.TypeKO
 import Shared.Inputs.ChooseData (chooseData)
 import Shared.Logs.LogData (generateLogData)
 
-сhooseTypeKO :: IO (TypeKO)
-сhooseTypeKO = do
+сhooseTypeKO :: String -> IO (TypeKO)
+сhooseTypeKO infoMessage = do
   typesKO <- getTypeKO
-  putStrLn "Выберите количество водителей:"
-  index <- chooseData typesKO (\array -> generateLogData array Enteties.TypeKO.description)
+  index <- chooseData typesKO (\array -> generateLogData array Enteties.TypeKO.description) "\nВыберите количество водителей:" infoMessage
   return $ typesKO !! (index - 1)
