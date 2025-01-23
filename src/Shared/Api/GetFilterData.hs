@@ -4,8 +4,8 @@ import System.IO
 import GHC.IO.Encoding (setLocaleEncoding)
 import Data.List
 
-getFilterData :: Read a => FilePath -> Int -> Int -> String -> (a -> String) -> IO [a]
-getFilterData filePath minIdx maxIdx search getName = do
+getFilterData :: Read a => FilePath -> Int -> Int -> String -> (a -> String) -> (a -> Bool) -> IO [a]
+getFilterData filePath minIdx maxIdx search getName filter = do
     setLocaleEncoding utf8
     file <- openFile filePath ReadMode
     arrayData <- loop file []
@@ -18,6 +18,6 @@ getFilterData filePath minIdx maxIdx search getName = do
                 then do 
                     elementGet <- hGetLine file
                     let element = read elementGet
-                    if search `isInfixOf` (getName element) then loop file (arrayData ++ [element])
+                    if search `isInfixOf` (getName element) && filter element then loop file (arrayData ++ [element])
                     else loop file arrayData
                 else return arrayData

@@ -27,7 +27,11 @@ library
   exposed-modules:
       Enteties.PolicyTypes
       Enteties.TransportBrands
+      Enteties.TransportModels
+      Enteties.Transports
+      Modules.ChooseTransport
       Modules.ChooseTransportBrand
+      Modules.ChooseTransportModel
       Shared.Api.GetAllData
       Shared.Api.GetFilterData
       Shared.Calc.GetMaximumDrivingExpirience

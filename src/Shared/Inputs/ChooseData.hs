@@ -1,4 +1,4 @@
-module Shared.Inputs.ChooseData (chooseData, choosePaginatedData, chooseApiPaginatedData) where
+module Shared.Inputs.ChooseData (chooseData, choosePaginatedData, chooseApiPaginatedData, chooseApiParamPaginatedData) where
 
 import System.Console.ANSI
 import System.Process (callCommand)
@@ -66,5 +66,23 @@ chooseApiPaginatedData page search getData getName = do
         "вперёд" -> chooseApiPaginatedData (page + 1) "" getData getName
         _ -> do 
             if index == -1 then chooseApiPaginatedData 0 command getData getName
+            else return (arrayData !! (index - 1))
+
+-- страница, поисковое имя, функция запроса, куда передаётся максимальный и минимальный индекс, функция для получении имени
+chooseApiParamPaginatedData :: Int -> String -> Int -> (Int -> Int -> String -> Int -> IO [a]) -> (a -> String) -> IO a
+chooseApiParamPaginatedData page search paramId getData getName = do 
+    callCommand "cls"
+    putStrLn "Команды:\nназад - предыдущая страница,\nвперёд - следующая страница,\nпоиск %name%- поиск по названию,\nсбросить - сбросить фильтры"
+    putStrLn $ "\nТекущая страница: " ++ show (page + 1)
+    arrayData <- getData (page * 10) (page * 10 + 9) search paramId
+    (index, command) <- choosePaginatedData arrayData (\array -> generateLogData array getName) 
+    case command of 
+        "назад" -> do 
+            if page == 0 then chooseApiParamPaginatedData 0 "" paramId getData getName 
+            else chooseApiParamPaginatedData (page - 1) "" paramId getData getName
+        "сбросить" -> chooseApiParamPaginatedData 0 "" paramId getData getName
+        "вперёд" -> chooseApiParamPaginatedData (page + 1) "" paramId getData getName
+        _ -> do 
+            if index == -1 then chooseApiParamPaginatedData 0 command paramId getData getName
             else return (arrayData !! (index - 1))
           
