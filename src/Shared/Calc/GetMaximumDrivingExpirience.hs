@@ -2,7 +2,5 @@ module Shared.Calc.GetMaximumDrivingExpirience (getMaximumDrivingExpirience) whe
 
 getMaximumDrivingExpirience :: Int -> Int
 getMaximumDrivingExpirience age
-  | age <= 21 = 6
-  | age <= 24 = 9
-  | age <= 29 = 14
+  | age <= 29 = age - 15
   | otherwise = 100
