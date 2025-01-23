@@ -14,6 +14,7 @@ import Shared.Logs.LogData
 import Shared.Validators.ValidateNumberRangeInput
 import Shared.Inputs.ChooseData
 import Shared.Inputs.InputRangeNumber
+import Shared.Inputs.InputDayOfBirth
 import Shared.Calc.GetMaximumDrivingExpirience
 import Modules.ChooseTransportBrand
 import Modules.ChooseTransportModel
@@ -36,7 +37,7 @@ calcPriceInsurance = do
 calcOsagoPrice :: IO ()
 calcOsagoPrice = do
   callCommand "cls" 
-  age <- inputRangeNumber "Выбран тип страховки: ОСАГО" "Введите возраст: " 16 100
+  (age, birthDate) <- inputDayOfBirth 16 100
   callCommand "cls" 
   drivingExpirience <- inputRangeNumber ("Выбран тип страховки: ОСАГО\nВведённый возраст: " ++ show age) "Введите стаж вождения: " 0 (getMaximumDrivingExpirience age)
   callCommand "cls" 

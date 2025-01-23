@@ -25,6 +25,7 @@ dependencies:
   - split
   - process
   - ansi-terminal
+  - time
 
 ghc-options:
   - -Wall
