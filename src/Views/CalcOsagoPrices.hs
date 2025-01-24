@@ -12,38 +12,31 @@ import Enteties.Companys
 import Enteties.TypesTransport
 import Enteties.CompanyPolicyLink
 import Enteties.Territories
+import Shared.Validators.NothingToJust
 
 calcOsagoPrices :: OsagoUserInfo -> IO [(Company, Float)]
 calcOsagoPrices osagoUserInfo = do
-  (age, date) <- case Views.InputOsagoData.birthDate osagoUserInfo of
-    Nothing -> error "getOsagoCoeffs: Ошибка получения возраста и даты"
-    Just (age, date) -> return (age, date)
 
-  drivingExpirience <- case Views.InputOsagoData.drivingExpirience osagoUserInfo of
-    Nothing -> error "getOsagoCoeffs: Ошибка получения опыта вождения"
-    Just drivingExpirience -> return drivingExpirience
-
-  territorie <- case Views.InputOsagoData.territorie osagoUserInfo of
-    Nothing -> error "getOsagoCoeffs: Ошибка места проживания"
-    Just territorie -> return territorie
-
-  autoInfo <- case Views.InputOsagoData.autoInfo osagoUserInfo of
-    Nothing -> error "getOsagoCoeffs: Ошибка информации об автомобиле"
-    Just autoInfo -> return autoInfo
-
+  let (age, date) = nothingToJust (Views.InputOsagoData.birthDate osagoUserInfo) "getOsagoCoeffs: Ошибка получения возраста и даты"
+  
+  let drivingExpirience = nothingToJust (Views.InputOsagoData.drivingExpirience osagoUserInfo) "getOsagoCoeffs: Ошибка получения опыта вождения"
+  
+  let territorie = nothingToJust (Views.InputOsagoData.territorie osagoUserInfo) "getOsagoCoeffs: Ошибка места проживания"
+  
+  let autoInfo = nothingToJust (Views.InputOsagoData.autoInfo osagoUserInfo) "getOsagoCoeffs: Ошибка информации об автомобиле"
+  
+  let typeKs = nothingToJust (Views.InputOsagoData.typeKS osagoUserInfo) "getOsagoCoeffs: Ошибка получения срока страхования"
+  
+  let typeKo = nothingToJust (Views.InputOsagoData.typeKO osagoUserInfo) "getOsagoCoeffs: Ошибка получения количества водителей"
+  
   let (enginePower, transportBrand, transportModel, transport, category) = autoInfo
 
-  typeKs <- case Views.InputOsagoData.typeKS osagoUserInfo of
-    Nothing -> error "getOsagoCoeffs: Ошибка получения срока страхования"
-    Just typeKs -> return typeKs
-  
-  typeKo <- case Views.InputOsagoData.typeKO osagoUserInfo of
-    Nothing -> error "getOsagoCoeffs: Ошибка получения количества водителей"
-    Just typeKo -> return typeKo
-
   coefKVS <- getTypeKVS age drivingExpirience True
+
   let coefKT = (Enteties.Territories.coefOsago territorie)
+
   coefKM <- getTypeKMByPower enginePower True
+  
   coefKBM <- getTypeKBMByDriverLever 3
 
   let summuryCoef = (Enteties.TypeKS.coefOsago typeKs) * (Enteties.TypeKO.coefOsago typeKo) * (Enteties.TypesKVS.coefOsago coefKVS) * coefKT * (Enteties.TypesKM.coefOsago coefKM) * (Enteties.TypesKBM.coefOsago coefKBM )

@@ -28,6 +28,7 @@ library
       Enteties.CoefTB
       Enteties.CompanyPolicyLink
       Enteties.Companys
+      Enteties.Drivers
       Enteties.PolicyTypes
       Enteties.Regions
       Enteties.Territories
@@ -56,17 +57,20 @@ library
       Shared.Inputs.ChooseData
       Shared.Inputs.InputDate
       Shared.Inputs.InputDayOfBirth
+      Shared.Inputs.InputFio
       Shared.Inputs.InputPassport
       Shared.Inputs.InputRangeNumber
       Shared.Logs.Console
       Shared.Logs.LogData
       Shared.Validators.IsNumber
+      Shared.Validators.NothingToJust
       Shared.Validators.ValidateNumberRangeInput
       Views.CalcOsagoPrices
       Views.CalcPriceInsurance
       Views.Helpers.ChooseOsagoEditStep
       Views.Helpers.GetAutoInfo
       Views.Helpers.InputAutoInfo
+      Views.Helpers.InputUserPassport
       Views.InformationInsurance
       Views.InputOsagoData
       Views.RegistrationInsurance

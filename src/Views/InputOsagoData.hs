@@ -35,7 +35,7 @@ data OsagoUserInfo = OsagoUserInfo {
   typeKO :: Maybe TypeKO}
 
 inputOsagoData :: OsagoUserInfo -> Int -> Bool -> IO OsagoUserInfo
-inputOsagoData osagoUserInfo editStep isRegistration = do
+inputOsagoData osagoUserInfo editStep False = do
   callCommand "cls" 
 
   (age, birthDate) <- if editStep == 1
@@ -53,8 +53,8 @@ inputOsagoData osagoUserInfo editStep isRegistration = do
 
   callCommand "cls" 
   (enginePower, transportBrand, transportModel, transport, category) <- if editStep == 2
-    then inputAutoInfo isRegistration infoMessage2 
-    else maybe (inputAutoInfo isRegistration infoMessage2) return (autoInfo osagoUserInfo)
+    then inputAutoInfo False infoMessage2 
+    else maybe (inputAutoInfo False infoMessage2) return (autoInfo osagoUserInfo)
 
   let infoMessage3 = infoMessage2 ++ (getAutoInfo enginePower transportBrand transportModel transport category)
 
@@ -94,6 +94,6 @@ inputOsagoData osagoUserInfo editStep isRegistration = do
 
   case editPunkt of 
     1 -> return osagoInfo
-    _ -> inputOsagoData osagoInfo (editPunkt - 1) isRegistration
+    _ -> inputOsagoData osagoInfo (editPunkt - 1) False
 
   

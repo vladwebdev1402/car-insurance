@@ -45,3 +45,4 @@ inputAutoInfo True infoMessage = do
     transport <- chooseTransport (Enteties.TransportModels.uid transportModel) infoMessage
     category <- getTypeTransportById (Enteties.Transports.typeTransportId transport) 
     return (Enteties.Transports.power transport, Just transportBrand, Just transportModel, Just transport, category)
+

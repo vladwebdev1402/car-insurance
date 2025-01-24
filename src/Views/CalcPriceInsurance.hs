@@ -19,26 +19,29 @@ import Enteties.Territories
 import Modules.ChoosePolicyType
 import Shared.Logs.LogData
 import Shared.Inputs.ChooseData
+import Views.Helpers.InputUserPassport
 
 import System.Process (callCommand)
+
 
 calcPriceInsurance :: IO ()
 calcPriceInsurance = do
   policyType <- choosePolicyType
 
   case (Enteties.PolicyTypes.uid policyType) of
-    0 -> calcOsagoPrice False Nothing (-1)
+    0 -> calcOsagoPrice Nothing (-1)
     1 -> calcKaskoPrice
     _ -> return ()
 
-calcOsagoPrice :: Bool -> Maybe OsagoUserInfo -> Int -> IO ()
-calcOsagoPrice isRegistration oldOsagoUserInfo editPunkt = do
+calcOsagoPrice :: Maybe OsagoUserInfo -> Int -> IO ()
+calcOsagoPrice oldOsagoUserInfo editPunkt = do
+
   let osagoUserInfo = case oldOsagoUserInfo of
         Nothing -> OsagoUserInfo {birthDate = Nothing, passport = Nothing, drivingExpirience = Nothing,
           autoInfo = Nothing, region = Nothing, territorie = Nothing, typeKS = Nothing, typeKO = Nothing}
         Just osagoUserInfo -> osagoUserInfo
 
-  osagoUserInfo <- inputOsagoData osagoUserInfo editPunkt isRegistration   
+  osagoUserInfo <- inputOsagoData osagoUserInfo editPunkt False   
 
   companysWithPrice <- calcOsagoPrices osagoUserInfo
 
@@ -48,7 +51,7 @@ calcOsagoPrice isRegistration oldOsagoUserInfo editPunkt = do
  
   case updatePunkt of 
     -1 -> putStrLn "Конец расчёт"
-    _ -> calcOsagoPrice isRegistration (Just osagoUserInfo) updatePunkt
+    _ -> calcOsagoPrice (Just osagoUserInfo) updatePunkt
 
 calcKaskoPrice :: IO ()
 calcKaskoPrice = do
