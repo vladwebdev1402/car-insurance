@@ -10,7 +10,6 @@ import Enteties.TransportBrands
 import Enteties.TransportModels 
 import Enteties.Transports
 import Enteties.TypesTransport
-import Shared.Validators.IsNothing
 import Shared.Inputs.ChooseData
 import Shared.Inputs.InputDayOfBirth
 import Shared.Inputs.InputRangeNumber

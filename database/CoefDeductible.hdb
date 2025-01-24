@@ -19,4 +19,4 @@ CoefDeductible {uid = 17, companyPolicyLinkId = 11, sumDeductible = 40000, value
 CoefDeductible {uid = 18, companyPolicyLinkId = 11, sumDeductible = 50000, value = 1.5}
 CoefDeductible {uid = 19, companyPolicyLinkId = 11, sumDeductible = 60000, value = 1.48}
 CoefDeductible {uid = 20, companyPolicyLinkId = 11, sumDeductible = 70000, value = 1.44}
-CoefDeductible {uid = 21, companyPolicyLinkId = 11, sumDeductible = 80000, value = 1.32.\}
+CoefDeductible {uid = 21, companyPolicyLinkId = 11, sumDeductible = 80000, value = 1.32}

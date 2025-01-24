@@ -9,4 +9,3 @@ getTerritories minIdx maxIdx search = getFilterData "database/Territories.hdb" m
 
 getTerritoriesByRegionId :: Int -> Int -> String -> Int -> IO [Territorie]
 getTerritoriesByRegionId minIdx maxIdx search region = getFilterData "database/Territories.hdb" minIdx maxIdx search name (\x -> regionId x == region)
-

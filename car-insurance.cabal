@@ -25,6 +25,7 @@ source-repository head
 
 library
   exposed-modules:
+      Enteties.CompanyPolicyLink
       Enteties.PolicyTypes
       Enteties.Regions
       Enteties.Territories
@@ -33,6 +34,9 @@ library
       Enteties.Transports
       Enteties.TypeKO
       Enteties.TypeKS
+      Enteties.TypesKBM
+      Enteties.TypesKM
+      Enteties.TypesKVS
       Enteties.TypesTransport
       Modules.ChoosePolicyType
       Modules.ChooseRegion
