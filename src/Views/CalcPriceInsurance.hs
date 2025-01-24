@@ -20,7 +20,7 @@ import Modules.ChoosePolicyType
 import Shared.Logs.LogData
 import Shared.Inputs.ChooseData
 import Views.Helpers.InputUserPassport
-
+import Shared.Inputs.InputNumberRegistration
 import System.Process (callCommand)
 
 

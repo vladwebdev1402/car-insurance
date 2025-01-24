@@ -15,7 +15,8 @@ data UserPassport = UserPassport {
     age :: Int,
     passportFio :: String,
     birthDate :: String,
-    drivingLevel :: Int
+    drivingLevel :: Int,
+    driver :: Maybe Driver
 } deriving (Read, Show)
 
 choosePassportEditStep :: String -> IO (Int)
@@ -58,7 +59,9 @@ inputUserPassport oldPassport editStep = do
                                         passportFio = fio, 
                                         age = age, 
                                         birthDate = date, 
-                                        drivingLevel = 3}
+                                        drivingLevel = 3,
+                                        driver = Nothing
+                                        }
             
             case updateStep of 
                 -1 -> return passport
@@ -72,7 +75,9 @@ inputUserPassport oldPassport editStep = do
                                         passportFio = (Enteties.Drivers.surName driver) ++ " " ++ " " ++ (Enteties.Drivers.firstName driver) ++ " " ++ (Enteties.Drivers.patroName driver), 
                                         age = userAge, 
                                         birthDate = (Enteties.Drivers.birthday driver), 
-                                        drivingLevel = (Enteties.Drivers.driverLevel driver)}
+                                        drivingLevel = (Enteties.Drivers.driverLevel driver),
+                                        driver = Just driver
+                                        }
                     
 
 

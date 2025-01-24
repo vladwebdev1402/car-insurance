@@ -58,6 +58,7 @@ library
       Shared.Inputs.InputDate
       Shared.Inputs.InputDayOfBirth
       Shared.Inputs.InputFio
+      Shared.Inputs.InputNumberRegistration
       Shared.Inputs.InputPassport
       Shared.Inputs.InputRangeNumber
       Shared.Logs.Console
