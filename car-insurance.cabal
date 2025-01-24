@@ -60,6 +60,7 @@ library
       Views.Helpers.GetAutoInfo
       Views.Helpers.InputAutoInfo
       Views.InformationInsurance
+      Views.InputOsagoData
       Views.RegistrationInsurance
   other-modules:
       Paths_car_insurance
