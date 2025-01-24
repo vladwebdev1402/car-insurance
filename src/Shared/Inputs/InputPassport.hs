@@ -5,7 +5,7 @@ import Shared.Validators.IsNumber
 import Shared.Logs.Console
 import Data.List.Split    
 
-inputPassport :: IO (String, String)
+inputPassport :: IO (Int, Int)
 inputPassport = do
     putStrLn "Введите серию и номер паспорта (через пробел):"
     input <- getLine
@@ -22,4 +22,4 @@ inputPassport = do
             consoleError "Ошибка: должно быть введено два значения (серия и номер)."
             inputPassport  
         else
-            return (series, number)  
+            return (read series :: Int, read number :: Int)  

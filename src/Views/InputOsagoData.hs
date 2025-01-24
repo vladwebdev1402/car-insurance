@@ -11,6 +11,7 @@ import Enteties.TransportModels
 import Enteties.Transports
 import Enteties.TypesTransport
 import Shared.Inputs.ChooseData
+import Shared.Inputs.InputPassport
 import Shared.Inputs.InputDayOfBirth
 import Shared.Inputs.InputRangeNumber
 import Shared.Logs.LogData
@@ -25,6 +26,7 @@ import Views.Helpers.GetAutoInfo
 
 data OsagoUserInfo = OsagoUserInfo {
   birthDate :: Maybe (Int, String),
+  passport :: Maybe (Int, Int),
   drivingExpirience :: Maybe Int,
   autoInfo :: Maybe (Int, Maybe TransportBrand, Maybe TransportModel, Maybe Transport, TypeTransport),
   region :: Maybe Region,

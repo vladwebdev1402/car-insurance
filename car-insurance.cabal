@@ -25,7 +25,9 @@ source-repository head
 
 library
   exposed-modules:
+      Enteties.CoefTB
       Enteties.CompanyPolicyLink
+      Enteties.Companys
       Enteties.PolicyTypes
       Enteties.Regions
       Enteties.Territories
@@ -60,7 +62,9 @@ library
       Shared.Logs.LogData
       Shared.Validators.IsNumber
       Shared.Validators.ValidateNumberRangeInput
+      Views.CalcOsagoPrices
       Views.CalcPriceInsurance
+      Views.Helpers.ChooseOsagoEditStep
       Views.Helpers.GetAutoInfo
       Views.Helpers.InputAutoInfo
       Views.InformationInsurance
