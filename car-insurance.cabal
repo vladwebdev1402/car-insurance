@@ -28,8 +28,10 @@ library
       Enteties.CoefTB
       Enteties.CompanyPolicyLink
       Enteties.Companys
+      Enteties.Deductibles
       Enteties.Drivers
       Enteties.Policies
+      Enteties.PolicyServices
       Enteties.PolicyTypes
       Enteties.Regions
       Enteties.Territories
@@ -43,6 +45,8 @@ library
       Enteties.TypesKM
       Enteties.TypesKVS
       Enteties.TypesTransport
+      Modules.ChooseDeducatble
+      Modules.ChoosePolicyServices
       Modules.ChoosePolicyType
       Modules.ChooseRegion
       Modules.ChooseTerritorie
@@ -72,13 +76,16 @@ library
       Shared.Validators.IsNumber
       Shared.Validators.NothingToJust
       Shared.Validators.ValidateNumberRangeInput
+      Shared.Validators.ValidateStringNumber
       Views.CalcOsagoPrices
       Views.CalcPriceInsurance
+      Views.Helpers.ChooseKaskoEditStep
       Views.Helpers.ChooseOsagoEditStep
       Views.Helpers.ConfirmIdentity
       Views.Helpers.GetAutoInfo
       Views.Helpers.InputAutoInfo
       Views.InformationInsurance
+      Views.InputKaskoData
       Views.InputOsagoData
       Views.RegistrationInsurance
   other-modules:

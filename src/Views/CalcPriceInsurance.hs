@@ -2,6 +2,7 @@ module Views.CalcPriceInsurance (calcPriceInsurance) where
 
 import Text.Printf (printf)
 import Views.InputOsagoData
+import Views.InputKaskoData
 import Views.Helpers.ChooseOsagoEditStep
 import Views.CalcOsagoPrices
 import Enteties.PolicyTypes
@@ -15,7 +16,7 @@ calcPriceInsurance = do
 
   case (Enteties.PolicyTypes.uid policyType) of
     0 -> calcOsagoPrice Nothing (-1)
-    1 -> calcKaskoPrice
+    1 -> calcKaskoPrice Nothing (-1)
     _ -> return ()
 
 calcOsagoPrice :: Maybe OsagoUserInfo -> Int -> IO ()
@@ -37,8 +38,14 @@ calcOsagoPrice oldOsagoUserInfo editPunkt = do
     -1 -> return ()
     _ -> calcOsagoPrice (Just osagoUserInfo) updatePunkt
 
-calcKaskoPrice :: IO ()
-calcKaskoPrice = do
+calcKaskoPrice :: Maybe KaskoUserInfo -> Int -> IO ()
+calcKaskoPrice oldKaskoUserInfo editPunkt = do
+  let kaskoUserInfo = case oldKaskoUserInfo of
+        Nothing -> nullKaskoUserInfo
+        _ -> kaskoUserInfo
+
+  kaskoUserInfo <- inputKaskoData kaskoUserInfo editPunkt False "" 
+
   putStrLn $ "Выбран тип страховки: КАСКО"
 
   
