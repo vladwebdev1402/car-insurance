@@ -85,6 +85,7 @@ library
       Shared.Validators.NothingToJust
       Shared.Validators.ValidateNumberRangeInput
       Shared.Validators.ValidateStringNumber
+      Views.CalcKaskoPrices
       Views.CalcOsagoPrices
       Views.CalcPriceInsurance
       Views.Helpers.ChooseKaskoEditStep

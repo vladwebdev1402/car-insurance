@@ -6,6 +6,8 @@ import Enteties.TypesKVS
 import Enteties.TypesKM
 import Enteties.TypesKBM
 import Enteties.TypeKS
+import Enteties.Drivers
+import Enteties.TransportCertificate
 import Enteties.TypeKO
 import Enteties.CoefTB
 import Enteties.Companys
@@ -29,15 +31,19 @@ calcOsagoPrices osagoUserInfo = do
   
   let typeKo = nothingToJust (Views.InputOsagoData.typeKO osagoUserInfo) "calcOsagoPrices: Ошибка получения количества водителей"
   
-  let (enginePower, transportBrand, transportModel, transport, category, _) = autoInfo
+  let (enginePower, transportBrand, transportModel, transport, category, certificate) = autoInfo
 
   coefKVS <- getTypeKVS age drivingExpirience True
 
   let coefKT = (Enteties.Territories.coefOsago territorie)
 
   coefKM <- getTypeKMByPower enginePower True
+
+  driver <- maybe (return Nothing) (\cert -> fmap Just (getDriverById (Enteties.TransportCertificate.driverId cert))) certificate
+
+  driverLevel <- maybe (return 3) (\user -> return (Enteties.Drivers.driverLevel user)) driver
   
-  coefKBM <- getTypeKBMByDriverLever 3
+  coefKBM <- getTypeKBMByDriverLever driverLevel
 
   let summuryCoef = (Enteties.TypeKS.coefOsago typeKs) * (Enteties.TypeKO.coefOsago typeKo) * (Enteties.TypesKVS.coefOsago coefKVS) * coefKT * (Enteties.TypesKM.coefOsago coefKM) * (Enteties.TypesKBM.coefOsago coefKBM )
 

@@ -4,7 +4,9 @@ import Text.Printf (printf)
 import Views.InputOsagoData
 import Views.InputKaskoData
 import Views.Helpers.ChooseOsagoEditStep
+import Views.Helpers.ChooseKaskoEditStep
 import Views.CalcOsagoPrices
+import Views.CalcKaskoPrices
 import Enteties.PolicyTypes
 import Enteties.Companys
 import Modules.ChoosePolicyType
@@ -46,10 +48,15 @@ calcKaskoPrice oldKaskoUserInfo editPunkt = do
 
   kaskoUserInfo <- inputKaskoData kaskoUserInfo editPunkt False "" 
 
-  case (Views.InputKaskoData.birthDate kaskoUserInfo) of
-    Nothing -> return ()
-    _ -> do 
-      putStrLn "В разработке"
+  companysWithPrice <- calcKaskoPrices kaskoUserInfo
+
+  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))
+
+  updatePunkt <- chooseKaskoEditStep False infoMessage
+
+  case updatePunkt of 
+    -1 -> return ()
+    _ -> calcKaskoPrice (Just kaskoUserInfo) updatePunkt
 
   
 

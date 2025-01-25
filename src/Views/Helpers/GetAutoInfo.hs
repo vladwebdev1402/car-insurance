@@ -6,7 +6,7 @@ import Enteties.Transports
 import Enteties.TypesTransport
 import Enteties.TransportCertificate
 
-getAutoInfo :: Int-> Maybe TransportBrand-> Maybe TransportModel-> Maybe Transport-> TypeTransport -> Maybe TransportCertificate -> String
+getAutoInfo :: Int -> Maybe TransportBrand -> Maybe TransportModel -> Maybe Transport -> TypeTransport -> Maybe TransportCertificate -> String
 getAutoInfo enginePower transportBrand transportModel transport typeTransport certificate = 
     "\nМощность двигателя: " ++ show enginePower ++ " л.с." ++ 
     (case transportBrand of

@@ -14,7 +14,6 @@ import Shared.Inputs.InputRangeNumber
 import Shared.Inputs.InputNumberRegistration
 import Shared.Logs.Console
 
--- булеан оформление
 inputAutoInfo :: Bool -> String -> IO ((Int, Maybe TransportBrand, Maybe TransportModel, Maybe Transport, TypeTransport, Maybe TransportCertificate))
 inputAutoInfo False infoMessage = do
     autoInfoMode <- inputRangeNumber infoMessage "Выберите режим ввода данных для информации об автомобиле:\n1. Ввод с клавиатуры\n2. Поиск автомобиля из базы данных" 1 2
