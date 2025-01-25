@@ -25,6 +25,14 @@ source-repository head
 
 library
   exposed-modules:
+      Enteties.CoefDeductible
+      Enteties.CoefKBM
+      Enteties.CoefKM
+      Enteties.CoefKO
+      Enteties.CoefKS
+      Enteties.CoefKT
+      Enteties.CoefKVS
+      Enteties.CoefService
       Enteties.CoefTB
       Enteties.CompanyPolicyLink
       Enteties.Companys

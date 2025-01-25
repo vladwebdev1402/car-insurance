@@ -1,3 +1,2 @@
-PolicyType {uid = 2, name = "ДСАГО"}
 PolicyType {uid = 1, name = "КАСКО"}
 PolicyType {uid = 0, name = "ОСАГО"}
