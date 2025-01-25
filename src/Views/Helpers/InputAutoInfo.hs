@@ -44,15 +44,18 @@ inputAutoInfo True infoMessage = do
     registrationNumber <- inputNumberRegistration infoMessage
     certificate <- getTransportCertificateByNumber registrationNumber
 
-    case certificate of
-        Nothing -> do
-            callCommand "cls"
-            consoleError "Ошибка: автомобиль с таким регистрационным номером не найден в базе данных."
-            inputAutoInfo True infoMessage
-        Just certificate -> do 
-            transport <- getTransportById (Enteties.TransportCertificate.transportId certificate)
-            category <- getTypeTransportById (Enteties.Transports.typeTransportId transport) 
-            model <- getTransportModelById (Enteties.Transports.transportModelId transport)
-            brand <- getTransportBrandById (Enteties.TransportModels.transportBrandId model)
-            return ((Enteties.Transports.power transport), Just brand, Just model, Just transport, category, Just certificate)
+    case registrationNumber of 
+        "выход" -> return (0, Nothing, Nothing, Nothing, getNullTypeTransport, Nothing)
+        _ -> do
+            case certificate of
+                Nothing -> do
+                    callCommand "cls"
+                    consoleError "Ошибка: автомобиль с таким регистрационным номером не найден в базе данных."
+                    inputAutoInfo True infoMessage
+                Just certificate -> do 
+                    transport <- getTransportById (Enteties.TransportCertificate.transportId certificate)
+                    category <- getTypeTransportById (Enteties.Transports.typeTransportId transport) 
+                    model <- getTransportModelById (Enteties.Transports.transportModelId transport)
+                    brand <- getTransportBrandById (Enteties.TransportModels.transportBrandId model)
+                    return ((Enteties.Transports.power transport), Just brand, Just model, Just transport, category, Just certificate)
         

@@ -1,4 +1,4 @@
-module Enteties.TypesTransport (TypeTransport(..), getTypesTransport, getTypeTransportById) where
+module Enteties.TypesTransport (TypeTransport(..), getTypesTransport, getTypeTransportById, getNullTypeTransport) where
 
 import Shared.Api.GetAllData
 import Shared.Api.GetFilterData
@@ -12,3 +12,6 @@ getTypeTransportById :: Int -> IO TypeTransport
 getTypeTransportById searchId = do
     types <- getFilterData "database/TypesTransport.hdb" 0 100 "" (\x -> description x) (\x -> uid x == searchId)
     return $ types !! (0)
+
+getNullTypeTransport :: TypeTransport
+getNullTypeTransport = TypeTransport { uid = 0, description = "", minPriceCoefOsago = 0.0, maxPriceCoefOsago = 0.0 }

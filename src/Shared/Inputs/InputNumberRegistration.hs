@@ -10,10 +10,11 @@ validLetters = all (`elem` "АВЕКМНОРСТУХ")
 
 inputNumberRegistration :: String -> IO (String)
 inputNumberRegistration infoMessage = do
-    putStrLn "Введите регистрационный номер автомобиля (М999ММ99):"
+    putStrLn "Введите регистрационный номер автомобиля (М999ММ99). Для выхода введите \"выход\""
     input <- getLine
-    let upperInput = map toUpper input  
-    if length upperInput /= 8 && length upperInput /= 9 then do
+    let upperInput = map toUpper input 
+    if input == "выход" then return input 
+    else if length upperInput /= 8 && length upperInput /= 9 then do
         callCommand "cls"
         consoleError "Ошибка: неверная длина строки (8 или 9 символов)."
         inputNumberRegistration infoMessage

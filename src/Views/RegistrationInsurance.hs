@@ -2,6 +2,7 @@ module Views.RegistrationInsurance (registrationInsurance) where
 import Views.InputOsagoData
 import Views.InputKaskoData
 import Views.CalcOsagoPrices
+import Views.CalcKaskoPrices
 import Modules.ChoosePolicyType
 import Shared.Inputs.ChooseData
 import Shared.Helpers.GetTodayDate
@@ -9,6 +10,7 @@ import Shared.Helpers.GetCountDays
 import Enteties.PolicyTypes
 import Enteties.Policies
 import Enteties.Companys
+import Enteties.Deductibles
 import Enteties.TypeKS
 import Enteties.CompanyPolicyLink
 import Enteties.TransportCertificate
@@ -47,9 +49,9 @@ registrationOsago oldOsagoUserInfo editPunkt = do
           let (company, price) = (companysWithPrices !! (index - 1))
           date <- getTodayDate
           let policyTypeId = 0
-          let (_, _, _, _, _, certificate) = nothingToJust (Views.InputOsagoData.autoInfo osagoUserInfo) "registrationOsago: ошибка получение информации об автомобиле"
-          let cert = nothingToJust certificate "registrationOsago: ошибка получение транспортного сертификата"
-          let typeKs = nothingToJust (Views.InputOsagoData.typeKS osagoUserInfo) "registrationOsago: ошибка получения срока страхования"
+          let (_, _, _, _, _, certificate) = nothingToJust (Views.InputOsagoData.autoInfo osagoUserInfo) "registrationOsago: error get auto info"
+          let cert = nothingToJust certificate "registrationOsago: error get certificate"
+          let typeKs = nothingToJust (Views.InputOsagoData.typeKS osagoUserInfo) "registrationOsago: error get count days "
           let countDays = getCountDaysFromMonths (Enteties.TypeKS.countMonths typeKs)
           companyLink <- getCompanyPolicyLinkByCompany (Enteties.Companys.uid company) policyTypeId
 
@@ -85,4 +87,45 @@ registrationKasko oldKaskoUserInfo editPunkt = do
   case (Views.InputKaskoData.birthDate kaskoUserInfo) of
     Nothing -> return ()
     _ -> do 
-      putStrLn "Регистрация КАСКО: Функция в разработке."
+      companysWithPrices <- calcKaskoPrices kaskoUserInfo
+
+      index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
+      
+      if (index == -1) then return ()
+      else do
+          let (company, price) = (companysWithPrices !! (index - 1))
+          
+          date <- getTodayDate
+          
+          let policyTypeId = 1
+          
+          let (_, _, _, _, _, certificate) = nothingToJust (Views.InputKaskoData.autoInfo kaskoUserInfo) "registrationKasko: error get auto info"
+          
+          let cert = nothingToJust certificate "registrationKasko: error get certificate"
+
+          let typeKs = nothingToJust (Views.InputKaskoData.typeKS kaskoUserInfo) "registrationKasko: error get typeKs "
+
+          let deductible = nothingToJust (Views.InputKaskoData.deductible kaskoUserInfo) "registrationKasko: error get deductible "
+
+          let countDeductible = (Enteties.Deductibles.sumDeductible deductible) 
+
+          let countDays = getCountDaysFromMonths (Enteties.TypeKS.countMonths typeKs)
+
+          companyLink <- getCompanyPolicyLinkByCompany (Enteties.Companys.uid company) policyTypeId
+
+          let newPolicy = Policy {
+            Enteties.Policies.uid = 0,
+            Enteties.Policies.companyPolicyLinkId = (Enteties.CompanyPolicyLink.uid companyLink),
+            Enteties.Policies.policyTypeId = policyTypeId,
+            Enteties.Policies.transportCertificateId = Enteties.TransportCertificate.uid cert,
+            Enteties.Policies.status = "active",
+            Enteties.Policies.countDays = countDays,
+            Enteties.Policies.sumInsurance = price,
+            Enteties.Policies.sumRemaininInsurance = 0.0,
+            Enteties.Policies.sumDeductible = 0.0,
+            Enteties.Policies.date = date
+          }
+
+          addNewPolicy newPolicy
+
+          putStrLn "Регистрация КАСКО: Функция в разработке."

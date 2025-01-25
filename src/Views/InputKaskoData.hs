@@ -56,6 +56,18 @@ nullKaskoUserInfo = KaskoUserInfo {Views.InputKaskoData.birthDate = Nothing,
                              Views.InputKaskoData.policyServices = Nothing
                              }
 
+createNewKaskoUserInfo :: KaskoUserInfo -> KaskoUserInfo
+createNewKaskoUserInfo kaskoUserInfo = KaskoUserInfo {Views.InputKaskoData.birthDate = Views.InputKaskoData.birthDate kaskoUserInfo, 
+                             Views.InputKaskoData.drivingExpirience = Views.InputKaskoData.drivingExpirience kaskoUserInfo,
+                             Views.InputKaskoData.autoInfo = Views.InputKaskoData.autoInfo kaskoUserInfo, 
+                             Views.InputKaskoData.region = Views.InputKaskoData.region kaskoUserInfo, 
+                             Views.InputKaskoData.territorie = Views.InputKaskoData.territorie kaskoUserInfo, 
+                             Views.InputKaskoData.typeKS = Views.InputKaskoData.typeKS kaskoUserInfo, 
+                             Views.InputKaskoData.typeKO = Views.InputKaskoData.typeKO kaskoUserInfo,
+                             Views.InputKaskoData.deductible = Views.InputKaskoData.deductible kaskoUserInfo,
+                             Views.InputKaskoData.policyServices = Views.InputKaskoData.policyServices kaskoUserInfo
+                             }
+
 inputKaskoData :: KaskoUserInfo -> Int -> Bool -> String -> IO KaskoUserInfo
 inputKaskoData kaskoUserInfo editStep False _ = do
   callCommand "cls" 
@@ -146,96 +158,97 @@ inputKaskoData kaskoUserInfo editStep True errorMessage = do
     then inputAutoInfo True errorMessage
     else maybe (inputAutoInfo True errorMessage) return (autoInfo kaskoUserInfo)
 
-  let cert = nothingToJust certificate "inputKaskoData: ошибка получение транспортного сертификата"
+  case certificate of 
+    Nothing -> return nullKaskoUserInfo
+    Just cert -> do
 
-  activeOsago <- getActivePolicy (Enteties.TransportCertificate.uid cert) 0
+      activeOsago <- getActivePolicy (Enteties.TransportCertificate.uid cert) 0
 
-  activeKasko <- getActivePolicy (Enteties.TransportCertificate.uid cert) 1
+      activeKasko <- getActivePolicy (Enteties.TransportCertificate.uid cert) 1
 
-  case activeOsago of 
-    Nothing -> do
-      callCommand "cls"
-      consoleError "У данного автомобиля нет активного ОСАГО полиса. Нажмите Enter, чтобы вернуться в меню"
-      getLine
-      return nullKaskoUserInfo
-    _ -> case activeKasko of 
-      Nothing -> do
-        callCommand "cls"
-        driver <- getDriverById (Enteties.TransportCertificate.driverId cert) 
+      case activeOsago of 
+        Nothing -> do
+          callCommand "cls"
+          inputKaskoData (createNewKaskoUserInfo (kaskoUserInfo {Views.InputKaskoData.birthDate = Nothing, 
+                                Views.InputKaskoData.drivingExpirience = Nothing,
+                                Views.InputKaskoData.autoInfo = Nothing }) ) (-1) True "У данного автомобиля нет активного ОСАГО полиса. Нажмите Enter, чтобы вернуться в меню"
+        _ -> case activeKasko of 
+          Nothing -> do
+            callCommand "cls"
+            driver <- getDriverById (Enteties.TransportCertificate.driverId cert) 
 
-        isSusscessfulIdentification <- if editStep == 1 || editStep == -1
-          then confirmIdentity driver
-          else return True
+            isSusscessfulIdentification <- if editStep == 1 || editStep == -1
+              then confirmIdentity driver
+              else return True
 
-        if not (isSusscessfulIdentification) then return nullKaskoUserInfo
-        else do 
-          age <- calcAgeFromDate (Enteties.Drivers.birthday driver)
+            if not (isSusscessfulIdentification) then return nullKaskoUserInfo
+            else do 
+              age <- calcAgeFromDate (Enteties.Drivers.birthday driver)
 
-          let infoMessage1 = "\nВыбран тип страховки для оформления: КАСКО" ++
-                            getAutoInfo enginePower transportBrand transportModel transport category (Just cert)
-          
-          callCommand "cls" 
-          region <- if editStep == 2
-            then chooseRegion infoMessage1 
-            else maybe (chooseRegion infoMessage1)  return (region kaskoUserInfo)
+              let infoMessage1 = "\nВыбран тип страховки для оформления: КАСКО" ++
+                                getAutoInfo enginePower transportBrand transportModel transport category (Just cert)
+              
+              callCommand "cls" 
+              region <- if editStep == 2
+                then chooseRegion infoMessage1 
+                else maybe (chooseRegion infoMessage1)  return (region kaskoUserInfo)
 
-          let infoMessage2 = infoMessage1 ++ "\nРегион: " ++ (Enteties.Regions.name region)
+              let infoMessage2 = infoMessage1 ++ "\nРегион: " ++ (Enteties.Regions.name region)
 
-          callCommand "cls" 
-          territorie <- if editStep == 2
-            then chooseTerritorie (Enteties.Regions.uid region) infoMessage2 
-            else maybe (chooseTerritorie (Enteties.Regions.uid region) infoMessage2) return (territorie kaskoUserInfo)
+              callCommand "cls" 
+              territorie <- if editStep == 2
+                then chooseTerritorie (Enteties.Regions.uid region) infoMessage2 
+                else maybe (chooseTerritorie (Enteties.Regions.uid region) infoMessage2) return (territorie kaskoUserInfo)
 
-          let infoMessage3 = infoMessage2 ++ "\nМесто проживания: " ++ (Enteties.Territories.name territorie)
+              let infoMessage3 = infoMessage2 ++ "\nМесто проживания: " ++ (Enteties.Territories.name territorie)
 
-          callCommand "cls" 
-          typeKs <- if editStep == 3
-            then сhooseTypeKS infoMessage3 
-            else maybe (сhooseTypeKS infoMessage3) return (typeKS kaskoUserInfo)
+              callCommand "cls" 
+              typeKs <- if editStep == 3
+                then сhooseTypeKS infoMessage3 
+                else maybe (сhooseTypeKS infoMessage3) return (typeKS kaskoUserInfo)
 
-          let infoMessage4 = infoMessage3 ++ "\nСрок страхования: " ++ (Enteties.TypeKS.description typeKs)
+              let infoMessage4 = infoMessage3 ++ "\nСрок страхования: " ++ (Enteties.TypeKS.description typeKs)
 
-          callCommand "cls" 
-          typeKo <- if editStep == 3
-            then сhooseTypeKO infoMessage4 
-            else maybe (сhooseTypeKO infoMessage4) return (typeKO kaskoUserInfo)
+              callCommand "cls" 
+              typeKo <- if editStep == 3
+                then сhooseTypeKO infoMessage4 
+                else maybe (сhooseTypeKO infoMessage4) return (typeKO kaskoUserInfo)
 
-          let infoMessage5 = infoMessage4 ++ "\nКоличество водителей: " ++ (Enteties.TypeKO.description typeKo)
+              let infoMessage5 = infoMessage4 ++ "\nКоличество водителей: " ++ (Enteties.TypeKO.description typeKo)
 
-          callCommand "cls" 
-          deductible <- if editStep == 4
-            then chooseDeducatble infoMessage5 
-            else maybe (chooseDeducatble infoMessage5) return (deductible kaskoUserInfo)
+              callCommand "cls" 
+              deductible <- if editStep == 4
+                then chooseDeducatble infoMessage5 
+                else maybe (chooseDeducatble infoMessage5) return (deductible kaskoUserInfo)
 
-          let infoMessage6 = infoMessage5 ++ "\nФраншиза: " ++ (printf "%f" (Enteties.Deductibles.sumDeductible deductible))
+              let infoMessage6 = infoMessage5 ++ "\nФраншиза: " ++ (printf "%f" (Enteties.Deductibles.sumDeductible deductible))
 
-          callCommand "cls" 
-          services <- if editStep == 5
-            then choosePolicyServices infoMessage6 
-            else maybe (choosePolicyServices infoMessage6) return (policyServices kaskoUserInfo) 
+              callCommand "cls" 
+              services <- if editStep == 5
+                then choosePolicyServices infoMessage6 
+                else maybe (choosePolicyServices infoMessage6) return (policyServices kaskoUserInfo) 
 
-          let infoMessage7 = infoMessage6 ++ "\nВыбранные услуги: " ++ (concat (map (\x -> (Enteties.PolicyServices.name x) ++ ", ") services))
+              let infoMessage7 = infoMessage6 ++ "\nВыбранные услуги: " ++ (concat (map (\x -> (Enteties.PolicyServices.name x) ++ ", ") services))
 
-          callCommand "cls" 
-          editPunkt <- chooseKaskoEditStep True infoMessage7
+              callCommand "cls" 
+              editPunkt <- chooseKaskoEditStep True infoMessage7
 
-          let kaskoInfo = KaskoUserInfo {Views.InputKaskoData.birthDate = Just (age, (Enteties.Drivers.birthday driver)), 
-                      drivingExpirience = Just (Enteties.Drivers.experience driver),
-                      autoInfo = Just (enginePower, transportBrand, transportModel, transport, category, Nothing), 
-                      region = Just region, 
-                      territorie = Just territorie, 
-                      typeKS = Just typeKs, 
-                      typeKO = Just typeKo,
-                      deductible = Just deductible,
-                      policyServices = Just services
-                  }
+              let kaskoInfo = KaskoUserInfo {Views.InputKaskoData.birthDate = Just (age, (Enteties.Drivers.birthday driver)), 
+                          drivingExpirience = Just (Enteties.Drivers.experience driver),
+                          autoInfo = Just (enginePower, transportBrand, transportModel, transport, category, (Just cert)), 
+                          region = Just region, 
+                          territorie = Just territorie, 
+                          typeKS = Just typeKs, 
+                          typeKO = Just typeKo,
+                          deductible = Just deductible,
+                          policyServices = Just services
+                      }
 
-          case editPunkt of 
-            (-1) -> return kaskoInfo
-            _ -> inputKaskoData kaskoInfo editPunkt True ""
+              case editPunkt of 
+                (-1) -> return kaskoInfo
+                _ -> inputKaskoData kaskoInfo editPunkt True ""
 
-      _ -> do
-        callCommand "cls"
-        consoleError "У данного автомобиля уже есть активный КАСКО полис. Нажмите Enter, чтобы вернуться в меню"
-        getLine
-        return nullKaskoUserInfo
+          _ -> do
+              inputKaskoData (createNewKaskoUserInfo (kaskoUserInfo {Views.InputKaskoData.birthDate = Nothing, 
+                                Views.InputKaskoData.drivingExpirience = Nothing,
+                                Views.InputKaskoData.autoInfo = Nothing }) ) (-1) True "На данный автомобиль уже зарегестрирован полис КАСКО"
