@@ -1,4 +1,4 @@
-module Enteties.Drivers (Driver(..), getDriverByPassport) where
+module Enteties.Drivers (Driver(..), getDriverByPassport, getDriverById) where
 
 import Shared.Api.GetFilterData
 
@@ -18,5 +18,10 @@ getDriverByPassport serie number = do
     case length drivers of
         0 -> return Nothing
         _ -> return $ Just (drivers !! (0))
+
+getDriverById :: Int -> IO (Driver)
+getDriverById driverId = do
+    drivers <- getFilterData "database/Drivers.hdb" 0 10000 "" (\_ -> "") (\driver -> uid driver == driverId)
+    return $ drivers !! (0)
     
    

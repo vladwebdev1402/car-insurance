@@ -1,7 +1,6 @@
-module Views.InputOsagoData (OsagoUserInfo(..), inputOsagoData) where
+module Views.InputOsagoData (OsagoUserInfo(..), inputOsagoData, nullOsagoUserInfo) where
 
 import System.Process (callCommand)
-import Enteties.PolicyTypes 
 import Enteties.Regions
 import Enteties.Territories
 import Enteties.TypeKS
@@ -10,37 +9,51 @@ import Enteties.TransportBrands
 import Enteties.TransportModels 
 import Enteties.Transports
 import Enteties.TypesTransport
-import Shared.Inputs.ChooseData
-import Shared.Inputs.InputPassport
+import Enteties.TransportCertificate
+import Enteties.Drivers
+import Enteties.Policies
 import Shared.Inputs.InputDayOfBirth
 import Shared.Inputs.InputRangeNumber
+import Shared.Calc.CalcAgeFromDate
 import Shared.Logs.LogData
+import Shared.Validators.NothingToJust
 import Shared.Calc.GetMaximumDrivingExpirience
 import Modules.ChooseRegion
 import Modules.ChooseTerritorie
 import Modules.ChoosePolicyType
 import Modules.ChooseTypeKS
 import Modules.ChooseTypeKO
+import Modules.InputUserPassport
 import Views.Helpers.InputAutoInfo
 import Views.Helpers.GetAutoInfo
+import Views.Helpers.ChooseOsagoEditStep
+import Views.Helpers.ConfirmIdentity
 
 data OsagoUserInfo = OsagoUserInfo {
   birthDate :: Maybe (Int, String),
-  passport :: Maybe (Int, Int),
   drivingExpirience :: Maybe Int,
-  autoInfo :: Maybe (Int, Maybe TransportBrand, Maybe TransportModel, Maybe Transport, TypeTransport),
+  autoInfo :: Maybe (Int, Maybe TransportBrand, Maybe TransportModel, Maybe Transport, TypeTransport, Maybe TransportCertificate),
   region :: Maybe Region,
   territorie :: Maybe Territorie,
   typeKS :: Maybe TypeKS,
   typeKO :: Maybe TypeKO}
 
-inputOsagoData :: OsagoUserInfo -> Int -> Bool -> IO OsagoUserInfo
-inputOsagoData osagoUserInfo editStep False = do
+nullOsagoUserInfo :: OsagoUserInfo
+nullOsagoUserInfo = OsagoUserInfo {Views.InputOsagoData.birthDate = Nothing, 
+                             Views.InputOsagoData.drivingExpirience = Nothing,
+                             Views.InputOsagoData.autoInfo = Nothing, 
+                             Views.InputOsagoData.region = Nothing, 
+                             Views.InputOsagoData.territorie = Nothing, 
+                             Views.InputOsagoData.typeKS = Nothing, 
+                             Views.InputOsagoData.typeKO = Nothing}
+
+inputOsagoData :: OsagoUserInfo -> Int -> Bool -> String -> IO OsagoUserInfo
+inputOsagoData osagoUserInfo editStep False _ = do
   callCommand "cls" 
 
   (age, birthDate) <- if editStep == 1
     then inputDayOfBirth 16 100 
-    else maybe (inputDayOfBirth 16 100) return (birthDate osagoUserInfo)
+    else maybe (inputDayOfBirth 16 100) return (Views.InputOsagoData.birthDate osagoUserInfo)
 
   let infoMessage1 = "Выбран тип страховки: ОСАГО\nДата рождения: " ++ birthDate ++ "\nВозраст: " ++ show age
 
@@ -52,11 +65,11 @@ inputOsagoData osagoUserInfo editStep False = do
   let infoMessage2 = infoMessage1 ++ "\nСтаж вождения: " ++ show drivingExpirience
 
   callCommand "cls" 
-  (enginePower, transportBrand, transportModel, transport, category) <- if editStep == 2
+  (enginePower, transportBrand, transportModel, transport, category, _) <- if editStep == 2
     then inputAutoInfo False infoMessage2 
     else maybe (inputAutoInfo False infoMessage2) return (autoInfo osagoUserInfo)
 
-  let infoMessage3 = infoMessage2 ++ (getAutoInfo enginePower transportBrand transportModel transport category)
+  let infoMessage3 = infoMessage2 ++ (getAutoInfo enginePower transportBrand transportModel transport category Nothing)
 
   region <- if editStep == 3
     then chooseRegion infoMessage3 
@@ -84,16 +97,90 @@ inputOsagoData osagoUserInfo editStep False = do
   let infoMessage7 = infoMessage6 ++ "\nКоличество водителей: " ++ (Enteties.TypeKO.description typeKo)
 
   callCommand "cls" 
-  let editPunkts = ["Продолжить", "Исправить дату рождения и опыт вождения", "Исправить информацию об автомобиле", "Исправить регион и место проживания", "Исправить срок страхования", "Исправить количество водителей"]
+  editPunkt <- chooseOsagoEditStep False infoMessage7
   
-  editPunkt <- chooseData editPunkts (\array -> generateLogData array (\x -> x)) "Выберите пункт для дальнейшего действия: " infoMessage7
-  
-  let osagoInfo = OsagoUserInfo {birthDate = Just (age, birthDate), 
+  let osagoInfo = OsagoUserInfo {Views.InputOsagoData.birthDate = Just (age, birthDate), 
           drivingExpirience = Just drivingExpirience,
-          autoInfo = Just (enginePower, transportBrand, transportModel, transport, category), region = Just region, territorie = Just territorie, typeKS = Just typeKs, typeKO = Just typeKo}
+          autoInfo = Just (enginePower, transportBrand, transportModel, transport, category, Nothing), region = Just region, territorie = Just territorie, typeKS = Just typeKs, typeKO = Just typeKo}
 
   case editPunkt of 
-    1 -> return osagoInfo
-    _ -> inputOsagoData osagoInfo (editPunkt - 1) False
+    (-1) -> return osagoInfo
+    _ -> inputOsagoData osagoInfo (editPunkt) False ""
 
+inputOsagoData osagoUserInfo editStep True errorMessage = do
+
+  callCommand "cls" 
+  (enginePower, transportBrand, transportModel, transport, category, certificate) <- if editStep == 1
+    then inputAutoInfo True errorMessage 
+    else maybe (inputAutoInfo True "") return (autoInfo osagoUserInfo)
+
+  let cert = nothingToJust certificate "inputOsagoData: ошибка получение транспортного сертификата"
+
+  activeOsago <- getActiveOsagoPolicy (Enteties.TransportCertificate.uid cert)
+
+  case activeOsago of
+    Nothing -> do 
+        driver <- getDriverById (Enteties.TransportCertificate.driverId cert) 
+
+        isSusscessfulIdentification <- if editStep == 1 || editStep == -1
+          then confirmIdentity driver
+          else return True
+
+        if not (isSusscessfulIdentification) then return nullOsagoUserInfo
+        else do 
+          age <- calcAgeFromDate (Enteties.Drivers.birthday driver)
+
+          let infoMessage1 = "\nВыбран тип страховки для оформления: ОСАГО" ++
+                            getAutoInfo enginePower transportBrand transportModel transport category (Just cert)
+
+          region <- if editStep == 2
+          then chooseRegion infoMessage1 
+          else maybe (chooseRegion infoMessage1)  return (region osagoUserInfo)
+
+          let infoMessage2 = infoMessage1 ++ "\nРегион: " ++ (Enteties.Regions.name region)
+
+          territorie <- if editStep == 2
+            then chooseTerritorie (Enteties.Regions.uid region) infoMessage2 
+            else maybe (chooseTerritorie (Enteties.Regions.uid region) infoMessage2) return (territorie osagoUserInfo)
+
+          let infoMessage3 = infoMessage2 ++ "\nМесто проживания: " ++ (Enteties.Territories.name territorie)
+
+          typeKs <- if editStep == 3
+          then сhooseTypeKS infoMessage3 
+          else maybe (сhooseTypeKS infoMessage3) return (typeKS osagoUserInfo)
+
+          let infoMessage4 = infoMessage3 ++ "\nСрок страхования: " ++ (Enteties.TypeKS.description typeKs)
+
+          typeKo <- if editStep == 4
+          then сhooseTypeKO infoMessage4 
+          else maybe (сhooseTypeKO infoMessage4) return (typeKO osagoUserInfo)
+
+          let infoMessage5 = infoMessage4 ++ "\nКоличество водителей: " ++ (Enteties.TypeKO.description typeKo)
+
+          let osagoInfo = OsagoUserInfo {Views.InputOsagoData.birthDate = Just (age, (Enteties.Drivers.birthday driver)),
+              drivingExpirience = Just (Enteties.Drivers.experience driver),
+              autoInfo = Just (enginePower, transportBrand, transportModel, transport, category, (Just cert)), 
+              region = (Just region), 
+              territorie = (Just territorie),
+              typeKS = (Just typeKs), 
+              typeKO = (Just typeKo)}
+
+          editPunkt <- chooseOsagoEditStep True infoMessage5
+
+          case editPunkt of 
+              (-1) -> return osagoInfo
+              _ -> inputOsagoData osagoInfo editPunkt True ""
+  
+    _ -> do
+        inputOsagoData (OsagoUserInfo {Views.InputOsagoData.birthDate = Nothing, 
+                             Views.InputOsagoData.drivingExpirience = Nothing,
+                             Views.InputOsagoData.autoInfo = Nothing, 
+                             Views.InputOsagoData.region = Views.InputOsagoData.region osagoUserInfo, 
+                             Views.InputOsagoData.territorie = Views.InputOsagoData.territorie osagoUserInfo, 
+                             Views.InputOsagoData.typeKS = Views.InputOsagoData.typeKS osagoUserInfo, 
+                             Views.InputOsagoData.typeKO = Views.InputOsagoData.typeKO osagoUserInfo} )(-1) True "На данный автомобиль уже зарегестрирован полис ОСАГО"
+
+  
+
+ 
   

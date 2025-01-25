@@ -1,3 +1,4 @@
-Driver {uid = 0, surName = "Иванов", firstName = "Иван", patroName = "Иванович", experience = 5, driverLevel = 3, numberPassport = 123456, seriePassport = 6543, birthday = "10.07.1985"}
+Driver {uid = 0, surName = "Иванов", firstName = "Иван", patroName = "Иванович", experience = 5, driverLevel = 3, numberPassport = 531345, seriePassport = 6543, birthday = "10.07.1985"}
 Driver {uid = 1, surName = "Петров", firstName = "Петр", patroName = "Петрович", experience = 10, driverLevel = 5, numberPassport = 234567, seriePassport = 7654, birthday = "25.03.1978"}
 Driver {uid = 2, surName = "Сидоров", firstName = "Сергей", patroName = "Алексеевич", experience = 2, driverLevel = 2, numberPassport = 345678, seriePassport = 8765, birthday = "15.12.1990"}
+Driver {uid = 3, surName = "Кривенко", firstName = "Владислав", patroName = "Владимирович", experience = 4, driverLevel = 3, numberPassport = 123456, seriePassport = 1234, birthday = "14.02.2004"}

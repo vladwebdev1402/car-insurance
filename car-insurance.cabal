@@ -29,10 +29,12 @@ library
       Enteties.CompanyPolicyLink
       Enteties.Companys
       Enteties.Drivers
+      Enteties.Policies
       Enteties.PolicyTypes
       Enteties.Regions
       Enteties.Territories
       Enteties.TransportBrands
+      Enteties.TransportCertificate
       Enteties.TransportModels
       Enteties.Transports
       Enteties.TypeKO
@@ -50,6 +52,7 @@ library
       Modules.ChooseTypeKO
       Modules.ChooseTypeKS
       Modules.ChooseTypeTransport
+      Modules.InputUserPassport
       Shared.Api.GetAllData
       Shared.Api.GetFilterData
       Shared.Calc.CalcAgeFromDate
@@ -69,9 +72,9 @@ library
       Views.CalcOsagoPrices
       Views.CalcPriceInsurance
       Views.Helpers.ChooseOsagoEditStep
+      Views.Helpers.ConfirmIdentity
       Views.Helpers.GetAutoInfo
       Views.Helpers.InputAutoInfo
-      Views.Helpers.InputUserPassport
       Views.InformationInsurance
       Views.InputOsagoData
       Views.RegistrationInsurance

@@ -1,3 +1,4 @@
-TransportCertificate {uid = 0, transportId = 1, driverId = 0, registrationNumber = "A123BC77"}
-TransportCertificate {uid = 1, transportId = 2, driverId = 1, registrationNumber = "B456CD99"}
-TransportCertificate {uid = 2, transportId = 3, driverId = 2, registrationNumber = "C789DE33"}
+TransportCertificate {uid = 0, transportId = 1, driverId = 0, registrationNumber = "А123АА77"}
+TransportCertificate {uid = 1, transportId = 2, driverId = 1, registrationNumber = "В456УУ99"}
+TransportCertificate {uid = 2, transportId = 3, driverId = 2, registrationNumber = "С789ДЕ33"}
+TransportCertificate {uid = 3, transportId = 3, driverId = 3, registrationNumber = "М123ММ70"}

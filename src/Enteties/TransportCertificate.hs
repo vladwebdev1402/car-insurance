@@ -1,0 +1,13 @@
+module Enteties.TransportCertificate (TransportCertificate(..), getTransportCertificateByNumber) where
+
+import Shared.Api.GetFilterData
+
+data TransportCertificate = TransportCertificate {uid :: Int, transportId :: Int, driverId :: Int, registrationNumber :: String} deriving (Read, Show)
+
+getTransportCertificateByNumber :: String -> IO (Maybe TransportCertificate)
+getTransportCertificateByNumber number = do
+    transportCertificates <- getFilterData "database/TransportCertificate.hdb" 0 10000 "" (\_ -> "") (\transportCertificate -> registrationNumber transportCertificate == number)
+    case length transportCertificates of
+        0 -> return Nothing
+        _ -> return $ Just (transportCertificates !! (0))
+

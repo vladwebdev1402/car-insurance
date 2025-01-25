@@ -29,7 +29,7 @@ calcOsagoPrices osagoUserInfo = do
   
   let typeKo = nothingToJust (Views.InputOsagoData.typeKO osagoUserInfo) "getOsagoCoeffs: Ошибка получения количества водителей"
   
-  let (enginePower, transportBrand, transportModel, transport, category) = autoInfo
+  let (enginePower, transportBrand, transportModel, transport, category, _) = autoInfo
 
   coefKVS <- getTypeKVS age drivingExpirience True
 
