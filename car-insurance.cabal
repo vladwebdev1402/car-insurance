@@ -55,8 +55,11 @@ library
       Modules.InputUserPassport
       Shared.Api.GetAllData
       Shared.Api.GetFilterData
+      Shared.Api.InputNewEntity
       Shared.Calc.CalcAgeFromDate
       Shared.Calc.GetMaximumDrivingExpirience
+      Shared.Helpers.GetCountDays
+      Shared.Helpers.GetTodayDate
       Shared.Inputs.ChooseData
       Shared.Inputs.InputDate
       Shared.Inputs.InputDayOfBirth

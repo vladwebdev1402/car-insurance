@@ -1,1 +1,1 @@
-Policy {uid = 0, companyPolicyLinkId = 0, policyTypeId = 0, transportCertificateId = 0, status = "", countDays = 0, sumInsurance = 0.0, sumRemaininInsurance = 0.0, sumDeductible = 0.0, date = ""}
+Policy {uid = 0, companyPolicyLinkId = 3, policyTypeId = 0, transportCertificateId = 3, status = "active", countDays = 240, sumInsurance = 16133.945, sumRemaininInsurance = 0.0, sumDeductible = 0.0, date = "25.01.2025"}

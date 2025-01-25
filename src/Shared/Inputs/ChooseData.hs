@@ -15,12 +15,13 @@ chooseData arrayData displayFunction inputMessage infoMessage = do
     consoleInfo inputMessage
     displayFunction arrayData
     input <- getLine
-    case validateNumberRangeInput 1 (length arrayData) input of
-        Just num -> return num
-        Nothing -> do
-            callCommand "cls" 
-            consoleError ("Ошибка: введите число от 1 до " ++ show (length arrayData) ++ ".")
-            chooseData arrayData displayFunction inputMessage infoMessage
+    if (input == "выход") then return (-1)
+    else case validateNumberRangeInput 1 (length arrayData) input of
+            Just num -> return num
+            Nothing -> do
+                callCommand "cls" 
+                consoleError ("Ошибка: введите число от 1 до " ++ show (length arrayData) ++ ".")
+                chooseData arrayData displayFunction inputMessage infoMessage
 
 choosePaginatedData :: [a] -> ([a] -> IO ()) -> IO (Int, String)
 choosePaginatedData arrayData displayFunction = do

@@ -110,9 +110,10 @@ inputOsagoData osagoUserInfo editStep False _ = do
 inputOsagoData osagoUserInfo editStep True errorMessage = do
 
   callCommand "cls" 
+  putStrLn errorMessage
   (enginePower, transportBrand, transportModel, transport, category, certificate) <- if editStep == 1
-    then inputAutoInfo True errorMessage 
-    else maybe (inputAutoInfo True "") return (autoInfo osagoUserInfo)
+    then inputAutoInfo True errorMessage
+    else maybe (inputAutoInfo True errorMessage) return (autoInfo osagoUserInfo)
 
   let cert = nothingToJust certificate "inputOsagoData: ошибка получение транспортного сертификата"
 
@@ -178,7 +179,7 @@ inputOsagoData osagoUserInfo editStep True errorMessage = do
                              Views.InputOsagoData.region = Views.InputOsagoData.region osagoUserInfo, 
                              Views.InputOsagoData.territorie = Views.InputOsagoData.territorie osagoUserInfo, 
                              Views.InputOsagoData.typeKS = Views.InputOsagoData.typeKS osagoUserInfo, 
-                             Views.InputOsagoData.typeKO = Views.InputOsagoData.typeKO osagoUserInfo} )(-1) True "На данный автомобиль уже зарегестрирован полис ОСАГО"
+                             Views.InputOsagoData.typeKO = Views.InputOsagoData.typeKO osagoUserInfo} ) (-1) True "На данный автомобиль уже зарегестрирован полис ОСАГО"
 
   
 

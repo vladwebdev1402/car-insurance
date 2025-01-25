@@ -10,7 +10,6 @@ validLetters = all (`elem` "АВЕКМНОРСТУХ")
 
 inputNumberRegistration :: String -> IO (String)
 inputNumberRegistration infoMessage = do
-    putStrLn infoMessage
     putStrLn "Введите регистрационный номер автомобиля (М999ММ99):"
     input <- getLine
     let upperInput = map toUpper input  
