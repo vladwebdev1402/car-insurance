@@ -46,6 +46,11 @@ calcKaskoPrice oldKaskoUserInfo editPunkt = do
 
   kaskoUserInfo <- inputKaskoData kaskoUserInfo editPunkt False "" 
 
-  putStrLn $ "Выбран тип страховки: КАСКО"
+  case (Views.InputKaskoData.birthDate kaskoUserInfo) of
+    Nothing -> return ()
+    _ -> do 
+      putStrLn "В разработке"
+
+  
 
   

@@ -117,7 +117,7 @@ inputOsagoData osagoUserInfo editStep True errorMessage = do
 
   let cert = nothingToJust certificate "inputOsagoData: ошибка получение транспортного сертификата"
 
-  activeOsago <- getActiveOsagoPolicy (Enteties.TransportCertificate.uid cert)
+  activeOsago <- getActivePolicy (Enteties.TransportCertificate.uid cert) 0
 
   case activeOsago of
     Nothing -> do 

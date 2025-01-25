@@ -17,17 +17,17 @@ import Shared.Validators.NothingToJust
 calcOsagoPrices :: OsagoUserInfo -> IO [(Company, Float)]
 calcOsagoPrices osagoUserInfo = do
 
-  let (age, date) = nothingToJust (Views.InputOsagoData.birthDate osagoUserInfo) "getOsagoCoeffs: Ошибка получения возраста и даты"
+  let (age, date) = nothingToJust (Views.InputOsagoData.birthDate osagoUserInfo) "calcOsagoPrices: Ошибка получения возраста и даты"
   
-  let drivingExpirience = nothingToJust (Views.InputOsagoData.drivingExpirience osagoUserInfo) "getOsagoCoeffs: Ошибка получения опыта вождения"
+  let drivingExpirience = nothingToJust (Views.InputOsagoData.drivingExpirience osagoUserInfo) "calcOsagoPrices: Ошибка получения опыта вождения"
   
-  let territorie = nothingToJust (Views.InputOsagoData.territorie osagoUserInfo) "getOsagoCoeffs: Ошибка места проживания"
+  let territorie = nothingToJust (Views.InputOsagoData.territorie osagoUserInfo) "calcOsagoPrices: Ошибка места проживания"
   
-  let autoInfo = nothingToJust (Views.InputOsagoData.autoInfo osagoUserInfo) "getOsagoCoeffs: Ошибка информации об автомобиле"
+  let autoInfo = nothingToJust (Views.InputOsagoData.autoInfo osagoUserInfo) "calcOsagoPrices: Ошибка информации об автомобиле"
   
-  let typeKs = nothingToJust (Views.InputOsagoData.typeKS osagoUserInfo) "getOsagoCoeffs: Ошибка получения срока страхования"
+  let typeKs = nothingToJust (Views.InputOsagoData.typeKS osagoUserInfo) "calcOsagoPrices: Ошибка получения срока страхования"
   
-  let typeKo = nothingToJust (Views.InputOsagoData.typeKO osagoUserInfo) "getOsagoCoeffs: Ошибка получения количества водителей"
+  let typeKo = nothingToJust (Views.InputOsagoData.typeKO osagoUserInfo) "calcOsagoPrices: Ошибка получения количества водителей"
   
   let (enginePower, transportBrand, transportModel, transport, category, _) = autoInfo
 

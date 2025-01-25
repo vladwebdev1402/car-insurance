@@ -11,3 +11,11 @@ chooseKaskoEditStep False infoMessage = do
   case editPunkt of 
     1 -> return (-1)
     _ -> return (editPunkt - 1)
+
+chooseKaskoEditStep True infoMessage = do
+  let editPunkts = ["Продолжить", "Изменить регистрационный номер", "Изменить регион и место проживания", "Изменить срок страхования", "Изменить количество водителей", "Изменить франшизу", "Изменить выбранные услуги"]
+  editPunkt <- chooseData editPunkts (\array -> generateLogData array (\x -> x)) "Выберите пункт для дальнейшего действия: " infoMessage
+
+  case editPunkt of 
+    1 -> return (-1)
+    _ -> return (editPunkt - 1)
