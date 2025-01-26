@@ -50,7 +50,7 @@ getPolicies certificates = do
 
     case (all (\item -> item == False) policiesBooleans) of
         True -> informationInsurance "У данного водителя не имеется полисов"
-        _ -> showPolicies certificates
+        _ -> showPolicies certificates Nothing
 
 getPoliciesWithCertificates :: [TransportCertificate] -> IO [(TransportCertificate, Policy)]
 getPoliciesWithCertificates certificates = do 
@@ -66,14 +66,13 @@ getPoliciesWithCertificates certificates = do
     return flattenPolicies
 
 
-showPolicies :: [TransportCertificate] -> IO ()
-showPolicies certificates = do
+showPolicies :: [TransportCertificate] -> Maybe [FullPolicyInfo] -> IO ()
+showPolicies certificates oldFullInfos = do
     callCommand "cls"
     
     certificatesWithPolicies <- getPoliciesWithCertificates certificates
     
-    fullInfos <- getFullInfoForPolicy certificatesWithPolicies
-
+    fullInfos <- maybe (getFullInfoForPolicy certificatesWithPolicies) return oldFullInfos
     choosedPolicy <- choosePolicy fullInfos 0 "" ""
 
     case choosedPolicy of 
@@ -82,3 +81,6 @@ showPolicies certificates = do
             print policy
             getLine
             putStrLn ""
+
+-- deactivePolicy :: [FullPolicyInfo] -> FullPolicyInfo -> IO ()
+-- deactivePolicy :: fullInfos 

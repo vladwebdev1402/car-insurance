@@ -25,7 +25,6 @@ getActivePolicy certificateId polyceType = do
 getPoliciesByCertificate :: Int -> IO [Policy]
 getPoliciesByCertificate certificateId = getFilterData "database/Policies.hdb" 0 10000 "" (\_ -> "") (\policy -> transportCertificateId policy == certificateId)
 
-
 addNewPolicy :: Policy -> IO (Policy)
 addNewPolicy policy = do
     allPolicys <- getAllData "database/Policies.hdb" :: IO [Policy]
@@ -37,9 +36,12 @@ addNewPolicy policy = do
     return newPolicy
 
 policyStatusRuTranslate :: String -> String 
-policyStatusRuTranslate "active" = "активен"
-policyStatusRuTranslate "deactive" = "не активен"
+policyStatusRuTranslate status
+    | status == "active" = "активен"
+    | otherwise = "не активен"
 
 policyStatusEngTranslate :: String -> String 
-policyStatusEngTranslate "активен" = "active"
-policyStatusEngTranslate "не активен" = "deactive"
+policyStatusEngTranslate status 
+    | status == "активен" = "active"
+    | otherwise = "deactive"
+
