@@ -86,19 +86,21 @@ calcKaskoPrices kaskoUserInfo = do
 
         coefTb <- getCoefTB linkId (Enteties.TypesTransport.uid category)
 
-        let price = (Enteties.CoefKVS.value coefKvs) 
-                    * (Enteties.CoefDeductible.value coefDeductible) 
-                    * (Enteties.CoefKBM.value coefKbm) 
-                    * (Enteties.CoefKM.value coefKm) 
-                    * (Enteties.CoefKO.value coefKo) 
-                    * (Enteties.CoefKS.value coefKs) 
-                    * (Enteties.CoefKT.value coefKt) 
+        let price = (maybe (0) Enteties.CoefKVS.value coefKvs)
+                    * (maybe (0) Enteties.CoefDeductible.value coefDeductible) 
+                    * (maybe (0) Enteties.CoefKBM.value coefKbm) 
+                    * (maybe (0) Enteties.CoefKM.value coefKm) 
+                    * (maybe (0) Enteties.CoefKO.value coefKo) 
+                    * (maybe (0) Enteties.CoefKS.value coefKs) 
+                    * (maybe (0) Enteties.CoefKT.value coefKt) 
                     * (Enteties.CoefTB.value coefTb) 
                     * summuryServiceCoef
 
         return (company, price)
         ) links
 
-    return $ sortBy (\(_, priceX) (_, priceY) -> compare priceX priceY) companysWithPrice
+    let filteredCompanys = filter (\(_, price) -> price > 0) companysWithPrice  
+
+    return $ sortBy (\(_, priceX) (_, priceY) -> compare priceX priceY) filteredCompanys
 
         
