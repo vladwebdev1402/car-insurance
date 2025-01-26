@@ -26,7 +26,7 @@ calcOsagoPrice oldOsagoUserInfo editPunkt = do
 
   let osagoUserInfo = case oldOsagoUserInfo of
         Nothing -> nullOsagoUserInfo
-        _ -> osagoUserInfo
+        Just osagoInfo -> osagoInfo
 
   osagoUserInfo <- inputOsagoData osagoUserInfo editPunkt False "" 
 
@@ -44,7 +44,7 @@ calcKaskoPrice :: Maybe KaskoUserInfo -> Int -> IO ()
 calcKaskoPrice oldKaskoUserInfo editPunkt = do
   let kaskoUserInfo = case oldKaskoUserInfo of
         Nothing -> nullKaskoUserInfo
-        _ -> kaskoUserInfo
+        Just userInfo -> userInfo
 
   kaskoUserInfo <- inputKaskoData kaskoUserInfo editPunkt False "" 
 
