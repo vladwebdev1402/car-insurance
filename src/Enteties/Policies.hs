@@ -1,5 +1,7 @@
-module Enteties.Policies (Policy(..), getActivePolicy, addNewPolicy, getPoliciesByCertificate, policyStatusRuTranslate, policyStatusEngTranslate) where
+module Enteties.Policies (Policy(..), getActivePolicy, updatePolicy, addNewPolicy, getPoliciesByCertificate, policyStatusRuTranslate, policyStatusEngTranslate) where
 
+import System.IO
+import Data.List (intercalate)
 import Shared.Api.GetAllData
 import Shared.Api.GetFilterData
 import Shared.Api.InputNewEntity
@@ -35,6 +37,15 @@ addNewPolicy policy = do
     inputNewEntity "database/Policies.hdb" newPolicy
     return newPolicy
 
+updatePolicy :: Policy -> IO (Policy)
+updatePolicy newPolicy = do
+    allPolicys <- getAllData "database/Policies.hdb" :: IO [Policy]
+    newPolicys <- mapM (\item -> if uid item == uid newPolicy then return newPolicy else return item) allPolicys
+    handle <- openFile "database/Policies.hdb" WriteMode
+    hPutStr handle (init (unlines $ map show newPolicys))
+    hClose handle
+    return newPolicy
+
 policyStatusRuTranslate :: String -> String 
 policyStatusRuTranslate status
     | status == "active" = "активен"
@@ -42,6 +53,5 @@ policyStatusRuTranslate status
 
 policyStatusEngTranslate :: String -> String 
 policyStatusEngTranslate status 
-    | status == "активная" = "active"
+    | status == "активен" = "active"
     | otherwise = "deactive"
-

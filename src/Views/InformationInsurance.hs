@@ -1,5 +1,6 @@
 module Views.InformationInsurance (informationInsurance) where
 
+import Text.Printf (printf)
 import Data.Maybe (isNothing)
 import Data.List (sortBy, all)
 import System.Process (callCommand)
@@ -15,6 +16,7 @@ import Modules.FullPolicyInfo
 import Shared.Inputs.ChooseData (chooseData)
 import Shared.Logs.LogData
 import Shared.Inputs.InputPassport
+import Shared.Calc.CalcDaysSince
 
 informationInsurance :: String -> IO ()
 informationInsurance infoMessage = do 
@@ -85,7 +87,33 @@ deactivePolicy fullInfos choosedInfo = do
     resultChecked <- checkActivePolicy choosedInfo
 
     if resultChecked then do
-        putStrLn ""
+        let link = (Modules.FullPolicyInfo.link choosedInfo)
+        
+        let policy = (Modules.FullPolicyInfo.policy choosedInfo)
+
+        let (percent, priceRegistration, countDays, date) = ((amountPercent link) / 100, 
+                                                        Enteties.Policies.sumInsurance policy, 
+                                                        Enteties.Policies.countDays policy,
+                                                        Enteties.Policies.date policy)
+        daySince <- calcDaysSince date
+
+        let daysPercent = (fromIntegral (countDays - daySince) :: Float) / (fromIntegral countDays :: Float)
+
+        let sumRemain = (priceRegistration - (percent * priceRegistration)) * daysPercent
+        
+        newPolicy <- updatePolicy policy {status = "deactive", sumRemaininInsurance = sumRemain}
+
+        newFullInfos <- mapM (\item -> do 
+            if Enteties.Policies.uid (Modules.FullPolicyInfo.policy item) == Enteties.Policies.uid policy then return item {Modules.FullPolicyInfo.policy = newPolicy}
+            else return item
+            ) fullInfos
+
+        putStrLn ("\nСтраховка деактивирована\nСумма возврата: " ++ (printf "%.2f" sumRemain))
+        putStrLn "Чтобы продолжить, нажмите Enter"
+        getLine
+
+        showPolicies (map Modules.FullPolicyInfo.certificate fullInfos) (Just newFullInfos)
+
     else showPolicies (map Modules.FullPolicyInfo.certificate fullInfos) (Just fullInfos)
 
 checkActivePolicy :: FullPolicyInfo -> IO Bool 

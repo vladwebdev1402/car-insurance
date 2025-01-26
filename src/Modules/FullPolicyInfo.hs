@@ -26,7 +26,12 @@ getFullInfoForPolicyString fullPolicyInfo =
         0.0 -> ""
         sum -> "\nРазмер франшизы: " ++ (printf "%.2f" sum)
         ) ++ 
+    (case (Enteties.Policies.sumRemaininInsurance (policy fullPolicyInfo)) of 
+        0.0 -> ""
+        sum -> "\nСумма возврата: " ++ (printf "%.2f" sum)
+        ) ++ 
     "\nДата оформления: " ++ (Enteties.Policies.date (policy fullPolicyInfo)) ++ 
+    "\nСрок оформления: " ++ (show (Enteties.Policies.countDays (policy fullPolicyInfo))) ++ " дней" ++ 
     "\nСтатус полиса: " ++ (policyStatusRuTranslate (Enteties.Policies.status (policy fullPolicyInfo))) ++
     getPolicyCasesInfo (policyCases fullPolicyInfo)
 

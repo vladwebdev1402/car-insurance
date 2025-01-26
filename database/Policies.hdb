@@ -1,3 +1,4 @@
-Policy {uid = 0, companyPolicyLinkId = 3, policyTypeId = 0, transportCertificateId = 3, status = "deactive", countDays = 240, sumInsurance = 16133.945, sumRemaininInsurance = 0.0, sumDeductible = 0.0, date = "25.01.2025"}
-Policy {uid = 2, companyPolicyLinkId = 2, policyTypeId = 0, transportCertificateId = 3, status = "active", countDays = 360, sumInsurance = 7265.0044, sumRemaininInsurance = 0.0, sumDeductible = 0.0, date = "26.01.2025"}
-Policy {uid = 3, companyPolicyLinkId = 10, policyTypeId = 1, transportCertificateId = 3, status = "active", countDays = 360, sumInsurance = 52701.48, sumRemaininInsurance = 0.0, sumDeductible = 0.0, date = "26.01.2025"}
+Policy {uid = 6, companyPolicyLinkId = 6, policyTypeId = 0, transportCertificateId = 3, status = "deactive", countDays = 360, sumInsurance = 45585.574, sumRemaininInsurance = 35100.89, sumDeductible = 0.0, date = "26.01.2025"}
+Policy {uid = 4, companyPolicyLinkId = 2, policyTypeId = 0, transportCertificateId = 3, status = "deactive", countDays = 360, sumInsurance = 7265.0044, sumRemaininInsurance = 1670.951, sumDeductible = 0.0, date = "26.01.2025"}
+Policy {uid = 3, companyPolicyLinkId = 10, policyTypeId = 1, transportCertificateId = 3, status = "deactive", countDays = 360, sumInsurance = 52701.48, sumRemaininInsurance = 13175.37, sumDeductible = 0.0, date = "26.01.2025"}
+Policy {uid = 5, companyPolicyLinkId = 2, policyTypeId = 0, transportCertificateId = 3, status = "deactive", countDays = 240, sumInsurance = 16012.07, sumRemaininInsurance = 12329.294, sumDeductible = 0.0, date = "26.01.2025"}

@@ -2,7 +2,10 @@ module Enteties.CompanyPolicyLink (CompanyPolicyLink(..), getCompanyPolicyLinkBy
 
 import Shared.Api.GetFilterData
 
-data CompanyPolicyLink = CompanyPolicyLink { uid :: Int, companyId :: Int, policyTypeId :: Int, amountPercent :: Int } deriving (Read, Show)
+data CompanyPolicyLink = CompanyPolicyLink { uid :: Int, 
+        companyId :: Int, 
+        policyTypeId :: Int, 
+        amountPercent :: Float } deriving (Read, Show)
 
 getCompanyPolicyLinkByPolicy :: Int -> IO [CompanyPolicyLink]
 getCompanyPolicyLinkByPolicy policyId = getFilterData "database/CompanyPolicyLink.hdb" 0 10000 "" (\x -> "") (\link -> policyTypeId link == policyId)
