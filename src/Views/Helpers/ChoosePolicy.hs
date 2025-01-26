@@ -23,7 +23,7 @@ choosePolicy fullInfos page status policyType = do
     let takedPolicies = take (maxIdx - minIdx + 1) (drop minIdx fullInfos)
     let filteredPolicies = filterPolicies takedPolicies status policyType
 
-    putStrLn "\nВыберите страховку, для отмены\nВведите 'активен' или 'не активен' для фильтрации страховки\nВведите тип страховки для фильтрации (ОСАГО, КАСКО, ДСАГО)\nВведите сбросить для сброса фильтров\nВведите вперёд, назал для смены страницы"
+    putStrLn "\nВыберите страховку, для отмены\nВведите 'активен' или 'не активен' для фильтрации страховки\nВведите тип страховки для фильтрации (ОСАГО, КАСКО, ДСАГО)\nВведите 'сбросить' для сброса фильтров\nВведите 'вперёд' или 'назал' для смены страницы"
     putStrLn ("\nТекущая страница: " ++ (show (page + 1)) ++ "\n")
     generateLogData filteredPolicies (\item -> getFullInfoForPolicyString item)
     input <- getLine

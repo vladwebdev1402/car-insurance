@@ -56,18 +56,6 @@ nullKaskoUserInfo = KaskoUserInfo {Views.InputKaskoData.birthDate = Nothing,
                              Views.InputKaskoData.policyServices = Nothing
                              }
 
-createNewKaskoUserInfo :: KaskoUserInfo -> KaskoUserInfo
-createNewKaskoUserInfo kaskoUserInfo = KaskoUserInfo {Views.InputKaskoData.birthDate = Views.InputKaskoData.birthDate kaskoUserInfo, 
-                             Views.InputKaskoData.drivingExpirience = Views.InputKaskoData.drivingExpirience kaskoUserInfo,
-                             Views.InputKaskoData.autoInfo = Views.InputKaskoData.autoInfo kaskoUserInfo, 
-                             Views.InputKaskoData.region = Views.InputKaskoData.region kaskoUserInfo, 
-                             Views.InputKaskoData.territorie = Views.InputKaskoData.territorie kaskoUserInfo, 
-                             Views.InputKaskoData.typeKS = Views.InputKaskoData.typeKS kaskoUserInfo, 
-                             Views.InputKaskoData.typeKO = Views.InputKaskoData.typeKO kaskoUserInfo,
-                             Views.InputKaskoData.deductible = Views.InputKaskoData.deductible kaskoUserInfo,
-                             Views.InputKaskoData.policyServices = Views.InputKaskoData.policyServices kaskoUserInfo
-                             }
-
 inputKaskoData :: KaskoUserInfo -> Int -> Bool -> String -> IO KaskoUserInfo
 inputKaskoData kaskoUserInfo editStep False _ = do
   callCommand "cls" 
@@ -169,9 +157,9 @@ inputKaskoData kaskoUserInfo editStep True errorMessage = do
       case activeOsago of 
         Nothing -> do
           callCommand "cls"
-          inputKaskoData (createNewKaskoUserInfo (kaskoUserInfo {Views.InputKaskoData.birthDate = Nothing, 
+          inputKaskoData (kaskoUserInfo {Views.InputKaskoData.birthDate = Nothing, 
                                 Views.InputKaskoData.drivingExpirience = Nothing,
-                                Views.InputKaskoData.autoInfo = Nothing }) ) (-1) True "У данного автомобиля нет активного ОСАГО полиса. Нажмите Enter, чтобы вернуться в меню"
+                                Views.InputKaskoData.autoInfo = Nothing } ) (-1) True "У данного автомобиля нет активного ОСАГО полиса. Нажмите Enter, чтобы вернуться в меню"
         _ -> case activeKasko of 
           Nothing -> do
             callCommand "cls"
@@ -249,6 +237,6 @@ inputKaskoData kaskoUserInfo editStep True errorMessage = do
                 _ -> inputKaskoData kaskoInfo editPunkt True ""
 
           _ -> do
-              inputKaskoData (createNewKaskoUserInfo (kaskoUserInfo {Views.InputKaskoData.birthDate = Nothing, 
+              inputKaskoData (kaskoUserInfo {Views.InputKaskoData.birthDate = Nothing, 
                                 Views.InputKaskoData.drivingExpirience = Nothing,
-                                Views.InputKaskoData.autoInfo = Nothing }) ) (-1) True "На данный автомобиль уже зарегестрирован полис КАСКО"
+                                Views.InputKaskoData.autoInfo = Nothing } ) (-1) True "На данный автомобиль уже зарегестрирован полис КАСКО"
