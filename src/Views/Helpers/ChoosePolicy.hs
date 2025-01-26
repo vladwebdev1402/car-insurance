@@ -13,7 +13,7 @@ filterPolicies :: [FullPolicyInfo] -> String -> String -> [FullPolicyInfo]
 filterPolicies fullInfos status policyType =
     filter (\item ->
         (status == "" || Enteties.Policies.status (Modules.FullPolicyInfo.policy item) == status) &&
-        (policyType == "" || Enteties.PolicyTypes.name (Modules.FullPolicyInfo.policyType item) == policyType)
+        (policyType == "" || (map toLower (Enteties.PolicyTypes.name (Modules.FullPolicyInfo.policyType item))) == policyType)
     ) fullInfos
 
 choosePolicy :: [FullPolicyInfo] -> Int -> String -> String -> IO (Maybe FullPolicyInfo)

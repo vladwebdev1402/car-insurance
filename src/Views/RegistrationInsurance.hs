@@ -72,10 +72,6 @@ registrationOsago oldOsagoUserInfo editPunkt = do
 
           return ()
 
-  case (Views.InputOsagoData.birthDate osagoUserInfo) of
-    Nothing -> return ()
-    _ -> putStrLn "Регистрация ОСАГО: Функция в разработке."
-
 registrationKasko :: Maybe KaskoUserInfo -> Int -> IO ()
 registrationKasko oldKaskoUserInfo editPunkt = do
   let kaskoUserInfo = case oldKaskoUserInfo of
@@ -128,4 +124,4 @@ registrationKasko oldKaskoUserInfo editPunkt = do
 
           addNewPolicy newPolicy
 
-          putStrLn "Регистрация КАСКО: Функция в разработке."
+          return ()

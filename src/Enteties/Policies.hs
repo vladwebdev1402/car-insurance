@@ -42,6 +42,6 @@ policyStatusRuTranslate status
 
 policyStatusEngTranslate :: String -> String 
 policyStatusEngTranslate status 
-    | status == "активен" = "active"
+    | status == "активная" = "active"
     | otherwise = "deactive"
 

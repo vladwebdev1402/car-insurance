@@ -1,6 +1,7 @@
 module Views.InformationInsurance (informationInsurance) where
 
-import Data.List (sortBy)
+import Data.Maybe (isNothing)
+import Data.List (sortBy, all)
 import System.Process (callCommand)
 import Views.Helpers.ChoosePolicy
 import Enteties.Drivers
@@ -70,17 +71,34 @@ showPolicies :: [TransportCertificate] -> Maybe [FullPolicyInfo] -> IO ()
 showPolicies certificates oldFullInfos = do
     callCommand "cls"
     
-    certificatesWithPolicies <- getPoliciesWithCertificates certificates
-    
-    fullInfos <- maybe (getFullInfoForPolicy certificatesWithPolicies) return oldFullInfos
+    fullInfos <- maybe (getPoliciesWithCertificates certificates >>= getFullInfoForPolicy) return oldFullInfos
+
     choosedPolicy <- choosePolicy fullInfos 0 "" ""
 
     case choosedPolicy of 
         Nothing -> return ()
-        policy -> do 
-            print policy
-            getLine
-            putStrLn ""
+        Just policy -> do 
+           deactivePolicy fullInfos policy
 
--- deactivePolicy :: [FullPolicyInfo] -> FullPolicyInfo -> IO ()
--- deactivePolicy :: fullInfos 
+deactivePolicy :: [FullPolicyInfo] -> FullPolicyInfo -> IO ()
+deactivePolicy fullInfos choosedInfo = do
+    resultChecked <- checkActivePolicy choosedInfo
+
+    if resultChecked then do
+        putStrLn ""
+    else showPolicies (map Modules.FullPolicyInfo.certificate fullInfos) (Just fullInfos)
+
+checkActivePolicy :: FullPolicyInfo -> IO Bool 
+checkActivePolicy choosedInfo = do
+    if Enteties.Policies.policyTypeId (Modules.FullPolicyInfo.policy choosedInfo) == 0 then do
+        let certId = Enteties.TransportCertificate.uid (Modules.FullPolicyInfo.certificate choosedInfo)
+
+        policies <- mapM (\f -> f) [getActivePolicy certId 1, getActivePolicy certId 2]
+
+        if (all isNothing policies) then return True
+        else do
+            putStrLn "Вы не можете деактивировать полис ОСАГО, так как у вас имеется активный ДСАГО или КАСКО полис. \nНажмите Enter чтобы продолжить"
+            getLine
+            return False
+
+    else return True
