@@ -60,7 +60,7 @@ inputOsagoData osagoUserInfo editStep False _ = do
     then inputDayOfBirth 16 100 
     else maybe (inputDayOfBirth 16 100) return (Views.InputOsagoData.birthDate osagoUserInfo)
 
-  let infoMessage1 = "Выбран тип страховки: ОСАГО\nДата рождения: " ++ birthDate ++ "\nВозраст: " ++ show age
+  let infoMessage1 = "Выбран вид страхования: ОСАГО\nДата рождения: " ++ birthDate ++ "\nВозраст: " ++ show age
 
   callCommand "cls" 
   drivingExpirience <- if editStep == 1
@@ -138,7 +138,7 @@ inputOsagoData osagoUserInfo editStep True errorMessage = do
               else do 
                 age <- calcAgeFromDate (Enteties.Drivers.birthday driver)
 
-                let infoMessage1 = "\nВыбран тип страховки для оформления: ОСАГО" ++
+                let infoMessage1 = "\nВыбран вид страхования для оформления: ОСАГО" ++
                                   getAutoInfo enginePower transportBrand transportModel transport category (Just cert)
 
                 region <- if editStep == 2

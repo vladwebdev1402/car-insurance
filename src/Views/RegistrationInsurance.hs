@@ -33,7 +33,7 @@ registrationOsago oldOsagoUserInfo editPunkt = do
 
   let osagoUserInfo = case oldOsagoUserInfo of
         Nothing -> nullOsagoUserInfo
-        _ -> osagoUserInfo
+        Just osagoInfo -> osagoInfo
 
   osagoUserInfo <- inputOsagoData osagoUserInfo editPunkt True ""
 
@@ -76,7 +76,7 @@ registrationKasko :: Maybe KaskoUserInfo -> Int -> IO ()
 registrationKasko oldKaskoUserInfo editPunkt = do
   let kaskoUserInfo = case oldKaskoUserInfo of
         Nothing -> nullKaskoUserInfo
-        _ -> kaskoUserInfo
+        Just kaskoInfo -> kaskoInfo
 
   kaskoUserInfo <- inputKaskoData kaskoUserInfo editPunkt True ""
 

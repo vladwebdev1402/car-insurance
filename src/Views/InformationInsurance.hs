@@ -108,7 +108,7 @@ deactivePolicy fullInfos choosedInfo = do
             else return item
             ) fullInfos
 
-        putStrLn ("\nСтраховка деактивирована\nСумма возврата: " ++ (printf "%.2f" sumRemain))
+        putStrLn ("\nСтраховой договор расторгнут\nСумма возврата: " ++ (printf "%.2f" sumRemain))
         putStrLn "Чтобы продолжить, нажмите Enter"
         getLine
 
