@@ -92,6 +92,7 @@ library
       Views.CalcPriceInsurance
       Views.Helpers.ChooseKaskoEditStep
       Views.Helpers.ChooseOsagoEditStep
+      Views.Helpers.ChoosePolicy
       Views.Helpers.ConfirmIdentity
       Views.Helpers.GetAutoInfo
       Views.Helpers.InputAutoInfo

@@ -1,5 +1,6 @@
-module Modules.FullPolicyInfo (FullPolicyInfo(..), getFullInfoForPolicy) where
+module Modules.FullPolicyInfo (FullPolicyInfo(..), getFullInfoForPolicy, getFullInfoForPolicyString) where
 
+import Text.Printf (printf)
 import Enteties.TransportCertificate
 import Enteties.Policies
 import Enteties.CompanyPolicyLink
@@ -13,20 +14,21 @@ data FullPolicyInfo = FullPolicyInfo { policy :: Policy,
     company :: Company,
     policyType :: PolicyType,
     policyCases :: [PolicyCase]
-}
+} deriving (Show, Read)
 
 getFullInfoForPolicyString :: FullPolicyInfo -> String
 getFullInfoForPolicyString fullPolicyInfo =
     "\nТип полиса: " ++ (Enteties.PolicyTypes.name (policyType fullPolicyInfo)) ++
     "\nКомпания: " ++ (Enteties.Companys.name (company fullPolicyInfo)) ++ 
     "\nРегистрационный номер автомобиля: " ++ (Enteties.TransportCertificate.registrationNumber (certificate fullPolicyInfo)) ++ 
-    "\nСтоимость оформления: " ++ (show (Enteties.Policies.sumInsurance (policy fullPolicyInfo))) ++ 
+    "\nСтоимость оформления: " ++ (printf "%.2f"  (Enteties.Policies.sumInsurance (policy fullPolicyInfo))) ++ 
     (case (Enteties.Policies.sumDeductible (policy fullPolicyInfo)) of 
         0.0 -> ""
-        sum -> "\nРазмер франшизы: " ++ (show sum)
+        sum -> "\nРазмер франшизы: " ++ (printf "%.2f" sum)
         ) ++ 
     "\nДата оформления: " ++ (Enteties.Policies.date (policy fullPolicyInfo)) ++ 
-    "\nСтатус полиса: " ++ (policyStatusTranslate (Enteties.Policies.status (policy fullPolicyInfo)))
+    "\nСтатус полиса: " ++ (policyStatusTranslate (Enteties.Policies.status (policy fullPolicyInfo))) ++
+    getPolicyCasesInfo (policyCases fullPolicyInfo)
 
 getFullInfoForPolicy :: [(TransportCertificate, Policy)] -> IO [FullPolicyInfo]
 getFullInfoForPolicy certificatesWithPolicy = do

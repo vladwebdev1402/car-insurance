@@ -2,7 +2,7 @@ module Views.InformationInsurance (informationInsurance) where
 
 import Data.List (sortBy)
 import System.Process (callCommand)
-import Shared.Inputs.InputPassport
+import Views.Helpers.ChoosePolicy
 import Enteties.Drivers
 import Enteties.TransportCertificate
 import Enteties.Policies
@@ -11,7 +11,9 @@ import Enteties.Companys
 import Enteties.PolicyTypes
 import Enteties.PolicyCase
 import Modules.FullPolicyInfo
-
+import Shared.Inputs.ChooseData (chooseData)
+import Shared.Logs.LogData
+import Shared.Inputs.InputPassport
 
 informationInsurance :: String -> IO ()
 informationInsurance infoMessage = do 
@@ -63,11 +65,20 @@ getPoliciesWithCertificates certificates = do
 
     return flattenPolicies
 
+
 showPolicies :: [TransportCertificate] -> IO ()
 showPolicies certificates = do
+    callCommand "cls"
+    
     certificatesWithPolicies <- getPoliciesWithCertificates certificates
-    getFullInfoForPolicy certificatesWithPolicies
-    getLine 
-    putStrLn ""
+    
+    fullInfos <- getFullInfoForPolicy certificatesWithPolicies
 
+    choosedPolicy <- choosePolicy fullInfos 0 "" ""
 
+    case choosedPolicy of 
+        Nothing -> return ()
+        policy -> do 
+            print policy
+            getLine
+            putStrLn ""
