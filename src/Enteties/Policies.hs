@@ -1,10 +1,19 @@
-module Enteties.Policies (Policy(..), getActivePolicy, addNewPolicy) where
+module Enteties.Policies (Policy(..), getActivePolicy, addNewPolicy, getPoliciesByCertificate, policyStatusTranslate) where
 
 import Shared.Api.GetAllData
 import Shared.Api.GetFilterData
 import Shared.Api.InputNewEntity
 
-data Policy = Policy { uid :: Int, companyPolicyLinkId :: Int, policyTypeId :: Int, transportCertificateId :: Int, status :: String, countDays :: Int, sumInsurance :: Float, sumRemaininInsurance :: Float, sumDeductible :: Float, date :: String } deriving (Read, Show)
+data Policy = Policy { uid :: Int, 
+                    companyPolicyLinkId :: Int, 
+                    policyTypeId :: Int, 
+                    transportCertificateId :: Int,
+                    status :: String, 
+                    countDays :: Int, 
+                    sumInsurance :: Float, 
+                    sumRemaininInsurance :: Float, 
+                    sumDeductible :: Float, 
+                    date :: String } deriving (Read, Show)
 
 getActivePolicy :: Int -> Int -> IO (Maybe Policy)
 getActivePolicy certificateId polyceType = do 
@@ -12,7 +21,10 @@ getActivePolicy certificateId polyceType = do
     case length policies of
         0 -> return Nothing
         _ -> return $ Just (policies !! (0))
-           
+
+getPoliciesByCertificate :: Int -> IO [Policy]
+getPoliciesByCertificate certificateId = getFilterData "database/Policies.hdb" 0 10000 "" (\_ -> "") (\policy -> transportCertificateId policy == certificateId)
+
 
 addNewPolicy :: Policy -> IO (Policy)
 addNewPolicy policy = do
@@ -21,3 +33,7 @@ addNewPolicy policy = do
     let newPolicy = policy { uid = newUid }
     inputNewEntity "database/Policies.hdb" newPolicy
     return newPolicy
+
+policyStatusTranslate :: String -> String 
+policyStatusTranslate "active" = "активен"
+policyStatusTranslate "deactive" = "не активен"

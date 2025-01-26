@@ -39,6 +39,7 @@ library
       Enteties.Deductibles
       Enteties.Drivers
       Enteties.Policies
+      Enteties.PolicyCase
       Enteties.PolicyServices
       Enteties.PolicyTypes
       Enteties.Regions
@@ -64,6 +65,7 @@ library
       Modules.ChooseTypeKO
       Modules.ChooseTypeKS
       Modules.ChooseTypeTransport
+      Modules.FullPolicyInfo
       Modules.InputUserPassport
       Shared.Api.GetAllData
       Shared.Api.GetFilterData

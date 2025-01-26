@@ -1,9 +1,7 @@
 module Main (main) where
 
-import Data.List.Split (splitOn)
 import System.Process (callCommand)
 import Shared.Validators.ValidateNumberRangeInput
-import Shared.Validators.IsNumber
 import Views.InformationInsurance
 import Views.CalcPriceInsurance
 import Views.RegistrationInsurance
@@ -31,5 +29,8 @@ executeChoice 2 = do
   registrationInsurance
   main
   
-executeChoice 3 = informationInsurance
+executeChoice 3 = do 
+  informationInsurance ""
+  main
+  
 executeChoice _ = return () 

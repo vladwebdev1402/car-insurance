@@ -1,4 +1,4 @@
-module Enteties.CompanyPolicyLink (CompanyPolicyLink(..), getCompanyPolicyLinkByPolicy, getCompanyPolicyLinkByCompany) where
+module Enteties.CompanyPolicyLink (CompanyPolicyLink(..), getCompanyPolicyLinkByPolicy, getCompanyPolicyLinkById, getCompanyPolicyLinkByCompany) where
 
 import Shared.Api.GetFilterData
 
@@ -6,6 +6,11 @@ data CompanyPolicyLink = CompanyPolicyLink { uid :: Int, companyId :: Int, polic
 
 getCompanyPolicyLinkByPolicy :: Int -> IO [CompanyPolicyLink]
 getCompanyPolicyLinkByPolicy policyId = getFilterData "database/CompanyPolicyLink.hdb" 0 10000 "" (\x -> "") (\link -> policyTypeId link == policyId)
+
+getCompanyPolicyLinkById :: Int -> IO CompanyPolicyLink
+getCompanyPolicyLinkById linkUid = do 
+    links <- getFilterData "database/CompanyPolicyLink.hdb" 0 10000 "" (\x -> "") (\link -> uid link == linkUid)
+    return $ links !! (0)
 
 getCompanyPolicyLinkByCompany :: Int -> Int -> IO CompanyPolicyLink
 getCompanyPolicyLinkByCompany company typeId = do

@@ -1,4 +1,4 @@
-module Enteties.TransportCertificate (TransportCertificate(..), getTransportCertificateByNumber) where
+module Enteties.TransportCertificate (TransportCertificate(..), getTransportCertificateByNumber, getTransportCertificatesByDriver) where
 
 import Shared.Api.GetFilterData
 
@@ -11,3 +11,7 @@ getTransportCertificateByNumber number = do
         0 -> return Nothing
         _ -> return $ Just (transportCertificates !! (0))
 
+getTransportCertificatesByDriver :: Int -> IO [TransportCertificate]
+getTransportCertificatesByDriver userId = do 
+    transportCertificates <- getFilterData "database/TransportCertificate.hdb" 0 10000 "" (\_ -> "") (\transportCertificate -> driverId transportCertificate == userId)
+    return transportCertificates

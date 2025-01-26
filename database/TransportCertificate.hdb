@@ -3,3 +3,4 @@ TransportCertificate {uid = 1, transportId = 2, driverId = 1, registrationNumber
 TransportCertificate {uid = 2, transportId = 3, driverId = 2, registrationNumber = "С789ДЕ33"}
 TransportCertificate {uid = 3, transportId = 3, driverId = 3, registrationNumber = "М123ММ70"}
 TransportCertificate {uid = 4, transportId = 4, driverId = 4, registrationNumber = "М321ММ70"}
+TransportCertificate {uid = 5, transportId = 4, driverId = 4, registrationNumber = "М741ММ70"}

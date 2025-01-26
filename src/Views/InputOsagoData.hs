@@ -15,15 +15,11 @@ import Enteties.Policies
 import Shared.Inputs.InputDayOfBirth
 import Shared.Inputs.InputRangeNumber
 import Shared.Calc.CalcAgeFromDate
-import Shared.Logs.LogData
-import Shared.Validators.NothingToJust
 import Shared.Calc.GetMaximumDrivingExpirience
 import Modules.ChooseRegion
 import Modules.ChooseTerritorie
-import Modules.ChoosePolicyType
 import Modules.ChooseTypeKS
 import Modules.ChooseTypeKO
-import Modules.InputUserPassport
 import Views.Helpers.InputAutoInfo
 import Views.Helpers.GetAutoInfo
 import Views.Helpers.ChooseOsagoEditStep

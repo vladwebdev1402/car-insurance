@@ -64,41 +64,41 @@ choosePaginatedData arrayData displayFunction = do
                         choosePaginatedData arrayData displayFunction
 
 -- страница, поисковое имя, функция запроса, куда передаётся максимальный и минимальный индекс, функция для получении имени
-chooseApiPaginatedData :: Int -> String -> (Int -> Int -> String -> IO [a]) -> (a -> String) -> String -> String -> IO a
-chooseApiPaginatedData page search getData getName inputMessage infoMessage = do 
+chooseApiPaginatedData :: Int -> String -> Int -> (Int -> Int -> String -> IO [a]) -> (a -> String) -> String -> String -> IO a
+chooseApiPaginatedData page search pageSize getData getName inputMessage infoMessage = do 
     callCommand "cls"
     putStrLn infoMessage
     putStrLn "Команды:\nназад - предыдущая страница,\nвперёд - следующая страница,\nпоиск %name%- поиск по названию,\nсбросить - сбросить фильтры\n"
     consoleInfo inputMessage
     putStrLn $ "\nТекущая страница: " ++ show (page + 1)
-    arrayData <- getData (page * 20) (page * 20 + 19) search
+    arrayData <- getData (page * pageSize) (page * pageSize + (pageSize -1)) search
     (index, command) <- choosePaginatedData arrayData (\array -> generateLogData array getName) 
     case command of 
         "назад" -> do 
-            if page == 0 then chooseApiPaginatedData 0 "" getData getName inputMessage infoMessage
-            else chooseApiPaginatedData (page - 1) "" getData getName inputMessage infoMessage
-        "сбросить" -> chooseApiPaginatedData 0 "" getData getName inputMessage infoMessage
-        "вперёд" -> chooseApiPaginatedData (page + 1) "" getData getName inputMessage infoMessage
+            if page == 0 then chooseApiPaginatedData 0 "" pageSize getData getName inputMessage infoMessage
+            else chooseApiPaginatedData (page - 1) "" pageSize getData getName inputMessage infoMessage
+        "сбросить" -> chooseApiPaginatedData 0 "" pageSize getData getName inputMessage infoMessage
+        "вперёд" -> chooseApiPaginatedData (page + 1) "" pageSize getData getName inputMessage infoMessage
         _ -> do 
-            if index == -1 then chooseApiPaginatedData 0 command getData getName inputMessage infoMessage
+            if index == -1 then chooseApiPaginatedData 0 command pageSize getData getName inputMessage infoMessage
             else return (arrayData !! (index - 1))
 
 -- страница, поисковое имя,  функция запроса, куда передаётся максимальный и минимальный индекс, функция для получении имени
-chooseApiParamPaginatedData :: Int -> String -> b -> (Int -> Int -> String -> b -> IO [a]) -> (a -> String) -> String -> String ->  IO a
-chooseApiParamPaginatedData page search paramId getData getName inputMessage infoMessage = do 
+chooseApiParamPaginatedData :: Int -> String -> Int -> b -> (Int -> Int -> String -> b -> IO [a]) -> (a -> String) -> String -> String ->  IO a
+chooseApiParamPaginatedData page search pageSize paramId getData getName inputMessage infoMessage = do 
     callCommand "cls"
     putStrLn infoMessage
     putStrLn "Команды:\nназад - предыдущая страница,\nвперёд - следующая страница,\nпоиск %name%- поиск по названию,\nсбросить - сбросить фильтры\n"
     consoleInfo inputMessage
     putStrLn $ "\nТекущая страница: " ++ show (page + 1)
-    arrayData <- getData (page * 20) (page * 20 + 19) search paramId
+    arrayData <- getData (page * pageSize) (page * pageSize + (pageSize -1)) search paramId
     (index, command) <- choosePaginatedData arrayData (\array -> generateLogData array getName) 
     case command of 
         "назад" -> do 
-            if page == 0 then chooseApiParamPaginatedData 0 "" paramId getData getName inputMessage infoMessage
-            else chooseApiParamPaginatedData (page - 1) "" paramId getData getName inputMessage infoMessage
-        "сбросить" -> chooseApiParamPaginatedData 0 "" paramId getData getName inputMessage infoMessage
-        "вперёд" -> chooseApiParamPaginatedData (page + 1) "" paramId getData getName inputMessage infoMessage
+            if page == 0 then chooseApiParamPaginatedData 0 "" pageSize paramId getData getName inputMessage infoMessage
+            else chooseApiParamPaginatedData (page - 1) "" pageSize paramId getData getName inputMessage infoMessage
+        "сбросить" -> chooseApiParamPaginatedData 0 "" pageSize paramId getData getName inputMessage infoMessage
+        "вперёд" -> chooseApiParamPaginatedData (page + 1) "" pageSize paramId getData getName inputMessage infoMessage
         _ -> do 
-            if index == -1 then chooseApiParamPaginatedData 0 command paramId getData getName inputMessage infoMessage
+            if index == -1 then chooseApiParamPaginatedData 0 command pageSize paramId getData getName inputMessage infoMessage
             else return (arrayData !! (index - 1))

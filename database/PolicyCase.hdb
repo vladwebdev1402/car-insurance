@@ -1,1 +1,1 @@
-PolicyCase {uid = 0, policyId = 0, sumDamage = 0.0}
+PolicyCase {uid = 1000000, policyId = 1000000, sumDamage = 0.0}
