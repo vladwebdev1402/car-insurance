@@ -43,8 +43,12 @@ choosePolicy fullInfos page status policyType = do
                     then choosePolicy fullInfos page status policyType 
                     else choosePolicy fullInfos (page + 1) status policyType   
         num -> if validateStringNumber num 1 (length filteredPolicies) then do
-                    let index = read num
-                    return $ Just (filteredPolicies !! (index - 1))
+                    let policy = filteredPolicies !! ((read num) - 1)
+                    if (Enteties.Policies.status (Modules.FullPolicyInfo.policy policy)) == "deactive" then do 
+                        callCommand "cls"
+                        putStrLn "Полис уже не активен, выберите другой"
+                        choosePolicy fullInfos page status policyType
+                    else return (Just policy)
             else do
                 callCommand "cls"
                 consoleError "Неверно введённые данные"

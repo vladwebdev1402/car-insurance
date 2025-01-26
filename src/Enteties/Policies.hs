@@ -29,8 +29,10 @@ getPoliciesByCertificate certificateId = getFilterData "database/Policies.hdb" 0
 addNewPolicy :: Policy -> IO (Policy)
 addNewPolicy policy = do
     allPolicys <- getAllData "database/Policies.hdb" :: IO [Policy]
-    let newUid = length allPolicys
-    let newPolicy = policy { uid = newUid }
+    let maxUid = if null allPolicys
+                    then 0 
+                    else foldl (\acc p -> max acc (uid p)) 0 allPolicys 
+    let newPolicy = policy { uid = maxUid + 1 } 
     inputNewEntity "database/Policies.hdb" newPolicy
     return newPolicy
 
