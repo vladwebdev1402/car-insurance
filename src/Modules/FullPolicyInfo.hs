@@ -27,7 +27,7 @@ getFullInfoForPolicyString fullPolicyInfo =
         sum -> "\nРазмер франшизы: " ++ (printf "%.2f" sum)
         ) ++ 
     "\nДата оформления: " ++ (Enteties.Policies.date (policy fullPolicyInfo)) ++ 
-    "\nСтатус полиса: " ++ (policyStatusTranslate (Enteties.Policies.status (policy fullPolicyInfo))) ++
+    "\nСтатус полиса: " ++ (policyStatusRuTranslate (Enteties.Policies.status (policy fullPolicyInfo))) ++
     getPolicyCasesInfo (policyCases fullPolicyInfo)
 
 getFullInfoForPolicy :: [(TransportCertificate, Policy)] -> IO [FullPolicyInfo]

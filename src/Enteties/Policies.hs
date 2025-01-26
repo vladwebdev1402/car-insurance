@@ -1,4 +1,4 @@
-module Enteties.Policies (Policy(..), getActivePolicy, addNewPolicy, getPoliciesByCertificate, policyStatusTranslate) where
+module Enteties.Policies (Policy(..), getActivePolicy, addNewPolicy, getPoliciesByCertificate, policyStatusRuTranslate, policyStatusEngTranslate) where
 
 import Shared.Api.GetAllData
 import Shared.Api.GetFilterData
@@ -36,6 +36,10 @@ addNewPolicy policy = do
     inputNewEntity "database/Policies.hdb" newPolicy
     return newPolicy
 
-policyStatusTranslate :: String -> String 
-policyStatusTranslate "active" = "активен"
-policyStatusTranslate "deactive" = "не активен"
+policyStatusRuTranslate :: String -> String 
+policyStatusRuTranslate "active" = "активен"
+policyStatusRuTranslate "deactive" = "не активен"
+
+policyStatusEngTranslate :: String -> String 
+policyStatusEngTranslate "активен" = "active"
+policyStatusEngTranslate "не активен" = "deactive"

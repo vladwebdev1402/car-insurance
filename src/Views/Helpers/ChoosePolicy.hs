@@ -9,10 +9,6 @@ import Shared.Logs.Console
 import Shared.Validators.ValidateStringNumber
 import Data.Char (toLower)
 
-translateStatus :: String -> String
-translateStatus "активная" = "active"
-translateStatus "не активная" = "deactive"
-
 filterPolicies :: [FullPolicyInfo] -> String -> String -> [FullPolicyInfo]
 filterPolicies fullInfos status policyType =
     filter (\item ->
@@ -34,7 +30,7 @@ choosePolicy fullInfos page status policyType = do
     callCommand "cls"
 
     if (map toLower input) `elem` ["осаго", "дсаго", "каско"] then choosePolicy fullInfos 0 status input
-    else if (map toLower input) `elem` ["активная", "не активная"] then choosePolicy fullInfos 0 (translateStatus input) policyType
+    else if (map toLower input) `elem` ["активная", "не активная"] then choosePolicy fullInfos 0 (policyStatusEngTranslate input) policyType
     else case input of 
         "выход" -> return Nothing   
         "сбросить" -> choosePolicy fullInfos 0 "" ""   
