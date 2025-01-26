@@ -18,14 +18,17 @@ filterPolicies fullInfos status policyType =
 
 choosePolicy :: [FullPolicyInfo] -> Int -> String -> String -> IO (Maybe FullPolicyInfo)
 choosePolicy fullInfos page status policyType = do
-    let pageSize = 5 
+    let pageSize = 3 
+    
     let (minIdx, maxIdx) = ((page * pageSize), (page * pageSize + (pageSize -1)))
-    let takedPolicies = take (maxIdx - minIdx + 1) (drop minIdx fullInfos)
-    let filteredPolicies = filterPolicies takedPolicies status policyType
+
+    let filteredPolicies = filterPolicies fullInfos status policyType
+
+    let takedPolicies = take (maxIdx - minIdx + 1) (drop minIdx filteredPolicies)
 
     putStrLn "\nВыберите страховку, для отмены\nВведите 'активен' или 'не активен' для фильтрации страховки\nВведите тип страховки для фильтрации (ОСАГО, КАСКО, ДСАГО)\nВведите 'сбросить' для сброса фильтров\nВведите 'вперёд' или 'назал' для смены страницы"
     putStrLn ("\nТекущая страница: " ++ (show (page + 1)) ++ "\n")
-    generateLogData filteredPolicies (\item -> getFullInfoForPolicyString item)
+    generateLogData takedPolicies (\item -> getFullInfoForPolicyString item)
     input <- getLine
     callCommand "cls"
 
@@ -35,7 +38,7 @@ choosePolicy fullInfos page status policyType = do
         "выход" -> return Nothing   
         "сбросить" -> choosePolicy fullInfos 0 "" ""   
         "назад" -> choosePolicy fullInfos (max 0 (page - 1)) status policyType   
-        "вперёд" -> if (page + 1) * pageSize >= length fullInfos
+        "вперёд" -> if (page + 1) * pageSize >= length filteredPolicies
                     then choosePolicy fullInfos page status policyType 
                     else choosePolicy fullInfos (page + 1) status policyType   
         num -> if validateStringNumber num 1 (length filteredPolicies) then do
