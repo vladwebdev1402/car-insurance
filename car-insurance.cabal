@@ -86,6 +86,7 @@ library
       Shared.Inputs.InputPassport
       Shared.Inputs.InputRangeNumber
       Shared.Logs.Console
+      Shared.Logs.FormateNumber
       Shared.Logs.LogData
       Shared.Validators.IsNumber
       Shared.Validators.NothingToJust
