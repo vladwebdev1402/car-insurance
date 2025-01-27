@@ -1,4 +1,4 @@
-module Views.InputKaskoData (KaskoUserInfo(..), inputKaskoData, nullKaskoUserInfo) where
+module Views.InputKaskoData (inputKaskoData) where
 
 import System.Process (callCommand)
 import Text.Printf (printf)
@@ -31,37 +31,14 @@ import Views.Helpers.InputAutoInfo
 import Views.Helpers.GetAutoInfo
 import Views.Helpers.ChooseKaskoEditStep
 import Views.Helpers.ConfirmIdentity
+import Views.UserInfo
 
-data KaskoUserInfo = KaskoUserInfo {
-  birthDate :: Maybe (Int, String),
-  drivingExpirience :: Maybe Int,
-  autoInfo :: Maybe (Int, Maybe TransportBrand, Maybe TransportModel, Maybe Transport, TypeTransport, Maybe TransportCertificate),
-  region :: Maybe Region,
-  territorie :: Maybe Territorie,
-  typeKS :: Maybe TypeKS,
-  typeKO :: Maybe TypeKO,
-  deductible :: Maybe Deductible,
-  policyServices :: Maybe [PolicyService]  
-  }
-
-nullKaskoUserInfo :: KaskoUserInfo
-nullKaskoUserInfo = KaskoUserInfo {Views.InputKaskoData.birthDate = Nothing, 
-                             Views.InputKaskoData.drivingExpirience = Nothing,
-                             Views.InputKaskoData.autoInfo = Nothing, 
-                             Views.InputKaskoData.region = Nothing, 
-                             Views.InputKaskoData.territorie = Nothing, 
-                             Views.InputKaskoData.typeKS = Nothing, 
-                             Views.InputKaskoData.typeKO = Nothing,
-                             Views.InputKaskoData.deductible = Nothing,
-                             Views.InputKaskoData.policyServices = Nothing
-                             }
-
-inputKaskoData :: KaskoUserInfo -> Int -> Bool -> String -> IO KaskoUserInfo
+inputKaskoData :: UserInfo -> Int -> Bool -> String -> IO UserInfo
 inputKaskoData kaskoUserInfo editStep False _ = do
   callCommand "cls" 
   (age, birthDate) <- if editStep == 1
     then inputDayOfBirth 16 100 
-    else maybe (inputDayOfBirth 16 100) return (Views.InputKaskoData.birthDate kaskoUserInfo)
+    else maybe (inputDayOfBirth 16 100) return (Views.UserInfo.birthDate kaskoUserInfo)
 
   let infoMessage1 = "Выбран вид страхования для расчёта: КАСКО\nДата рождения: " ++ birthDate ++ "\nВозраст: " ++ show age
     
@@ -124,7 +101,7 @@ inputKaskoData kaskoUserInfo editStep False _ = do
   callCommand "cls" 
   editPunkt <- chooseKaskoEditStep False infoMessage9
   
-  let kaskoInfo = KaskoUserInfo {Views.InputKaskoData.birthDate = Just (age, birthDate), 
+  let kaskoInfo = UserInfo {Views.UserInfo.birthDate = Just (age, birthDate), 
           drivingExpirience = Just drivingExpirience,
           autoInfo = Just (enginePower, transportBrand, transportModel, transport, category, Nothing), 
           region = Just region, 
@@ -147,7 +124,7 @@ inputKaskoData kaskoUserInfo editStep True errorMessage = do
     else maybe (inputAutoInfo True errorMessage) return (autoInfo kaskoUserInfo)
 
   case certificate of 
-    Nothing -> return nullKaskoUserInfo
+    Nothing -> return nullUserInfo
     Just cert -> do
 
       activeOsago <- getActivePolicy (Enteties.TransportCertificate.uid cert) 0
@@ -157,9 +134,9 @@ inputKaskoData kaskoUserInfo editStep True errorMessage = do
       case activeOsago of 
         Nothing -> do
           callCommand "cls"
-          inputKaskoData (kaskoUserInfo {Views.InputKaskoData.birthDate = Nothing, 
-                                Views.InputKaskoData.drivingExpirience = Nothing,
-                                Views.InputKaskoData.autoInfo = Nothing } ) (-1) True "У данного автомобиля нет активного ОСАГО полиса"
+          inputKaskoData (kaskoUserInfo {Views.UserInfo.birthDate = Nothing, 
+                                Views.UserInfo.drivingExpirience = Nothing,
+                                Views.UserInfo.autoInfo = Nothing } ) (-1) True "У данного автомобиля нет активного ОСАГО полиса"
         _ -> case activeKasko of 
           Nothing -> do
             callCommand "cls"
@@ -169,7 +146,7 @@ inputKaskoData kaskoUserInfo editStep True errorMessage = do
               then confirmIdentity driver
               else return True
 
-            if not (isSusscessfulIdentification) then return nullKaskoUserInfo
+            if not (isSusscessfulIdentification) then return nullUserInfo
             else do 
               age <- calcAgeFromDate (Enteties.Drivers.birthday driver)
 
@@ -221,7 +198,7 @@ inputKaskoData kaskoUserInfo editStep True errorMessage = do
               callCommand "cls" 
               editPunkt <- chooseKaskoEditStep True infoMessage7
 
-              let kaskoInfo = KaskoUserInfo {Views.InputKaskoData.birthDate = Just (age, (Enteties.Drivers.birthday driver)), 
+              let kaskoInfo = UserInfo {Views.UserInfo.birthDate = Just (age, (Enteties.Drivers.birthday driver)), 
                           drivingExpirience = Just (Enteties.Drivers.experience driver),
                           autoInfo = Just (enginePower, transportBrand, transportModel, transport, category, (Just cert)), 
                           region = Just region, 
@@ -237,6 +214,6 @@ inputKaskoData kaskoUserInfo editStep True errorMessage = do
                 _ -> inputKaskoData kaskoInfo editPunkt True ""
 
           _ -> do
-              inputKaskoData (kaskoUserInfo {Views.InputKaskoData.birthDate = Nothing, 
-                                Views.InputKaskoData.drivingExpirience = Nothing,
-                                Views.InputKaskoData.autoInfo = Nothing } ) (-1) True "На данный автомобиль уже зарегестрирован полис КАСКО"
+              inputKaskoData (kaskoUserInfo {Views.UserInfo.birthDate = Nothing, 
+                                Views.UserInfo.drivingExpirience = Nothing,
+                                Views.UserInfo.autoInfo = Nothing } ) (-1) True "На данный автомобиль уже зарегестрирован полис КАСКО"

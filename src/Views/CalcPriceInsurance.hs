@@ -45,10 +45,10 @@ calcOsagoPrice oldOsagoUserInfo editPunkt = do
     -1 -> return ()
     _ -> calcOsagoPrice (Just osagoUserInfo) updatePunkt
 
-calcKaskoPrice :: Maybe KaskoUserInfo -> Int -> IO ()
+calcKaskoPrice :: Maybe UserInfo -> Int -> IO ()
 calcKaskoPrice oldKaskoUserInfo editPunkt = do
   let kaskoUserInfo = case oldKaskoUserInfo of
-        Nothing -> nullKaskoUserInfo
+        Nothing -> nullUserInfo
         Just userInfo -> userInfo
 
   kaskoUserInfo <- inputKaskoData kaskoUserInfo editPunkt False "" 

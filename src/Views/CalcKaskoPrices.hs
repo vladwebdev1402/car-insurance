@@ -2,7 +2,7 @@ module Views.CalcKaskoPrices (calcKaskoPrices) where
 
 import System.Process (callCommand)
 import Data.List (sortBy)
-import Views.InputKaskoData
+import Views.UserInfo
 import Enteties.Companys
 import Shared.Validators.NothingToJust
 import Enteties.TypesKVS
@@ -27,25 +27,25 @@ import Enteties.TransportCertificate
 import Enteties.Drivers
 import Enteties.Deductibles
 
-calcKaskoPrices :: KaskoUserInfo -> IO [(Company, Float)]
+calcKaskoPrices :: UserInfo -> IO [(Company, Float)]
 calcKaskoPrices kaskoUserInfo = do 
-    let (age, date) = nothingToJust (Views.InputKaskoData.birthDate kaskoUserInfo) "calcKaskoPrices: Ошибка получения возраста и даты"
+    let (age, date) = nothingToJust (Views.UserInfo.birthDate kaskoUserInfo) "calcKaskoPrices: Ошибка получения возраста и даты"
     
-    let drivingExpirience = nothingToJust (Views.InputKaskoData.drivingExpirience kaskoUserInfo) "calcKaskoPrices: Ошибка получения опыта вождения"
+    let drivingExpirience = nothingToJust (Views.UserInfo.drivingExpirience kaskoUserInfo) "calcKaskoPrices: Ошибка получения опыта вождения"
     
-    let territorie = nothingToJust (Views.InputKaskoData.territorie kaskoUserInfo) "calcKaskoPrices: Ошибка места проживания"
+    let territorie = nothingToJust (Views.UserInfo.territorie kaskoUserInfo) "calcKaskoPrices: Ошибка места проживания"
   
-    let autoInfo = nothingToJust (Views.InputKaskoData.autoInfo kaskoUserInfo) "calcKaskoPrices: Ошибка информации об автомобиле"
+    let autoInfo = nothingToJust (Views.UserInfo.autoInfo kaskoUserInfo) "calcKaskoPrices: Ошибка информации об автомобиле"
 
     let (enginePower, transportBrand, transportModel, transport, category, certificate) = autoInfo
   
-    let typeKs = nothingToJust (Views.InputKaskoData.typeKS kaskoUserInfo) "calcKaskoPrices: Ошибка получения срока страхования"
+    let typeKs = nothingToJust (Views.UserInfo.typeKS kaskoUserInfo) "calcKaskoPrices: Ошибка получения срока страхования"
   
-    let typeKo = nothingToJust (Views.InputKaskoData.typeKO kaskoUserInfo) "calcKaskoPrices: Ошибка получения количества водителей"
+    let typeKo = nothingToJust (Views.UserInfo.typeKO kaskoUserInfo) "calcKaskoPrices: Ошибка получения количества водителей"
 
-    let services = nothingToJust (Views.InputKaskoData.policyServices kaskoUserInfo) "calcKaskoPrices: Ошибка получения сервисов"
+    let services = nothingToJust (Views.UserInfo.policyServices kaskoUserInfo) "calcKaskoPrices: Ошибка получения сервисов"
     
-    let deductible = nothingToJust (Views.InputKaskoData.deductible kaskoUserInfo) "calcKaskoPrices: Ошибка получения франшизы"
+    let deductible = nothingToJust (Views.UserInfo.deductible kaskoUserInfo) "calcKaskoPrices: Ошибка получения франшизы"
 
     let policyId = 1
 

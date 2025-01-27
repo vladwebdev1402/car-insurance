@@ -78,15 +78,15 @@ registrationOsago oldOsagoUserInfo editPunkt = do
 
           return ()
 
-registrationKasko :: Maybe KaskoUserInfo -> Int -> IO ()
+registrationKasko :: Maybe UserInfo -> Int -> IO ()
 registrationKasko oldKaskoUserInfo editPunkt = do
   let kaskoUserInfo = case oldKaskoUserInfo of
-        Nothing -> nullKaskoUserInfo
+        Nothing -> nullUserInfo
         Just kaskoInfo -> kaskoInfo
 
   kaskoUserInfo <- inputKaskoData kaskoUserInfo editPunkt True ""
 
-  case (Views.InputKaskoData.birthDate kaskoUserInfo) of
+  case (Views.UserInfo.birthDate kaskoUserInfo) of
     Nothing -> return ()
     _ -> do 
       companysWithPrices <- calcKaskoPrices kaskoUserInfo
@@ -101,13 +101,13 @@ registrationKasko oldKaskoUserInfo editPunkt = do
           
           let policyTypeId = 1
           
-          let (_, _, _, _, _, certificate) = nothingToJust (Views.InputKaskoData.autoInfo kaskoUserInfo) "registrationKasko: error get auto info"
+          let (_, _, _, _, _, certificate) = nothingToJust (Views.UserInfo.autoInfo kaskoUserInfo) "registrationKasko: error get auto info"
           
           let cert = nothingToJust certificate "registrationKasko: error get certificate"
 
-          let typeKs = nothingToJust (Views.InputKaskoData.typeKS kaskoUserInfo) "registrationKasko: error get typeKs "
+          let typeKs = nothingToJust (Views.UserInfo.typeKS kaskoUserInfo) "registrationKasko: error get typeKs "
 
-          let deductible = nothingToJust (Views.InputKaskoData.deductible kaskoUserInfo) "registrationKasko: error get deductible "
+          let deductible = nothingToJust (Views.UserInfo.deductible kaskoUserInfo) "registrationKasko: error get deductible "
 
           let countDeductible = (Enteties.Deductibles.sumDeductible deductible) 
 
