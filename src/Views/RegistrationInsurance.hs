@@ -19,6 +19,7 @@ import Entities.TypeKS
 import Entities.CompanyPolicyLink
 import Entities.TransportCertificate
 import Shared.Logs.LogData
+import Shared.Logs.FormateNumber
 import Shared.Validators.NothingToJust
 import Text.Printf (printf)
 
@@ -47,7 +48,7 @@ registrationOsago oldOsagoUserInfo editPunkt = do
     _ -> do
         companysWithPrices <- calcOsagoPrices osagoUserInfo
 
-        index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
+        index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (formateFloat price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
 
         if (index == -1) then return ()
         else do 
@@ -91,7 +92,7 @@ registrationKasko oldKaskoUserInfo editPunkt = do
     _ -> do 
       companysWithPrices <- calcKaskoPrices kaskoUserInfo
 
-      index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
+      index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (formateFloat price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
       
       if (index == -1) then return ()
       else do
@@ -146,7 +147,7 @@ registrationDsago oldDsagoUserInfo editPunkt = do
     _ -> do 
       companysWithPrices <- calcDsagoPrices dsagoUserInfo
 
-      index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
+      index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (formateFloat price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
       
       if (index == -1) then return ()
       else do

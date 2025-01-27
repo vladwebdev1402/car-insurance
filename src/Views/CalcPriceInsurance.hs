@@ -15,6 +15,7 @@ import Entities.PolicyTypes
 import Entities.Companys
 import Modules.ChoosePolicyType
 import Shared.Logs.LogData
+import Shared.Logs.FormateNumber
 
 calcPriceInsurance :: IO ()
 calcPriceInsurance = do
@@ -37,7 +38,7 @@ calcOsagoPrice oldOsagoUserInfo editPunkt = do
 
   companysWithPrice <- calcOsagoPrices osagoUserInfo
 
-  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))
+  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (formateFloat price))
 
   updatePunkt <- chooseOsagoEditStep False infoMessage
  
@@ -55,7 +56,7 @@ calcKaskoPrice oldKaskoUserInfo editPunkt = do
 
   companysWithPrice <- calcKaskoPrices kaskoUserInfo
 
-  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))
+  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (formateFloat  price))
 
   updatePunkt <- chooseKaskoEditStep False infoMessage
 
@@ -73,7 +74,7 @@ calcDsagoPrice oldDsagoUserInfo editPunkt = do
 
   companysWithPrice <- calcDsagoPrices dsagoUserInfo
 
-  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))
+  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (formateFloat price))
 
   updatePunkt <- chooseDsagoEditStep False infoMessage
 

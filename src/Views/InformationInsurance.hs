@@ -15,6 +15,7 @@ import Entities.PolicyCase
 import Modules.FullPolicyInfo
 import Shared.Inputs.ChooseData (chooseData)
 import Shared.Logs.LogData
+import Shared.Logs.FormateNumber
 import Shared.Inputs.InputPassport
 import Shared.Calc.CalcDaysSince
 
@@ -108,7 +109,7 @@ deactivePolicy fullInfos choosedInfo = do
             else return item
             ) fullInfos
 
-        putStrLn ("\nСтраховой договор расторгнут\nСумма возврата: " ++ (printf "%.2f" sumRemain))
+        putStrLn ("\nСтраховой договор расторгнут\nСумма возврата: " ++ (formateFloat sumRemain))
         putStrLn "Чтобы продолжить, нажмите Enter"
         getLine
 

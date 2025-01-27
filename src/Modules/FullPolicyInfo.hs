@@ -7,6 +7,7 @@ import Entities.CompanyPolicyLink
 import Entities.Companys
 import Entities.PolicyTypes
 import Entities.PolicyCase
+import Shared.Logs.FormateNumber
 
 data FullPolicyInfo = FullPolicyInfo { policy :: Policy,
     certificate :: TransportCertificate,
@@ -21,14 +22,18 @@ getFullInfoForPolicyString fullPolicyInfo =
     "\nТип полиса: " ++ (Entities.PolicyTypes.name (policyType fullPolicyInfo)) ++
     "\nКомпания: " ++ (Entities.Companys.name (company fullPolicyInfo)) ++ 
     "\nРегистрационный номер автомобиля: " ++ (Entities.TransportCertificate.registrationNumber (certificate fullPolicyInfo)) ++ 
-    "\nСтоимость оформления: " ++ (printf "%.2f"  (Entities.Policies.sumInsurance (policy fullPolicyInfo))) ++ 
+    "\nСтоимость оформления: " ++ formateFloat (Entities.Policies.sumInsurance (policy fullPolicyInfo)) ++ 
     (case (Entities.Policies.sumDeductible (policy fullPolicyInfo)) of 
         0.0 -> ""
-        sum -> "\nРазмер франшизы: " ++ (printf "%.2f" sum)
+        sum -> "\nРазмер франшизы: " ++ (formateFloat sum)
         ) ++ 
     (case (Entities.Policies.sumRemaininInsurance (policy fullPolicyInfo)) of 
         0.0 -> ""
-        sum -> "\nСумма возврата: " ++ (printf "%.2f" sum)
+        sum -> "\nСумма возврата: " ++ (formateFloat sum)
+        ) ++ 
+    (case (Entities.Policies.sumAdditional (policy fullPolicyInfo)) of 
+        0.0 -> ""
+        sum -> "\nДопольнительная сумма: " ++ (formateFloat sum)
         ) ++ 
     "\nДата оформления: " ++ (Entities.Policies.date (policy fullPolicyInfo)) ++ 
     "\nСрок оформления: " ++ (show (Entities.Policies.countDays (policy fullPolicyInfo))) ++ " дней" ++ 
