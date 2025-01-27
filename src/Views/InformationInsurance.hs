@@ -100,7 +100,9 @@ deactivePolicy fullInfos choosedInfo = do
 
         let daysPercent = (fromIntegral (countDays - daySince) :: Float) / (fromIntegral countDays :: Float)
 
-        let sumRemain = (priceRegistration - (percent * priceRegistration)) * daysPercent
+        let checkedCasesCoef = (if length (Modules.FullPolicyInfo.policyCases choosedInfo) /= 0 then 0 else 1)
+
+        let sumRemain = (priceRegistration - (percent * priceRegistration)) * daysPercent * checkedCasesCoef
         
         newPolicy <- updatePolicy policy {status = "deactive", sumRemaininInsurance = sumRemain}
 
