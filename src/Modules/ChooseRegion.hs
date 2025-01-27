@@ -1,6 +1,6 @@
 module Modules.ChooseRegion (chooseRegion) where
 
-import Enteties.Regions
+import Entities.Regions
 import Shared.Inputs.ChooseData (chooseApiPaginatedData)
 
 chooseRegion :: String -> IO (Region)

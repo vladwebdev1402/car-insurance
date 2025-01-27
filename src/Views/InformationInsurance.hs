@@ -5,13 +5,13 @@ import Data.Maybe (isNothing)
 import Data.List (sortBy, all)
 import System.Process (callCommand)
 import Views.Helpers.ChoosePolicy
-import Enteties.Drivers
-import Enteties.TransportCertificate
-import Enteties.Policies
-import Enteties.CompanyPolicyLink
-import Enteties.Companys
-import Enteties.PolicyTypes
-import Enteties.PolicyCase
+import Entities.Drivers
+import Entities.TransportCertificate
+import Entities.Policies
+import Entities.CompanyPolicyLink
+import Entities.Companys
+import Entities.PolicyTypes
+import Entities.PolicyCase
 import Modules.FullPolicyInfo
 import Shared.Inputs.ChooseData (chooseData)
 import Shared.Logs.LogData
@@ -36,7 +36,7 @@ checkDriver driver = case driver of
     
 getCertificates :: Driver -> IO ()
 getCertificates driver = do 
-    transportCertificates <- getTransportCertificatesByDriver (Enteties.Drivers.uid driver) 
+    transportCertificates <- getTransportCertificatesByDriver (Entities.Drivers.uid driver) 
 
     case (length transportCertificates) of
         0 -> informationInsurance "У данного водителя нет зарегестрированных транспортных стредств"
@@ -45,7 +45,7 @@ getCertificates driver = do
 getPolicies :: [TransportCertificate] -> IO ()
 getPolicies certificates = do
     policiesBooleans <- mapM (\cert -> do 
-        policies <- getPoliciesByCertificate (Enteties.TransportCertificate.uid cert)
+        policies <- getPoliciesByCertificate (Entities.TransportCertificate.uid cert)
         case (length policies) of 
             0 -> return False
             _ -> return True
@@ -58,7 +58,7 @@ getPolicies certificates = do
 getPoliciesWithCertificates :: [TransportCertificate] -> IO [(TransportCertificate, Policy)]
 getPoliciesWithCertificates certificates = do 
     policies <- mapM (\cert -> do 
-        policies <- getPoliciesByCertificate (Enteties.TransportCertificate.uid cert)
+        policies <- getPoliciesByCertificate (Entities.TransportCertificate.uid cert)
         return (cert, policies)
         ) certificates
 
@@ -92,9 +92,9 @@ deactivePolicy fullInfos choosedInfo = do
         let policy = (Modules.FullPolicyInfo.policy choosedInfo)
 
         let (percent, priceRegistration, countDays, date) = ((amountPercent link) / 100, 
-                                                        Enteties.Policies.sumInsurance policy, 
-                                                        Enteties.Policies.countDays policy,
-                                                        Enteties.Policies.date policy)
+                                                        Entities.Policies.sumInsurance policy, 
+                                                        Entities.Policies.countDays policy,
+                                                        Entities.Policies.date policy)
         daySince <- calcDaysSince date
 
         let daysPercent = (fromIntegral (countDays - daySince) :: Float) / (fromIntegral countDays :: Float)
@@ -104,7 +104,7 @@ deactivePolicy fullInfos choosedInfo = do
         newPolicy <- updatePolicy policy {status = "deactive", sumRemaininInsurance = sumRemain}
 
         newFullInfos <- mapM (\item -> do 
-            if Enteties.Policies.uid (Modules.FullPolicyInfo.policy item) == Enteties.Policies.uid policy then return item {Modules.FullPolicyInfo.policy = newPolicy}
+            if Entities.Policies.uid (Modules.FullPolicyInfo.policy item) == Entities.Policies.uid policy then return item {Modules.FullPolicyInfo.policy = newPolicy}
             else return item
             ) fullInfos
 
@@ -118,8 +118,8 @@ deactivePolicy fullInfos choosedInfo = do
 
 checkActivePolicy :: FullPolicyInfo -> IO Bool 
 checkActivePolicy choosedInfo = do
-    if Enteties.Policies.policyTypeId (Modules.FullPolicyInfo.policy choosedInfo) == 0 then do
-        let certId = Enteties.TransportCertificate.uid (Modules.FullPolicyInfo.certificate choosedInfo)
+    if Entities.Policies.policyTypeId (Modules.FullPolicyInfo.policy choosedInfo) == 0 then do
+        let certId = Entities.TransportCertificate.uid (Modules.FullPolicyInfo.certificate choosedInfo)
 
         policies <- mapM (\f -> f) [getActivePolicy certId 1, getActivePolicy certId 2]
 

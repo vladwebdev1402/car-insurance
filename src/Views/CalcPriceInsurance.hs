@@ -11,8 +11,8 @@ import Views.Helpers.ChooseDsagoEditStep
 import Views.CalcOsagoPrices
 import Views.CalcKaskoPrices
 import Views.CalcDsagoPrices
-import Enteties.PolicyTypes
-import Enteties.Companys
+import Entities.PolicyTypes
+import Entities.Companys
 import Modules.ChoosePolicyType
 import Shared.Logs.LogData
 
@@ -20,7 +20,7 @@ calcPriceInsurance :: IO ()
 calcPriceInsurance = do
   policyType <- choosePolicyType
 
-  case (Enteties.PolicyTypes.uid policyType) of
+  case (Entities.PolicyTypes.uid policyType) of
     0 -> calcOsagoPrice Nothing (-1)
     1 -> calcKaskoPrice Nothing (-1)
     2 -> calcDsagoPrice Nothing (-1)
@@ -37,7 +37,7 @@ calcOsagoPrice oldOsagoUserInfo editPunkt = do
 
   companysWithPrice <- calcOsagoPrices osagoUserInfo
 
-  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))
+  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))
 
   updatePunkt <- chooseOsagoEditStep False infoMessage
  
@@ -55,7 +55,7 @@ calcKaskoPrice oldKaskoUserInfo editPunkt = do
 
   companysWithPrice <- calcKaskoPrices kaskoUserInfo
 
-  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))
+  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))
 
   updatePunkt <- chooseKaskoEditStep False infoMessage
 
@@ -73,7 +73,7 @@ calcDsagoPrice oldDsagoUserInfo editPunkt = do
 
   companysWithPrice <- calcDsagoPrices dsagoUserInfo
 
-  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))
+  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))
 
   updatePunkt <- chooseDsagoEditStep False infoMessage
 

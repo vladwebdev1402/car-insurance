@@ -1,6 +1,6 @@
 module Modules.ChooseTransportBrand (chooseTransportBrand) where
 
-import Enteties.TransportBrands
+import Entities.TransportBrands
 import Shared.Inputs.ChooseData (chooseApiPaginatedData)
 
 chooseTransportBrand :: String ->  IO (TransportBrand)

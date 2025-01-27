@@ -3,29 +3,29 @@ module Views.CalcKaskoPrices (calcKaskoPrices) where
 import System.Process (callCommand)
 import Data.List (sortBy)
 import Views.UserInfo
-import Enteties.Companys
+import Entities.Companys
 import Shared.Validators.NothingToJust
-import Enteties.TypesKVS
-import Enteties.TypesKM
-import Enteties.TypesKBM
-import Enteties.TypeKS
-import Enteties.TypeKO
-import Enteties.CoefTB
-import Enteties.CoefKBM
-import Enteties.CoefKM
-import Enteties.CoefKO
-import Enteties.CoefKS
-import Enteties.CoefKT
-import Enteties.CoefKVS
-import Enteties.CoefDeductible
-import Enteties.CoefService
-import Enteties.Companys
-import Enteties.TypesTransport
-import Enteties.CompanyPolicyLink
-import Enteties.Territories
-import Enteties.TransportCertificate 
-import Enteties.Drivers
-import Enteties.Deductibles
+import Entities.TypesKVS
+import Entities.TypesKM
+import Entities.TypesKBM
+import Entities.TypeKS
+import Entities.TypeKO
+import Entities.CoefTB
+import Entities.CoefKBM
+import Entities.CoefKM
+import Entities.CoefKO
+import Entities.CoefKS
+import Entities.CoefKT
+import Entities.CoefKVS
+import Entities.CoefDeductible
+import Entities.CoefService
+import Entities.Companys
+import Entities.TypesTransport
+import Entities.CompanyPolicyLink
+import Entities.Territories
+import Entities.TransportCertificate 
+import Entities.Drivers
+import Entities.Deductibles
 
 calcKaskoPrices :: UserInfo -> IO [(Company, Float)]
 calcKaskoPrices kaskoUserInfo = do 
@@ -49,14 +49,14 @@ calcKaskoPrices kaskoUserInfo = do
 
     let policyId = 1
 
-    driver <- maybe (return Nothing) (\cert -> fmap Just (getDriverById (Enteties.TransportCertificate.driverId cert))) certificate
+    driver <- maybe (return Nothing) (\cert -> fmap Just (getDriverById (Entities.TransportCertificate.driverId cert))) certificate
 
-    driverLevel <- maybe (return 3) (\user -> return (Enteties.Drivers.driverLevel user)) driver
+    driverLevel <- maybe (return 3) (\user -> return (Entities.Drivers.driverLevel user)) driver
 
     links <- getCompanyPolicyLinkByPolicy policyId
 
     companysWithPrice <- mapM (\link -> do
-        let linkId = (Enteties.CompanyPolicyLink.uid link)
+        let linkId = (Entities.CompanyPolicyLink.uid link)
 
         typeKvs <- getTypeKVS age drivingExpirience False
 
@@ -64,36 +64,36 @@ calcKaskoPrices kaskoUserInfo = do
 
         typeKm <- getTypeKMByPower enginePower False
 
-        company <- getCompanyById (Enteties.CompanyPolicyLink.companyId link)
+        company <- getCompanyById (Entities.CompanyPolicyLink.companyId link)
 
-        coefKvs <- getCoefKVS linkId (Enteties.TypesKVS.uid typeKvs)
+        coefKvs <- getCoefKVS linkId (Entities.TypesKVS.uid typeKvs)
 
-        coefDeductible <- getCoefDeductible linkId (Enteties.Deductibles.uid deductible)
+        coefDeductible <- getCoefDeductible linkId (Entities.Deductibles.uid deductible)
 
         summuryServiceCoef <- getSummuryCoefService linkId services
 
-        coefKbm <- getCoefKBM linkId (Enteties.TypesKBM.uid typeKbm)
+        coefKbm <- getCoefKBM linkId (Entities.TypesKBM.uid typeKbm)
 
-        coefKm <- getCoefKM linkId (Enteties.TypesKM.uid typeKm)
+        coefKm <- getCoefKM linkId (Entities.TypesKM.uid typeKm)
 
-        coefKo <- getCoefKO linkId (Enteties.TypeKO.uid typeKo)
+        coefKo <- getCoefKO linkId (Entities.TypeKO.uid typeKo)
 
-        coefKs <- getCoefKS linkId (Enteties.TypeKS.uid typeKs)
+        coefKs <- getCoefKS linkId (Entities.TypeKS.uid typeKs)
 
-        coefKt <- getCoefKT linkId (Enteties.Territories.uid territorie)
+        coefKt <- getCoefKT linkId (Entities.Territories.uid territorie)
 
-        coefKvs <- getCoefKVS linkId (Enteties.TypesKVS.uid typeKvs)
+        coefKvs <- getCoefKVS linkId (Entities.TypesKVS.uid typeKvs)
 
-        coefTb <- getCoefTB linkId (Enteties.TypesTransport.uid category)
+        coefTb <- getCoefTB linkId (Entities.TypesTransport.uid category)
 
-        let price = (maybe (0) Enteties.CoefKVS.value coefKvs)
-                    * (maybe (0) Enteties.CoefDeductible.value coefDeductible) 
-                    * (maybe (0) Enteties.CoefKBM.value coefKbm) 
-                    * (maybe (0) Enteties.CoefKM.value coefKm) 
-                    * (maybe (0) Enteties.CoefKO.value coefKo) 
-                    * (maybe (0) Enteties.CoefKS.value coefKs) 
-                    * (maybe (0) Enteties.CoefKT.value coefKt) 
-                    * (maybe (0) Enteties.CoefTB.value coefTb) 
+        let price = (maybe (0) Entities.CoefKVS.value coefKvs)
+                    * (maybe (0) Entities.CoefDeductible.value coefDeductible) 
+                    * (maybe (0) Entities.CoefKBM.value coefKbm) 
+                    * (maybe (0) Entities.CoefKM.value coefKm) 
+                    * (maybe (0) Entities.CoefKO.value coefKo) 
+                    * (maybe (0) Entities.CoefKS.value coefKs) 
+                    * (maybe (0) Entities.CoefKT.value coefKt) 
+                    * (maybe (0) Entities.CoefTB.value coefTb) 
                     * summuryServiceCoef
 
         return (company, price)

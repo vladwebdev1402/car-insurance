@@ -1,7 +1,7 @@
 module Modules.InputUserPassport (UserPassport(..), inputUserPassport) where
 
 import Shared.Inputs.InputPassport
-import Enteties.Drivers
+import Entities.Drivers
 import Shared.Logs.Console
 import Shared.Inputs.InputDayOfBirth
 import Shared.Inputs.InputFio
@@ -69,14 +69,14 @@ inputUserPassport oldPassport editStep = do
             --     _ -> inputUserPassport (Just passport) updateStep
 
         Just driver -> do
-            userAge <- calcAgeFromDate (Enteties.Drivers.birthday driver)
+            userAge <- calcAgeFromDate (Entities.Drivers.birthday driver)
             
-            return UserPassport {passportNumber = (Enteties.Drivers.numberPassport driver), 
-                                        passportSerie = (Enteties.Drivers.seriePassport driver), 
-                                        passportFio = (Enteties.Drivers.surName driver) ++ " " ++ " " ++ (Enteties.Drivers.firstName driver) ++ " " ++ (Enteties.Drivers.patroName driver), 
+            return UserPassport {passportNumber = (Entities.Drivers.numberPassport driver), 
+                                        passportSerie = (Entities.Drivers.seriePassport driver), 
+                                        passportFio = (Entities.Drivers.surName driver) ++ " " ++ " " ++ (Entities.Drivers.firstName driver) ++ " " ++ (Entities.Drivers.patroName driver), 
                                         age = userAge, 
-                                        birthDate = (Enteties.Drivers.birthday driver), 
-                                        drivingLevel = (Enteties.Drivers.driverLevel driver),
+                                        birthDate = (Entities.Drivers.birthday driver), 
+                                        drivingLevel = (Entities.Drivers.driverLevel driver),
                                         driver = Just driver
                                         }
                     

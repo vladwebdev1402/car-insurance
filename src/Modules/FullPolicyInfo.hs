@@ -1,12 +1,12 @@
 module Modules.FullPolicyInfo (FullPolicyInfo(..), getFullInfoForPolicy, getFullInfoForPolicyString) where
 
 import Text.Printf (printf)
-import Enteties.TransportCertificate
-import Enteties.Policies
-import Enteties.CompanyPolicyLink
-import Enteties.Companys
-import Enteties.PolicyTypes
-import Enteties.PolicyCase
+import Entities.TransportCertificate
+import Entities.Policies
+import Entities.CompanyPolicyLink
+import Entities.Companys
+import Entities.PolicyTypes
+import Entities.PolicyCase
 
 data FullPolicyInfo = FullPolicyInfo { policy :: Policy,
     certificate :: TransportCertificate,
@@ -18,33 +18,33 @@ data FullPolicyInfo = FullPolicyInfo { policy :: Policy,
 
 getFullInfoForPolicyString :: FullPolicyInfo -> String
 getFullInfoForPolicyString fullPolicyInfo =
-    "\nТип полиса: " ++ (Enteties.PolicyTypes.name (policyType fullPolicyInfo)) ++
-    "\nКомпания: " ++ (Enteties.Companys.name (company fullPolicyInfo)) ++ 
-    "\nРегистрационный номер автомобиля: " ++ (Enteties.TransportCertificate.registrationNumber (certificate fullPolicyInfo)) ++ 
-    "\nСтоимость оформления: " ++ (printf "%.2f"  (Enteties.Policies.sumInsurance (policy fullPolicyInfo))) ++ 
-    (case (Enteties.Policies.sumDeductible (policy fullPolicyInfo)) of 
+    "\nТип полиса: " ++ (Entities.PolicyTypes.name (policyType fullPolicyInfo)) ++
+    "\nКомпания: " ++ (Entities.Companys.name (company fullPolicyInfo)) ++ 
+    "\nРегистрационный номер автомобиля: " ++ (Entities.TransportCertificate.registrationNumber (certificate fullPolicyInfo)) ++ 
+    "\nСтоимость оформления: " ++ (printf "%.2f"  (Entities.Policies.sumInsurance (policy fullPolicyInfo))) ++ 
+    (case (Entities.Policies.sumDeductible (policy fullPolicyInfo)) of 
         0.0 -> ""
         sum -> "\nРазмер франшизы: " ++ (printf "%.2f" sum)
         ) ++ 
-    (case (Enteties.Policies.sumRemaininInsurance (policy fullPolicyInfo)) of 
+    (case (Entities.Policies.sumRemaininInsurance (policy fullPolicyInfo)) of 
         0.0 -> ""
         sum -> "\nСумма возврата: " ++ (printf "%.2f" sum)
         ) ++ 
-    "\nДата оформления: " ++ (Enteties.Policies.date (policy fullPolicyInfo)) ++ 
-    "\nСрок оформления: " ++ (show (Enteties.Policies.countDays (policy fullPolicyInfo))) ++ " дней" ++ 
-    "\nСтатус полиса: " ++ (policyStatusRuTranslate (Enteties.Policies.status (policy fullPolicyInfo))) ++
+    "\nДата оформления: " ++ (Entities.Policies.date (policy fullPolicyInfo)) ++ 
+    "\nСрок оформления: " ++ (show (Entities.Policies.countDays (policy fullPolicyInfo))) ++ " дней" ++ 
+    "\nСтатус полиса: " ++ (policyStatusRuTranslate (Entities.Policies.status (policy fullPolicyInfo))) ++
     getPolicyCasesInfo (policyCases fullPolicyInfo)
 
 getFullInfoForPolicy :: [(TransportCertificate, Policy)] -> IO [FullPolicyInfo]
 getFullInfoForPolicy certificatesWithPolicy = do
     fullPolicies <- mapM (\(cert, policy) -> do
-        policyType <- getPolicyTypeById (Enteties.Policies.policyTypeId policy) 
+        policyType <- getPolicyTypeById (Entities.Policies.policyTypeId policy) 
 
-        link <- getCompanyPolicyLinkById (Enteties.Policies.companyPolicyLinkId policy) 
+        link <- getCompanyPolicyLinkById (Entities.Policies.companyPolicyLinkId policy) 
 
-        company <- getCompanyById (Enteties.CompanyPolicyLink.companyId link)
+        company <- getCompanyById (Entities.CompanyPolicyLink.companyId link)
 
-        policyCase <- getPolicyCases (Enteties.Policies.uid policy)
+        policyCase <- getPolicyCases (Entities.Policies.uid policy)
 
         return (FullPolicyInfo policy cert link company policyType policyCase)
         ) certificatesWithPolicy

@@ -25,37 +25,37 @@ source-repository head
 
 library
   exposed-modules:
-      Enteties.Additional
-      Enteties.CoefAdditional
-      Enteties.CoefDeductible
-      Enteties.CoefKBM
-      Enteties.CoefKM
-      Enteties.CoefKO
-      Enteties.CoefKS
-      Enteties.CoefKT
-      Enteties.CoefKVS
-      Enteties.CoefService
-      Enteties.CoefTB
-      Enteties.CompanyPolicyLink
-      Enteties.Companys
-      Enteties.Deductibles
-      Enteties.Drivers
-      Enteties.Policies
-      Enteties.PolicyCase
-      Enteties.PolicyServices
-      Enteties.PolicyTypes
-      Enteties.Regions
-      Enteties.Territories
-      Enteties.TransportBrands
-      Enteties.TransportCertificate
-      Enteties.TransportModels
-      Enteties.Transports
-      Enteties.TypeKO
-      Enteties.TypeKS
-      Enteties.TypesKBM
-      Enteties.TypesKM
-      Enteties.TypesKVS
-      Enteties.TypesTransport
+      Entities.Additional
+      Entities.CoefAdditional
+      Entities.CoefDeductible
+      Entities.CoefKBM
+      Entities.CoefKM
+      Entities.CoefKO
+      Entities.CoefKS
+      Entities.CoefKT
+      Entities.CoefKVS
+      Entities.CoefService
+      Entities.CoefTB
+      Entities.CompanyPolicyLink
+      Entities.Companys
+      Entities.Deductibles
+      Entities.Drivers
+      Entities.Policies
+      Entities.PolicyCase
+      Entities.PolicyServices
+      Entities.PolicyTypes
+      Entities.Regions
+      Entities.Territories
+      Entities.TransportBrands
+      Entities.TransportCertificate
+      Entities.TransportModels
+      Entities.Transports
+      Entities.TypeKO
+      Entities.TypeKS
+      Entities.TypesKBM
+      Entities.TypesKM
+      Entities.TypesKVS
+      Entities.TypesTransport
       Modules.ChooseAdditional
       Modules.ChooseDeducatble
       Modules.ChoosePolicyServices

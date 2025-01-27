@@ -1,6 +1,6 @@
 module Modules.ChoosePolicyServices (choosePolicyServices) where
 
-import Enteties.PolicyServices
+import Entities.PolicyServices
 import Shared.Inputs.ChooseData (multyplyChooseData)
 import Shared.Logs.LogData (generateLogData)
 

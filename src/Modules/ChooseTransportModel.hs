@@ -1,6 +1,6 @@
 module Modules.ChooseTransportModel (chooseTransportModel) where
 
-import Enteties.TransportModels 
+import Entities.TransportModels 
 import Shared.Inputs.ChooseData (chooseApiParamPaginatedData)
 
 chooseTransportModel :: Int -> String ->  IO (TransportModel)

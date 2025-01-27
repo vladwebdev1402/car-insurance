@@ -1,17 +1,17 @@
 module Views.InputOsagoData (inputOsagoData) where
 
 import System.Process (callCommand)
-import Enteties.Regions
-import Enteties.Territories
-import Enteties.TypeKS
-import Enteties.TypeKO
-import Enteties.TransportBrands 
-import Enteties.TransportModels 
-import Enteties.Transports
-import Enteties.TypesTransport
-import Enteties.TransportCertificate
-import Enteties.Drivers
-import Enteties.Policies
+import Entities.Regions
+import Entities.Territories
+import Entities.TypeKS
+import Entities.TypeKO
+import Entities.TransportBrands 
+import Entities.TransportModels 
+import Entities.Transports
+import Entities.TypesTransport
+import Entities.TransportCertificate
+import Entities.Drivers
+import Entities.Policies
 import Shared.Inputs.InputDayOfBirth
 import Shared.Inputs.InputRangeNumber
 import Shared.Calc.CalcAgeFromDate
@@ -54,26 +54,26 @@ inputOsagoData osagoUserInfo editStep False _ = do
     then chooseRegion infoMessage3 
     else maybe (chooseRegion infoMessage3)  return (region osagoUserInfo)
 
-  let infoMessage4 = infoMessage3 ++ "\nРегион: " ++ (Enteties.Regions.name region)
+  let infoMessage4 = infoMessage3 ++ "\nРегион: " ++ (Entities.Regions.name region)
 
   putStrLn infoMessage4
   territorie <- if editStep == 3
-    then chooseTerritorie (Enteties.Regions.uid region) infoMessage4 
-    else maybe (chooseTerritorie (Enteties.Regions.uid region) infoMessage4) return (territorie osagoUserInfo)
+    then chooseTerritorie (Entities.Regions.uid region) infoMessage4 
+    else maybe (chooseTerritorie (Entities.Regions.uid region) infoMessage4) return (territorie osagoUserInfo)
 
-  let infoMessage5 = infoMessage4 ++ "\nМесто проживания: " ++ (Enteties.Territories.name territorie)
+  let infoMessage5 = infoMessage4 ++ "\nМесто проживания: " ++ (Entities.Territories.name territorie)
 
   typeKs <- if editStep == 4
     then сhooseTypeKS infoMessage5 
     else maybe (сhooseTypeKS infoMessage5) return (typeKS osagoUserInfo)
 
-  let infoMessage6 = infoMessage5 ++ "\nСрок страхования: " ++ (Enteties.TypeKS.description typeKs)
+  let infoMessage6 = infoMessage5 ++ "\nСрок страхования: " ++ (Entities.TypeKS.description typeKs)
 
   typeKo <- if editStep == 5
     then сhooseTypeKO infoMessage6 
     else maybe (сhooseTypeKO infoMessage6) return (typeKO osagoUserInfo)
 
-  let infoMessage7 = infoMessage6 ++ "\nКоличество водителей: " ++ (Enteties.TypeKO.description typeKo)
+  let infoMessage7 = infoMessage6 ++ "\nКоличество водителей: " ++ (Entities.TypeKO.description typeKo)
 
   callCommand "cls" 
   editPunkt <- chooseOsagoEditStep False infoMessage7
@@ -98,11 +98,11 @@ inputOsagoData osagoUserInfo editStep True errorMessage = do
     Nothing -> return nullUserInfo
     Just cert -> do 
 
-        activeOsago <- getActivePolicy (Enteties.TransportCertificate.uid cert) 0
+        activeOsago <- getActivePolicy (Entities.TransportCertificate.uid cert) 0
 
         case activeOsago of
           Nothing -> do 
-              driver <- getDriverById (Enteties.TransportCertificate.driverId cert) 
+              driver <- getDriverById (Entities.TransportCertificate.driverId cert) 
 
               isSusscessfulIdentification <- if editStep == 1 || editStep == -1
                 then confirmIdentity driver
@@ -110,7 +110,7 @@ inputOsagoData osagoUserInfo editStep True errorMessage = do
 
               if not (isSusscessfulIdentification) then return nullUserInfo
               else do 
-                age <- calcAgeFromDate (Enteties.Drivers.birthday driver)
+                age <- calcAgeFromDate (Entities.Drivers.birthday driver)
 
                 let infoMessage1 = "\nВыбран вид страхования для оформления: ОСАГО" ++
                                   getAutoInfo enginePower transportBrand transportModel transport category (Just cert)
@@ -119,28 +119,28 @@ inputOsagoData osagoUserInfo editStep True errorMessage = do
                 then chooseRegion infoMessage1 
                 else maybe (chooseRegion infoMessage1)  return (region osagoUserInfo)
 
-                let infoMessage2 = infoMessage1 ++ "\nРегион: " ++ (Enteties.Regions.name region)
+                let infoMessage2 = infoMessage1 ++ "\nРегион: " ++ (Entities.Regions.name region)
 
                 territorie <- if editStep == 2
-                  then chooseTerritorie (Enteties.Regions.uid region) infoMessage2 
-                  else maybe (chooseTerritorie (Enteties.Regions.uid region) infoMessage2) return (territorie osagoUserInfo)
+                  then chooseTerritorie (Entities.Regions.uid region) infoMessage2 
+                  else maybe (chooseTerritorie (Entities.Regions.uid region) infoMessage2) return (territorie osagoUserInfo)
 
-                let infoMessage3 = infoMessage2 ++ "\nМесто проживания: " ++ (Enteties.Territories.name territorie)
+                let infoMessage3 = infoMessage2 ++ "\nМесто проживания: " ++ (Entities.Territories.name territorie)
 
                 typeKs <- if editStep == 3
                 then сhooseTypeKS infoMessage3 
                 else maybe (сhooseTypeKS infoMessage3) return (typeKS osagoUserInfo)
 
-                let infoMessage4 = infoMessage3 ++ "\nСрок страхования: " ++ (Enteties.TypeKS.description typeKs)
+                let infoMessage4 = infoMessage3 ++ "\nСрок страхования: " ++ (Entities.TypeKS.description typeKs)
 
                 typeKo <- if editStep == 4
                 then сhooseTypeKO infoMessage4 
                 else maybe (сhooseTypeKO infoMessage4) return (typeKO osagoUserInfo)
 
-                let infoMessage5 = infoMessage4 ++ "\nКоличество водителей: " ++ (Enteties.TypeKO.description typeKo)
+                let infoMessage5 = infoMessage4 ++ "\nКоличество водителей: " ++ (Entities.TypeKO.description typeKo)
 
-                let osagoInfo = UserInfo {Views.UserInfo.birthDate = Just (age, (Enteties.Drivers.birthday driver)),
-                    drivingExpirience = Just (Enteties.Drivers.experience driver),
+                let osagoInfo = UserInfo {Views.UserInfo.birthDate = Just (age, (Entities.Drivers.birthday driver)),
+                    drivingExpirience = Just (Entities.Drivers.experience driver),
                     autoInfo = Just (enginePower, transportBrand, transportModel, transport, category, (Just cert)), 
                     region = (Just region), 
                     territorie = (Just territorie),

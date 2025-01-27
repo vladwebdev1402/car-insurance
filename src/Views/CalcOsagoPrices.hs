@@ -2,18 +2,18 @@ module Views.CalcOsagoPrices (calcOsagoPrices) where
 
 import Data.List (sortBy)
 import Views.UserInfo
-import Enteties.TypesKVS
-import Enteties.TypesKM
-import Enteties.TypesKBM
-import Enteties.TypeKS
-import Enteties.Drivers
-import Enteties.TransportCertificate
-import Enteties.TypeKO
-import Enteties.CoefTB
-import Enteties.Companys
-import Enteties.TypesTransport
-import Enteties.CompanyPolicyLink
-import Enteties.Territories
+import Entities.TypesKVS
+import Entities.TypesKM
+import Entities.TypesKBM
+import Entities.TypeKS
+import Entities.Drivers
+import Entities.TransportCertificate
+import Entities.TypeKO
+import Entities.CoefTB
+import Entities.Companys
+import Entities.TypesTransport
+import Entities.CompanyPolicyLink
+import Entities.Territories
 import Shared.Validators.NothingToJust
 import Views.UserInfo
 
@@ -36,27 +36,27 @@ calcOsagoPrices osagoUserInfo = do
 
   coefKVS <- getTypeKVS age drivingExpirience True
 
-  let coefKT = (Enteties.Territories.coefOsago territorie)
+  let coefKT = (Entities.Territories.coefOsago territorie)
 
   coefKM <- getTypeKMByPower enginePower True
 
-  driver <- maybe (return Nothing) (\cert -> fmap Just (getDriverById (Enteties.TransportCertificate.driverId cert))) certificate
+  driver <- maybe (return Nothing) (\cert -> fmap Just (getDriverById (Entities.TransportCertificate.driverId cert))) certificate
 
-  driverLevel <- maybe (return 3) (\user -> return (Enteties.Drivers.driverLevel user)) driver
+  driverLevel <- maybe (return 3) (\user -> return (Entities.Drivers.driverLevel user)) driver
   
   coefKBM <- getTypeKBMByDriverLever driverLevel
 
-  let summuryCoef = (Enteties.TypeKS.coefOsago typeKs) * (Enteties.TypeKO.coefOsago typeKo) * (Enteties.TypesKVS.coefOsago coefKVS) * coefKT * (Enteties.TypesKM.coefOsago coefKM) * (Enteties.TypesKBM.coefOsago coefKBM )
+  let summuryCoef = (Entities.TypeKS.coefOsago typeKs) * (Entities.TypeKO.coefOsago typeKo) * (Entities.TypesKVS.coefOsago coefKVS) * coefKT * (Entities.TypesKM.coefOsago coefKM) * (Entities.TypesKBM.coefOsago coefKBM )
 
   let policyId = 0
 
   links <- getCompanyPolicyLinkByPolicy policyId
 
-  coefsTb <- mapM (\link -> getCoefTB (companyId link) (Enteties.TypesTransport.uid category)) links
+  coefsTb <- mapM (\link -> getCoefTB (companyId link) (Entities.TypesTransport.uid category)) links
 
   companys <- mapM (\link -> getCompanyById (companyId link)) links
 
-  companysWithPrice <- mapM (\(company, coef) -> return (company, (maybe (0) Enteties.CoefTB.value coef) * summuryCoef)) (zip companys coefsTb)
+  companysWithPrice <- mapM (\(company, coef) -> return (company, (maybe (0) Entities.CoefTB.value coef) * summuryCoef)) (zip companys coefsTb)
 
   let filteredCompanys = filter (\(_, price) -> price > 0) companysWithPrice  
 

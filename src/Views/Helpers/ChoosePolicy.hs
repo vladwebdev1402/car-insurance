@@ -1,8 +1,8 @@
 module Views.Helpers.ChoosePolicy (choosePolicy) where
 
 import System.Process (callCommand)
-import Enteties.Policies
-import Enteties.PolicyTypes
+import Entities.Policies
+import Entities.PolicyTypes
 import Modules.FullPolicyInfo
 import Shared.Logs.LogData
 import Shared.Logs.Console
@@ -12,8 +12,8 @@ import Data.Char (toLower)
 filterPolicies :: [FullPolicyInfo] -> String -> String -> [FullPolicyInfo]
 filterPolicies fullInfos status policyType =
     filter (\item ->
-        (status == "" || Enteties.Policies.status (Modules.FullPolicyInfo.policy item) == status) &&
-        (policyType == "" || (map toLower (Enteties.PolicyTypes.name (Modules.FullPolicyInfo.policyType item))) == policyType)
+        (status == "" || Entities.Policies.status (Modules.FullPolicyInfo.policy item) == status) &&
+        (policyType == "" || (map toLower (Entities.PolicyTypes.name (Modules.FullPolicyInfo.policyType item))) == policyType)
     ) fullInfos
 
 choosePolicy :: [FullPolicyInfo] -> Int -> String -> String -> IO (Maybe FullPolicyInfo)
@@ -43,7 +43,7 @@ choosePolicy fullInfos page status policyType = do
                     else choosePolicy fullInfos (page + 1) status policyType   
         num -> if validateStringNumber num 1 (length filteredPolicies) then do
                     let policy = filteredPolicies !! ((read num) - 1)
-                    if (Enteties.Policies.status (Modules.FullPolicyInfo.policy policy)) == "deactive" then do 
+                    if (Entities.Policies.status (Modules.FullPolicyInfo.policy policy)) == "deactive" then do 
                         callCommand "cls"
                         putStrLn "Полис уже не активен, выберите другой"
                         choosePolicy fullInfos page status policyType

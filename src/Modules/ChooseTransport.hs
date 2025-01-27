@@ -1,6 +1,6 @@
 module Modules.ChooseTransport (chooseTransport) where
 
-import Enteties.Transports
+import Entities.Transports
 import Shared.Inputs.ChooseData (chooseData)
 import Shared.Logs.LogData (generateLogData)
 

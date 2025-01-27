@@ -1,11 +1,11 @@
 module Views.Helpers.InputAutoInfo (inputAutoInfo) where
 
 import System.Process (callCommand)
-import Enteties.TransportBrands 
-import Enteties.TransportModels 
-import Enteties.Transports
-import Enteties.TypesTransport
-import Enteties.TransportCertificate
+import Entities.TransportBrands 
+import Entities.TransportModels 
+import Entities.Transports
+import Entities.TypesTransport
+import Entities.TransportCertificate
 import Modules.ChooseTransportBrand
 import Modules.ChooseTransportModel
 import Modules.ChooseTransport
@@ -26,16 +26,16 @@ inputAutoInfo False infoMessage = do
         2 -> do 
             callCommand "cls"
             transportBrand <- chooseTransportBrand infoMessage
-            transportModel <- chooseTransportModel (Enteties.TransportBrands.uid transportBrand) infoMessage
-            transport <- chooseTransport (Enteties.TransportModels.uid transportModel) infoMessage
-            return ((Enteties.Transports.power transport), Just transportBrand, Just transportModel, Just transport)
+            transportModel <- chooseTransportModel (Entities.TransportBrands.uid transportBrand) infoMessage
+            transport <- chooseTransport (Entities.TransportModels.uid transportModel) infoMessage
+            return ((Entities.Transports.power transport), Just transportBrand, Just transportModel, Just transport)
     
     category <- case transport of
         Nothing -> do
             callCommand "cls"
             category <- chooseTypeTransport infoMessage
             return category
-        Just transport -> getTypeTransportById (Enteties.Transports.typeTransportId transport)
+        Just transport -> getTypeTransportById (Entities.Transports.typeTransportId transport)
     
     return (enginePower, transportBrand, transportModel, transport, category, Nothing)
 
@@ -53,9 +53,9 @@ inputAutoInfo True infoMessage = do
                     consoleError "Ошибка: автомобиль с таким регистрационным номером не найден в базе данных."
                     inputAutoInfo True infoMessage
                 Just certificate -> do 
-                    transport <- getTransportById (Enteties.TransportCertificate.transportId certificate)
-                    category <- getTypeTransportById (Enteties.Transports.typeTransportId transport) 
-                    model <- getTransportModelById (Enteties.Transports.transportModelId transport)
-                    brand <- getTransportBrandById (Enteties.TransportModels.transportBrandId model)
-                    return ((Enteties.Transports.power transport), Just brand, Just model, Just transport, category, Just certificate)
+                    transport <- getTransportById (Entities.TransportCertificate.transportId certificate)
+                    category <- getTypeTransportById (Entities.Transports.typeTransportId transport) 
+                    model <- getTransportModelById (Entities.Transports.transportModelId transport)
+                    brand <- getTransportBrandById (Entities.TransportModels.transportBrandId model)
+                    return ((Entities.Transports.power transport), Just brand, Just model, Just transport, category, Just certificate)
         

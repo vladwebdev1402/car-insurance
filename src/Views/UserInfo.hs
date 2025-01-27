@@ -1,17 +1,17 @@
 module Views.UserInfo (UserInfo(..), nullUserInfo) where
 
-import Enteties.Regions
-import Enteties.Territories
-import Enteties.Additional
-import Enteties.TypeKS
-import Enteties.TypeKO
-import Enteties.TransportBrands 
-import Enteties.TransportModels 
-import Enteties.Transports
-import Enteties.TypesTransport
-import Enteties.TransportCertificate
-import Enteties.PolicyServices
-import Enteties.Deductibles
+import Entities.Regions
+import Entities.Territories
+import Entities.Additional
+import Entities.TypeKS
+import Entities.TypeKO
+import Entities.TransportBrands 
+import Entities.TransportModels 
+import Entities.Transports
+import Entities.TypesTransport
+import Entities.TransportCertificate
+import Entities.PolicyServices
+import Entities.Deductibles
 import Views.Helpers.GetAutoInfo
 
 data UserInfo = UserInfo {
@@ -53,25 +53,25 @@ getUserInfoString userInfo =
             Just (a, b, c, d, e, f) -> getAutoInfo a b c d e f ++ "\n") ++
     (case region userInfo of
             Nothing -> ""
-            Just region -> "Регион: " ++ (Enteties.Regions.name region) ++ "\n") ++
+            Just region -> "Регион: " ++ (Entities.Regions.name region) ++ "\n") ++
     (case territorie userInfo of
             Nothing -> ""
-            Just territorie -> "Территория: " ++ (Enteties.Territories.name territorie) ++ "\n") ++
+            Just territorie -> "Территория: " ++ (Entities.Territories.name territorie) ++ "\n") ++
     (case typeKS userInfo of
             Nothing -> ""
-            Just typeKS -> "Срок страхования: " ++ (Enteties.TypeKS.description typeKS) ++ "\n") ++
+            Just typeKS -> "Срок страхования: " ++ (Entities.TypeKS.description typeKS) ++ "\n") ++
     (case typeKO userInfo of
             Nothing -> ""
-            Just typeKO -> "Количество водителей: " ++  (Enteties.TypeKO.description typeKO)++ "\n") ++
+            Just typeKO -> "Количество водителей: " ++  (Entities.TypeKO.description typeKO)++ "\n") ++
     (case deductible userInfo of
             Nothing -> ""
-            Just deductible -> "Размер франшизы: " ++ (show (Enteties.Deductibles.sumDeductible deductible) )++ "\n") ++
+            Just deductible -> "Размер франшизы: " ++ (show (Entities.Deductibles.sumDeductible deductible) )++ "\n") ++
     (case policyServices userInfo of
             Nothing -> ""
-            Just services -> (concat (map (\x -> (Enteties.PolicyServices.name x) ++ ", ") services))) ++
+            Just services -> (concat (map (\x -> (Entities.PolicyServices.name x) ++ ", ") services))) ++
     (case additional userInfo of
             Nothing -> ""
-            Just additional -> "Дополнительная сумма страхования: " ++ (show (Enteties.Additional.value additional)))
+            Just additional -> "Дополнительная сумма страхования: " ++ (show (Entities.Additional.value additional)))
  
     
    

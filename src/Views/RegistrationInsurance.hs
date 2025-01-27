@@ -10,14 +10,14 @@ import Modules.ChoosePolicyType
 import Shared.Inputs.ChooseData
 import Shared.Helpers.GetTodayDate
 import Shared.Helpers.GetCountDays
-import Enteties.PolicyTypes
-import Enteties.Policies
-import Enteties.Companys
-import Enteties.Deductibles
-import Enteties.Additional
-import Enteties.TypeKS
-import Enteties.CompanyPolicyLink
-import Enteties.TransportCertificate
+import Entities.PolicyTypes
+import Entities.Policies
+import Entities.Companys
+import Entities.Deductibles
+import Entities.Additional
+import Entities.TypeKS
+import Entities.CompanyPolicyLink
+import Entities.TransportCertificate
 import Shared.Logs.LogData
 import Shared.Validators.NothingToJust
 import Text.Printf (printf)
@@ -27,7 +27,7 @@ registrationInsurance = do
   policyType <- choosePolicyType
 
 
-  case (Enteties.PolicyTypes.uid policyType) of
+  case (Entities.PolicyTypes.uid policyType) of
     0 -> registrationOsago Nothing (-1) 
     1 -> registrationKasko Nothing (-1) 
     2 -> registrationDsago Nothing (-1) 
@@ -47,7 +47,7 @@ registrationOsago oldOsagoUserInfo editPunkt = do
     _ -> do
         companysWithPrices <- calcOsagoPrices osagoUserInfo
 
-        index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
+        index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
 
         if (index == -1) then return ()
         else do 
@@ -57,21 +57,21 @@ registrationOsago oldOsagoUserInfo editPunkt = do
           let (_, _, _, _, _, certificate) = nothingToJust (Views.UserInfo.autoInfo osagoUserInfo) "registrationOsago: error get auto info"
           let cert = nothingToJust certificate "registrationOsago: error get certificate"
           let typeKs = nothingToJust (Views.UserInfo.typeKS osagoUserInfo) "registrationOsago: error get count days "
-          let countDays = getCountDaysFromMonths (Enteties.TypeKS.countMonths typeKs)
-          companyLink <- getCompanyPolicyLinkByCompany (Enteties.Companys.uid company) policyTypeId
+          let countDays = getCountDaysFromMonths (Entities.TypeKS.countMonths typeKs)
+          companyLink <- getCompanyPolicyLinkByCompany (Entities.Companys.uid company) policyTypeId
 
           let newPolicy = Policy {
-            Enteties.Policies.uid = 0,
-            Enteties.Policies.companyPolicyLinkId = (Enteties.CompanyPolicyLink.uid companyLink),
-            Enteties.Policies.policyTypeId = policyTypeId,
-            Enteties.Policies.transportCertificateId = Enteties.TransportCertificate.uid cert,
-            Enteties.Policies.status = "active",
-            Enteties.Policies.countDays = countDays,
-            Enteties.Policies.sumInsurance = price,
-            Enteties.Policies.sumRemaininInsurance = 0.0,
-            Enteties.Policies.sumDeductible = 0.0,
-            Enteties.Policies.sumAdditional = 0.0,
-            Enteties.Policies.date = date
+            Entities.Policies.uid = 0,
+            Entities.Policies.companyPolicyLinkId = (Entities.CompanyPolicyLink.uid companyLink),
+            Entities.Policies.policyTypeId = policyTypeId,
+            Entities.Policies.transportCertificateId = Entities.TransportCertificate.uid cert,
+            Entities.Policies.status = "active",
+            Entities.Policies.countDays = countDays,
+            Entities.Policies.sumInsurance = price,
+            Entities.Policies.sumRemaininInsurance = 0.0,
+            Entities.Policies.sumDeductible = 0.0,
+            Entities.Policies.sumAdditional = 0.0,
+            Entities.Policies.date = date
           }
 
           addNewPolicy newPolicy
@@ -91,7 +91,7 @@ registrationKasko oldKaskoUserInfo editPunkt = do
     _ -> do 
       companysWithPrices <- calcKaskoPrices kaskoUserInfo
 
-      index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
+      index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
       
       if (index == -1) then return ()
       else do
@@ -109,24 +109,24 @@ registrationKasko oldKaskoUserInfo editPunkt = do
 
           let deductible = nothingToJust (Views.UserInfo.deductible kaskoUserInfo) "registrationKasko: error get deductible "
 
-          let countDeductible = (Enteties.Deductibles.sumDeductible deductible) 
+          let countDeductible = (Entities.Deductibles.sumDeductible deductible) 
 
-          let countDays = getCountDaysFromMonths (Enteties.TypeKS.countMonths typeKs)
+          let countDays = getCountDaysFromMonths (Entities.TypeKS.countMonths typeKs)
 
-          companyLink <- getCompanyPolicyLinkByCompany (Enteties.Companys.uid company) policyTypeId
+          companyLink <- getCompanyPolicyLinkByCompany (Entities.Companys.uid company) policyTypeId
 
           let newPolicy = Policy {
-            Enteties.Policies.uid = 0,
-            Enteties.Policies.companyPolicyLinkId = (Enteties.CompanyPolicyLink.uid companyLink),
-            Enteties.Policies.policyTypeId = policyTypeId,
-            Enteties.Policies.transportCertificateId = Enteties.TransportCertificate.uid cert,
-            Enteties.Policies.status = "active",
-            Enteties.Policies.countDays = countDays,
-            Enteties.Policies.sumInsurance = price,
-            Enteties.Policies.sumRemaininInsurance = 0.0,
-            Enteties.Policies.sumDeductible = countDeductible,
-            Enteties.Policies.sumAdditional = countDeductible,
-            Enteties.Policies.date = date
+            Entities.Policies.uid = 0,
+            Entities.Policies.companyPolicyLinkId = (Entities.CompanyPolicyLink.uid companyLink),
+            Entities.Policies.policyTypeId = policyTypeId,
+            Entities.Policies.transportCertificateId = Entities.TransportCertificate.uid cert,
+            Entities.Policies.status = "active",
+            Entities.Policies.countDays = countDays,
+            Entities.Policies.sumInsurance = price,
+            Entities.Policies.sumRemaininInsurance = 0.0,
+            Entities.Policies.sumDeductible = countDeductible,
+            Entities.Policies.sumAdditional = countDeductible,
+            Entities.Policies.date = date
           }
 
           addNewPolicy newPolicy
@@ -146,7 +146,7 @@ registrationDsago oldDsagoUserInfo editPunkt = do
     _ -> do 
       companysWithPrices <- calcDsagoPrices dsagoUserInfo
 
-      index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
+      index <- chooseData companysWithPrices (\array -> generateLogData array (\(company, price) -> (Entities.Companys.name company) ++ " - " ++ (printf "%.2f" price))) "\nВыберите компанию. Чтобы выйти, введите \"выход\"" ""
       
       if (index == -1) then return ()
       else do
@@ -164,22 +164,22 @@ registrationDsago oldDsagoUserInfo editPunkt = do
 
           let additional = nothingToJust (Views.UserInfo.additional dsagoUserInfo) "registrationDsago: error get additional "
 
-          let countDays = getCountDaysFromMonths (Enteties.TypeKS.countMonths typeKs)
+          let countDays = getCountDaysFromMonths (Entities.TypeKS.countMonths typeKs)
 
-          companyLink <- getCompanyPolicyLinkByCompany (Enteties.Companys.uid company) policyTypeId
+          companyLink <- getCompanyPolicyLinkByCompany (Entities.Companys.uid company) policyTypeId
 
           let newPolicy = Policy {
-            Enteties.Policies.uid = 0,
-            Enteties.Policies.companyPolicyLinkId = (Enteties.CompanyPolicyLink.uid companyLink),
-            Enteties.Policies.policyTypeId = policyTypeId,
-            Enteties.Policies.transportCertificateId = Enteties.TransportCertificate.uid cert,
-            Enteties.Policies.status = "active",
-            Enteties.Policies.countDays = countDays,
-            Enteties.Policies.sumInsurance = price,
-            Enteties.Policies.sumRemaininInsurance = 0.0,
-            Enteties.Policies.sumDeductible = 0.0,
-            Enteties.Policies.sumAdditional = (Enteties.Additional.value additional),
-            Enteties.Policies.date = date
+            Entities.Policies.uid = 0,
+            Entities.Policies.companyPolicyLinkId = (Entities.CompanyPolicyLink.uid companyLink),
+            Entities.Policies.policyTypeId = policyTypeId,
+            Entities.Policies.transportCertificateId = Entities.TransportCertificate.uid cert,
+            Entities.Policies.status = "active",
+            Entities.Policies.countDays = countDays,
+            Entities.Policies.sumInsurance = price,
+            Entities.Policies.sumRemaininInsurance = 0.0,
+            Entities.Policies.sumDeductible = 0.0,
+            Entities.Policies.sumAdditional = (Entities.Additional.value additional),
+            Entities.Policies.date = date
           }
 
           addNewPolicy newPolicy

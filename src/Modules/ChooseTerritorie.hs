@@ -1,6 +1,6 @@
 module Modules.ChooseTerritorie (chooseTerritorie) where
 
-import Enteties.Territories
+import Entities.Territories
 import Shared.Inputs.ChooseData (chooseApiParamPaginatedData)
 
 chooseTerritorie :: Int -> String -> IO (Territorie)
