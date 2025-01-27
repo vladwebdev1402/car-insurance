@@ -25,6 +25,8 @@ source-repository head
 
 library
   exposed-modules:
+      Enteties.Additional
+      Enteties.CoefAdditional
       Enteties.CoefDeductible
       Enteties.CoefKBM
       Enteties.CoefKM
@@ -101,6 +103,7 @@ library
       Views.InputKaskoData
       Views.InputOsagoData
       Views.RegistrationInsurance
+      Views.UserInfo
   other-modules:
       Paths_car_insurance
   autogen-modules:
