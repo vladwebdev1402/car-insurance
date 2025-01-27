@@ -26,11 +26,11 @@ calcPriceInsurance = do
     2 -> calcDsagoPrice Nothing (-1)
     _ -> return ()
 
-calcOsagoPrice :: Maybe OsagoUserInfo -> Int -> IO ()
+calcOsagoPrice :: Maybe UserInfo -> Int -> IO ()
 calcOsagoPrice oldOsagoUserInfo editPunkt = do
 
   let osagoUserInfo = case oldOsagoUserInfo of
-        Nothing -> nullOsagoUserInfo
+        Nothing -> nullUserInfo
         Just osagoInfo -> osagoInfo
 
   osagoUserInfo <- inputOsagoData osagoUserInfo editPunkt False "" 

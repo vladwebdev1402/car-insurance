@@ -1,4 +1,4 @@
-module Views.InputOsagoData (OsagoUserInfo(..), inputOsagoData, nullOsagoUserInfo) where
+module Views.InputOsagoData (inputOsagoData) where
 
 import System.Process (callCommand)
 import Enteties.Regions
@@ -20,45 +20,19 @@ import Modules.ChooseRegion
 import Modules.ChooseTerritorie
 import Modules.ChooseTypeKS
 import Modules.ChooseTypeKO
+import Views.UserInfo
 import Views.Helpers.InputAutoInfo
 import Views.Helpers.GetAutoInfo
 import Views.Helpers.ChooseOsagoEditStep
 import Views.Helpers.ConfirmIdentity
 
-data OsagoUserInfo = OsagoUserInfo {
-  birthDate :: Maybe (Int, String),
-  drivingExpirience :: Maybe Int,
-  autoInfo :: Maybe (Int, Maybe TransportBrand, Maybe TransportModel, Maybe Transport, TypeTransport, Maybe TransportCertificate),
-  region :: Maybe Region,
-  territorie :: Maybe Territorie,
-  typeKS :: Maybe TypeKS,
-  typeKO :: Maybe TypeKO}
-
-nullOsagoUserInfo :: OsagoUserInfo
-nullOsagoUserInfo = OsagoUserInfo {Views.InputOsagoData.birthDate = Nothing, 
-                             Views.InputOsagoData.drivingExpirience = Nothing,
-                             Views.InputOsagoData.autoInfo = Nothing, 
-                             Views.InputOsagoData.region = Nothing, 
-                             Views.InputOsagoData.territorie = Nothing, 
-                             Views.InputOsagoData.typeKS = Nothing, 
-                             Views.InputOsagoData.typeKO = Nothing}
-
-createNewOsagoUserInfo :: OsagoUserInfo -> OsagoUserInfo
-createNewOsagoUserInfo osagoUserInfo = OsagoUserInfo {Views.InputOsagoData.birthDate = Views.InputOsagoData.birthDate osagoUserInfo, 
-                             Views.InputOsagoData.drivingExpirience = Views.InputOsagoData.drivingExpirience osagoUserInfo,
-                             Views.InputOsagoData.autoInfo = Views.InputOsagoData.autoInfo osagoUserInfo, 
-                             Views.InputOsagoData.region = Views.InputOsagoData.region osagoUserInfo, 
-                             Views.InputOsagoData.territorie = Views.InputOsagoData.territorie osagoUserInfo, 
-                             Views.InputOsagoData.typeKS = Views.InputOsagoData.typeKS osagoUserInfo, 
-                             Views.InputOsagoData.typeKO = Views.InputOsagoData.typeKO osagoUserInfo}
-
-inputOsagoData :: OsagoUserInfo -> Int -> Bool -> String -> IO OsagoUserInfo
+inputOsagoData :: UserInfo -> Int -> Bool -> String -> IO UserInfo
 inputOsagoData osagoUserInfo editStep False _ = do
   callCommand "cls" 
 
   (age, birthDate) <- if editStep == 1
     then inputDayOfBirth 16 100 
-    else maybe (inputDayOfBirth 16 100) return (Views.InputOsagoData.birthDate osagoUserInfo)
+    else maybe (inputDayOfBirth 16 100) return (Views.UserInfo.birthDate osagoUserInfo)
 
   let infoMessage1 = "Выбран вид страхования: ОСАГО\nДата рождения: " ++ birthDate ++ "\nВозраст: " ++ show age
 
@@ -104,7 +78,7 @@ inputOsagoData osagoUserInfo editStep False _ = do
   callCommand "cls" 
   editPunkt <- chooseOsagoEditStep False infoMessage7
   
-  let osagoInfo = OsagoUserInfo {Views.InputOsagoData.birthDate = Just (age, birthDate), 
+  let osagoInfo = UserInfo {Views.UserInfo.birthDate = Just (age, birthDate), 
           drivingExpirience = Just drivingExpirience,
           autoInfo = Just (enginePower, transportBrand, transportModel, transport, category, Nothing), region = Just region, territorie = Just territorie, typeKS = Just typeKs, typeKO = Just typeKo}
 
@@ -121,7 +95,7 @@ inputOsagoData osagoUserInfo editStep True errorMessage = do
     else maybe (inputAutoInfo True errorMessage) return (autoInfo osagoUserInfo)
 
   case certificate of 
-    Nothing -> return nullOsagoUserInfo
+    Nothing -> return nullUserInfo
     Just cert -> do 
 
         activeOsago <- getActivePolicy (Enteties.TransportCertificate.uid cert) 0
@@ -134,7 +108,7 @@ inputOsagoData osagoUserInfo editStep True errorMessage = do
                 then confirmIdentity driver
                 else return True
 
-              if not (isSusscessfulIdentification) then return nullOsagoUserInfo
+              if not (isSusscessfulIdentification) then return nullUserInfo
               else do 
                 age <- calcAgeFromDate (Enteties.Drivers.birthday driver)
 
@@ -165,7 +139,7 @@ inputOsagoData osagoUserInfo editStep True errorMessage = do
 
                 let infoMessage5 = infoMessage4 ++ "\nКоличество водителей: " ++ (Enteties.TypeKO.description typeKo)
 
-                let osagoInfo = OsagoUserInfo {Views.InputOsagoData.birthDate = Just (age, (Enteties.Drivers.birthday driver)),
+                let osagoInfo = UserInfo {Views.UserInfo.birthDate = Just (age, (Enteties.Drivers.birthday driver)),
                     drivingExpirience = Just (Enteties.Drivers.experience driver),
                     autoInfo = Just (enginePower, transportBrand, transportModel, transport, category, (Just cert)), 
                     region = (Just region), 
@@ -180,9 +154,9 @@ inputOsagoData osagoUserInfo editStep True errorMessage = do
                     _ -> inputOsagoData osagoInfo editPunkt True ""
         
           _ -> do
-              inputOsagoData (createNewOsagoUserInfo (osagoUserInfo { Views.InputOsagoData.birthDate = Nothing, 
-                                  Views.InputOsagoData.drivingExpirience = Nothing,
-                                  Views.InputOsagoData.autoInfo = Nothing })) (-1) True "На данный автомобиль уже зарегестрирован полис ОСАГО"
+              inputOsagoData (osagoUserInfo { Views.UserInfo.birthDate = Nothing, 
+                                  Views.UserInfo.drivingExpirience = Nothing,
+                                  Views.UserInfo.autoInfo = Nothing }) (-1) True "На данный автомобиль уже зарегестрирован полис ОСАГО"
 
   
 

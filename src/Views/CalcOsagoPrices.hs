@@ -1,7 +1,7 @@
 module Views.CalcOsagoPrices (calcOsagoPrices) where
 
 import Data.List (sortBy)
-import Views.InputOsagoData
+import Views.UserInfo
 import Enteties.TypesKVS
 import Enteties.TypesKM
 import Enteties.TypesKBM
@@ -15,21 +15,22 @@ import Enteties.TypesTransport
 import Enteties.CompanyPolicyLink
 import Enteties.Territories
 import Shared.Validators.NothingToJust
+import Views.UserInfo
 
-calcOsagoPrices :: OsagoUserInfo -> IO [(Company, Float)]
+calcOsagoPrices :: UserInfo -> IO [(Company, Float)]
 calcOsagoPrices osagoUserInfo = do
 
-  let (age, date) = nothingToJust (Views.InputOsagoData.birthDate osagoUserInfo) "calcOsagoPrices: Ошибка получения возраста и даты"
+  let (age, date) = nothingToJust (Views.UserInfo.birthDate osagoUserInfo) "calcOsagoPrices: Ошибка получения возраста и даты"
   
-  let drivingExpirience = nothingToJust (Views.InputOsagoData.drivingExpirience osagoUserInfo) "calcOsagoPrices: Ошибка получения опыта вождения"
+  let drivingExpirience = nothingToJust (Views.UserInfo.drivingExpirience osagoUserInfo) "calcOsagoPrices: Ошибка получения опыта вождения"
   
-  let territorie = nothingToJust (Views.InputOsagoData.territorie osagoUserInfo) "calcOsagoPrices: Ошибка места проживания"
+  let territorie = nothingToJust (Views.UserInfo.territorie osagoUserInfo) "calcOsagoPrices: Ошибка места проживания"
   
-  let autoInfo = nothingToJust (Views.InputOsagoData.autoInfo osagoUserInfo) "calcOsagoPrices: Ошибка информации об автомобиле"
+  let autoInfo = nothingToJust (Views.UserInfo.autoInfo osagoUserInfo) "calcOsagoPrices: Ошибка информации об автомобиле"
   
-  let typeKs = nothingToJust (Views.InputOsagoData.typeKS osagoUserInfo) "calcOsagoPrices: Ошибка получения срока страхования"
+  let typeKs = nothingToJust (Views.UserInfo.typeKS osagoUserInfo) "calcOsagoPrices: Ошибка получения срока страхования"
   
-  let typeKo = nothingToJust (Views.InputOsagoData.typeKO osagoUserInfo) "calcOsagoPrices: Ошибка получения количества водителей"
+  let typeKo = nothingToJust (Views.UserInfo.typeKO osagoUserInfo) "calcOsagoPrices: Ошибка получения количества водителей"
   
   let (enginePower, transportBrand, transportModel, transport, category, certificate) = autoInfo
 

@@ -33,16 +33,16 @@ registrationInsurance = do
     2 -> registrationDsago Nothing (-1) 
     _ -> return ()
 
-registrationOsago :: Maybe OsagoUserInfo -> Int -> IO ()
+registrationOsago :: Maybe UserInfo -> Int -> IO ()
 registrationOsago oldOsagoUserInfo editPunkt = do
 
   let osagoUserInfo = case oldOsagoUserInfo of
-        Nothing -> nullOsagoUserInfo
+        Nothing -> nullUserInfo
         Just osagoInfo -> osagoInfo
 
   osagoUserInfo <- inputOsagoData osagoUserInfo editPunkt True ""
 
-  case (Views.InputOsagoData.birthDate osagoUserInfo) of
+  case (Views.UserInfo.birthDate osagoUserInfo) of
     Nothing -> return ()
     _ -> do
         companysWithPrices <- calcOsagoPrices osagoUserInfo
@@ -54,9 +54,9 @@ registrationOsago oldOsagoUserInfo editPunkt = do
           let (company, price) = (companysWithPrices !! (index - 1))
           date <- getTodayDate
           let policyTypeId = 0
-          let (_, _, _, _, _, certificate) = nothingToJust (Views.InputOsagoData.autoInfo osagoUserInfo) "registrationOsago: error get auto info"
+          let (_, _, _, _, _, certificate) = nothingToJust (Views.UserInfo.autoInfo osagoUserInfo) "registrationOsago: error get auto info"
           let cert = nothingToJust certificate "registrationOsago: error get certificate"
-          let typeKs = nothingToJust (Views.InputOsagoData.typeKS osagoUserInfo) "registrationOsago: error get count days "
+          let typeKs = nothingToJust (Views.UserInfo.typeKS osagoUserInfo) "registrationOsago: error get count days "
           let countDays = getCountDaysFromMonths (Enteties.TypeKS.countMonths typeKs)
           companyLink <- getCompanyPolicyLinkByCompany (Enteties.Companys.uid company) policyTypeId
 
