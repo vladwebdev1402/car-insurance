@@ -1,8 +1,10 @@
 module Views.RegistrationInsurance (registrationInsurance) where
 import Views.InputOsagoData
 import Views.InputKaskoData
+import Views.InputDsagoData
 import Views.CalcOsagoPrices
 import Views.CalcKaskoPrices
+import Views.UserInfo
 import Modules.ChoosePolicyType
 import Shared.Inputs.ChooseData
 import Shared.Helpers.GetTodayDate
@@ -26,6 +28,7 @@ registrationInsurance = do
   case (Enteties.PolicyTypes.uid policyType) of
     0 -> registrationOsago Nothing (-1) 
     1 -> registrationKasko Nothing (-1) 
+    2 -> registrationDsago Nothing (-1) 
     _ -> return ()
 
 registrationOsago :: Maybe OsagoUserInfo -> Int -> IO ()
@@ -125,3 +128,13 @@ registrationKasko oldKaskoUserInfo editPunkt = do
           addNewPolicy newPolicy
 
           return ()
+
+registrationDsago :: Maybe UserInfo -> Int -> IO ()
+registrationDsago oldDsagoUserInfo editPunkt = do
+  let dsagoUserInfo = case oldDsagoUserInfo of
+        Nothing -> nullUserInfo
+        Just dsagoInfo -> dsagoInfo
+
+  dsagoUserInfo <- inputDsagoData dsagoUserInfo editPunkt True ""
+
+  return ()

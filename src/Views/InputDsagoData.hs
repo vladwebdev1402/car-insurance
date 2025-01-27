@@ -109,4 +109,97 @@ inputDsagoData dsagoUserInfo editStep False _ = do
     (-1) -> return dsagoInfo
     _ -> inputDsagoData dsagoInfo editPunkt False ""
 
+inputDsagoData dsagoUserInfo editStep True errorMessage = do
+  callCommand "cls" 
+  putStrLn errorMessage
+  (enginePower, transportBrand, transportModel, transport, category, certificate) <- if editStep == 1
+    then inputAutoInfo True errorMessage
+    else maybe (inputAutoInfo True errorMessage) return (autoInfo dsagoUserInfo)
+
+  case certificate of 
+    Nothing -> return nullUserInfo
+    Just cert -> do
+
+      activeOsago <- getActivePolicy (Enteties.TransportCertificate.uid cert) 0
+
+      activeDsago <- getActivePolicy (Enteties.TransportCertificate.uid cert) 2
+
+      case activeOsago of 
+        Nothing -> do
+          callCommand "cls"
+          inputDsagoData (dsagoUserInfo {Views.UserInfo.birthDate = Nothing, 
+                                Views.UserInfo.drivingExpirience = Nothing,
+                                Views.UserInfo.autoInfo = Nothing } ) (-1) True "У данного автомобиля нет активного ОСАГО полиса"
+        _ -> case activeDsago of 
+          Nothing -> do
+            callCommand "cls"
+            driver <- getDriverById (Enteties.TransportCertificate.driverId cert) 
+
+            isSusscessfulIdentification <- if editStep == 1 || editStep == -1
+              then confirmIdentity driver
+              else return True
+
+            if not (isSusscessfulIdentification) then return nullUserInfo
+            else do 
+              age <- calcAgeFromDate (Enteties.Drivers.birthday driver)
+
+              let infoMessage1 = "\nВыбран вид страхования для оформления: ДСАГО" ++
+                                getAutoInfo enginePower transportBrand transportModel transport category (Just cert)
+              
+              callCommand "cls" 
+              region <- if editStep == 2
+                then chooseRegion infoMessage1 
+                else maybe (chooseRegion infoMessage1)  return (region dsagoUserInfo)
+
+              let infoMessage2 = infoMessage1 ++ "\nРегион: " ++ (Enteties.Regions.name region)
+
+              callCommand "cls" 
+              territorie <- if editStep == 2
+                then chooseTerritorie (Enteties.Regions.uid region) infoMessage2 
+                else maybe (chooseTerritorie (Enteties.Regions.uid region) infoMessage2) return (territorie dsagoUserInfo)
+
+              let infoMessage3 = infoMessage2 ++ "\nМесто проживания: " ++ (Enteties.Territories.name territorie)
+
+              callCommand "cls" 
+              typeKs <- if editStep == 3
+                then сhooseTypeKS infoMessage3 
+                else maybe (сhooseTypeKS infoMessage3) return (typeKS dsagoUserInfo)
+
+              let infoMessage4 = infoMessage3 ++ "\nСрок страхования: " ++ (Enteties.TypeKS.description typeKs)
+
+              callCommand "cls" 
+              typeKo <- if editStep == 3
+                then сhooseTypeKO infoMessage4 
+                else maybe (сhooseTypeKO infoMessage4) return (typeKO dsagoUserInfo)
+
+              let infoMessage5 = infoMessage4 ++ "\nКоличество водителей: " ++ (Enteties.TypeKO.description typeKo)
+
+              callCommand "cls" 
+              additional <- if editStep == 6
+                then chooseAdditional infoMessage5 
+                else maybe (chooseAdditional infoMessage5) return (Views.UserInfo.additional dsagoUserInfo)
+
+              let infoMessage6 = infoMessage5 ++ "\nДополнительная сумма: " ++ (show (Enteties.Additional.value additional))
+              callCommand "cls" 
+              editPunkt <- chooseDsagoEditStep False infoMessage6
+
+              let dsagoInfo = UserInfo {Views.UserInfo.birthDate = Just (age, (Enteties.Drivers.birthday driver)), 
+                          drivingExpirience = Just (Enteties.Drivers.experience driver),
+                          autoInfo = Just (enginePower, transportBrand, transportModel, transport, category, (Just cert)), 
+                          region = Just region, 
+                          territorie = Just territorie, 
+                          typeKS = Just typeKs, 
+                          typeKO = Just typeKo,
+                          Views.UserInfo.additional = Just additional
+                      }
+
+              case editPunkt of 
+                (-1) -> return dsagoInfo
+                _ -> inputDsagoData dsagoInfo editPunkt True ""
+
+          _ -> do
+              inputDsagoData (dsagoUserInfo {Views.UserInfo.birthDate = Nothing, 
+                                Views.UserInfo.drivingExpirience = Nothing,
+                                Views.UserInfo.autoInfo = Nothing } ) (-1) True "На данный автомобиль уже зарегестрирован полис ДСАГО"
+
     
