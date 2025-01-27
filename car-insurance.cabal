@@ -91,6 +91,7 @@ library
       Shared.Validators.NothingToJust
       Shared.Validators.ValidateNumberRangeInput
       Shared.Validators.ValidateStringNumber
+      Views.CalcDsagoPrices
       Views.CalcKaskoPrices
       Views.CalcOsagoPrices
       Views.CalcPriceInsurance

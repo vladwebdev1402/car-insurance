@@ -7,8 +7,10 @@ import Views.InputKaskoData
 import Views.UserInfo
 import Views.Helpers.ChooseOsagoEditStep
 import Views.Helpers.ChooseKaskoEditStep
+import Views.Helpers.ChooseDsagoEditStep
 import Views.CalcOsagoPrices
 import Views.CalcKaskoPrices
+import Views.CalcDsagoPrices
 import Enteties.PolicyTypes
 import Enteties.Companys
 import Modules.ChoosePolicyType
@@ -69,15 +71,15 @@ calcDsagoPrice oldDsagoUserInfo editPunkt = do
 
   dsagoUserInfo <- inputDsagoData dsagoUserInfo editPunkt False "" 
 
-  -- companysWithPrice <- calcKaskoPrices dsagoUserInfo
+  companysWithPrice <- calcDsagoPrices dsagoUserInfo
 
-  -- let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))
+  let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))
 
-  -- updatePunkt <- chooseKaskoEditStep False infoMessage
-  return ()
-  -- case updatePunkt of 
-  --   -1 -> return ()
-  --   _ -> return ()
+  updatePunkt <- chooseDsagoEditStep False infoMessage
+
+  case updatePunkt of 
+    -1 -> return ()
+    _ -> return ()
 
   
 

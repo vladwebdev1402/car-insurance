@@ -10,3 +10,4 @@ CompanyPolicyLink {uid = 8, companyId = 8, policyTypeId = 0, amountPercent = 23}
 CompanyPolicyLink {uid = 9, companyId = 9, policyTypeId = 0, amountPercent = 23}
 CompanyPolicyLink {uid = 10, companyId = 0, policyTypeId = 1, amountPercent = 25}
 CompanyPolicyLink {uid = 11, companyId = 1, policyTypeId = 1, amountPercent = 30}
+CompanyPolicyLink {uid = 12, companyId = 1, policyTypeId = 2, amountPercent = 30}
