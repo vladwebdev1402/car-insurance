@@ -1,1 +1,8 @@
-CoefAdditional {uid = 0, companyPolicyLinkId = 0, additionalId = 0, value = 0.0}
+CoefAdditional {uid = 0, companyPolicyLinkId = 12, additionalId = 0, value = 5.0}
+CoefAdditional {uid = 1, companyPolicyLinkId = 12, additionalId = 1, value = 5.7}
+CoefAdditional {uid = 2, companyPolicyLinkId = 12, additionalId = 2, value = 6.0}
+CoefAdditional {uid = 3, companyPolicyLinkId = 12, additionalId = 3, value = 6.5}
+CoefAdditional {uid = 4, companyPolicyLinkId = 12, additionalId = 4, value = 7.5}
+CoefAdditional {uid = 5, companyPolicyLinkId = 12, additionalId = 5, value = 8.0}
+CoefAdditional {uid = 6, companyPolicyLinkId = 12, additionalId = 6, value = 9.1}
+CoefAdditional {uid = 7, companyPolicyLinkId = 12, additionalId = 7, value = 9.5}

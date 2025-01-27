@@ -80,7 +80,7 @@ calcDsagoPrice oldDsagoUserInfo editPunkt = do
 
   case updatePunkt of 
     -1 -> return ()
-    _ -> return ()
+    _ -> calcDsagoPrice (Just dsagoUserInfo) updatePunkt
 
   
 
