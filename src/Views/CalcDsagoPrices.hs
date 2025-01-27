@@ -89,7 +89,7 @@ calcDsagoPrices dsagoUserInfo = do
                     * (maybe (0) Enteties.CoefKS.value coefKs) 
                     * (maybe (0) Enteties.CoefKT.value coefKt) 
                     * (maybe (0) Enteties.CoefAdditional.value coefAdditional) 
-                    * (Enteties.CoefTB.value coefTb) 
+                    * (maybe (0) Enteties.CoefTB.value coefTb)
 
         return (company, price)
         ) links

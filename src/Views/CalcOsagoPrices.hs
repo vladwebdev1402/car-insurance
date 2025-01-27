@@ -55,6 +55,8 @@ calcOsagoPrices osagoUserInfo = do
 
   companys <- mapM (\link -> getCompanyById (companyId link)) links
 
-  companysWithPrice <- mapM (\(company, coef) -> return (company, (Enteties.CoefTB.value coef) * summuryCoef)) (zip companys coefsTb)
+  companysWithPrice <- mapM (\(company, coef) -> return (company, (maybe (0) Enteties.CoefTB.value coef) * summuryCoef)) (zip companys coefsTb)
 
-  return $ sortBy (\(_, priceX) (_, priceY) -> compare priceX priceY) companysWithPrice
+  let filteredCompanys = filter (\(_, price) -> price > 0) companysWithPrice  
+
+  return $ sortBy (\(_, priceX) (_, priceY) -> compare priceX priceY) filteredCompanys

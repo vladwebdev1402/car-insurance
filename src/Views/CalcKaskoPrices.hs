@@ -93,7 +93,7 @@ calcKaskoPrices kaskoUserInfo = do
                     * (maybe (0) Enteties.CoefKO.value coefKo) 
                     * (maybe (0) Enteties.CoefKS.value coefKs) 
                     * (maybe (0) Enteties.CoefKT.value coefKt) 
-                    * (Enteties.CoefTB.value coefTb) 
+                    * (maybe (0) Enteties.CoefTB.value coefTb) 
                     * summuryServiceCoef
 
         return (company, price)
