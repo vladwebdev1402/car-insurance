@@ -15,6 +15,7 @@ data Policy = Policy { uid :: Int,
                     sumInsurance :: Float, 
                     sumRemaininInsurance :: Float, 
                     sumDeductible :: Float, 
+                    sumAdditional :: Float, 
                     date :: String } deriving (Read, Show)
 
 getActivePolicy :: Int -> Int -> IO (Maybe Policy)
