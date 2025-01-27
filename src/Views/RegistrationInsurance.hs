@@ -21,7 +21,6 @@ import Entities.TransportCertificate
 import Shared.Logs.LogData
 import Shared.Logs.FormateNumber
 import Shared.Validators.NothingToJust
-import Text.Printf (printf)
 
 registrationInsurance :: IO ()
 registrationInsurance = do
@@ -126,7 +125,7 @@ registrationKasko oldKaskoUserInfo editPunkt = do
             Entities.Policies.sumInsurance = price,
             Entities.Policies.sumRemaininInsurance = 0.0,
             Entities.Policies.sumDeductible = countDeductible,
-            Entities.Policies.sumAdditional = countDeductible,
+            Entities.Policies.sumAdditional = 0.0,
             Entities.Policies.date = date
           }
 
@@ -155,7 +154,7 @@ registrationDsago oldDsagoUserInfo editPunkt = do
           
           date <- getTodayDate
           
-          let policyTypeId = 1
+          let policyTypeId = 2
           
           let (_, _, _, _, _, certificate) = nothingToJust (Views.UserInfo.autoInfo dsagoUserInfo) "registrationDsago: error get auto info"
           

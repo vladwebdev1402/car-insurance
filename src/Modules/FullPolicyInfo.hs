@@ -1,6 +1,5 @@
 module Modules.FullPolicyInfo (FullPolicyInfo(..), getFullInfoForPolicy, getFullInfoForPolicyString) where
 
-import Text.Printf (printf)
 import Entities.TransportCertificate
 import Entities.Policies
 import Entities.CompanyPolicyLink
