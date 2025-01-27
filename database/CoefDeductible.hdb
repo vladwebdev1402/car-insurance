@@ -22,3 +22,15 @@ CoefDeductible {uid = 20, companyPolicyLinkId = 11, deductibleId = 8, value = 1.
 CoefDeductible {uid = 21, companyPolicyLinkId = 11, deductibleId = 9, value = 1.48}
 CoefDeductible {uid = 22, companyPolicyLinkId = 11, deductibleId = 10, value = 1.44}
 CoefDeductible {uid = 23, companyPolicyLinkId = 11, deductibleId = 11, value = 1.32}
+CoefDeductible {uid = 24, companyPolicyLinkId = 13, deductibleId = 0, value = 3.48}
+CoefDeductible {uid = 25, companyPolicyLinkId = 13, deductibleId = 1, value = 2.98}
+CoefDeductible {uid = 26, companyPolicyLinkId = 13, deductibleId = 2, value = 2.78}
+CoefDeductible {uid = 27, companyPolicyLinkId = 13, deductibleId = 3, value = 2.58}
+CoefDeductible {uid = 28, companyPolicyLinkId = 13, deductibleId = 4, value = 2.38}
+CoefDeductible {uid = 29, companyPolicyLinkId = 13, deductibleId = 5, value = 2.18}
+CoefDeductible {uid = 30, companyPolicyLinkId = 13, deductibleId = 6, value = 1.98}
+CoefDeductible {uid = 31, companyPolicyLinkId = 13, deductibleId = 7, value = 1.58}
+CoefDeductible {uid = 32, companyPolicyLinkId = 13, deductibleId = 8, value = 1.48}
+CoefDeductible {uid = 33, companyPolicyLinkId = 13, deductibleId = 9, value = 1.46}
+CoefDeductible {uid = 34, companyPolicyLinkId = 13, deductibleId = 10, value = 1.42}
+CoefDeductible {uid = 35, companyPolicyLinkId = 13, deductibleId = 11, value = 1.30}

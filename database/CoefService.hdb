@@ -6,3 +6,7 @@ CoefService {uid = 4, serviceId = 0, companyPolicyLinkId = 11, value = 1.5}
 CoefService {uid = 5, serviceId = 1, companyPolicyLinkId = 11, value = 1.5}
 CoefService {uid = 6, serviceId = 2, companyPolicyLinkId = 11, value = 1.4}
 CoefService {uid = 7, serviceId = 3, companyPolicyLinkId = 11, value = 1.9}
+CoefService {uid = 8, serviceId = 0, companyPolicyLinkId = 13, value = 1.5}
+CoefService {uid = 9, serviceId = 1, companyPolicyLinkId = 13, value = 1.5}
+CoefService {uid = 10, serviceId = 2, companyPolicyLinkId = 13, value = 1.4}
+CoefService {uid = 11, serviceId = 3, companyPolicyLinkId = 13, value = 1.9}

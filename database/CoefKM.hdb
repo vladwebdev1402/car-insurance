@@ -16,3 +16,9 @@ CoefKM {uid = 14, companyPolicyLinkId = 12, typeKMId = 2, value = 0.9}
 CoefKM {uid = 15, companyPolicyLinkId = 12, typeKMId = 3, value = 1.2}
 CoefKM {uid = 16, companyPolicyLinkId = 12, typeKMId = 4, value = 1.4}
 CoefKM {uid = 17, companyPolicyLinkId = 12, typeKMId = 5, value = 1.6}
+CoefKM {uid = 18, companyPolicyLinkId = 13, typeKMId = 0, value = 0.32}
+CoefKM {uid = 19, companyPolicyLinkId = 13, typeKMId = 1, value = 0.62}
+CoefKM {uid = 20, companyPolicyLinkId = 13, typeKMId = 2, value = 0.92}
+CoefKM {uid = 21, companyPolicyLinkId = 13, typeKMId = 3, value = 1.22}
+CoefKM {uid = 22, companyPolicyLinkId = 13, typeKMId = 4, value = 1.42}
+CoefKM {uid = 23, companyPolicyLinkId = 13, typeKMId = 5, value = 1.58}

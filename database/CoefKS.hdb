@@ -28,3 +28,13 @@ CoefKS {uid = 16, companyPolicyLinkId = 12, typeKSId = 6, value = 1.95}
 CoefKS {uid = 17, companyPolicyLinkId = 12, typeKSId = 7, value = 2}
 CoefKS {uid = 18, companyPolicyLinkId = 12, typeKSId = 8, value = 2.1}
 CoefKS {uid = 19, companyPolicyLinkId = 12, typeKSId = 9, value = 2.2}
+CoefKS {uid = 20, companyPolicyLinkId = 13, typeKSId = 0, value = 0.82}
+CoefKS {uid = 21, companyPolicyLinkId = 13, typeKSId = 1, value = 0.92}
+CoefKS {uid = 22, companyPolicyLinkId = 13, typeKSId = 2, value = 0.97}
+CoefKS {uid = 23, companyPolicyLinkId = 13, typeKSId = 3, value = 1.05}
+CoefKS {uid = 24, companyPolicyLinkId = 13, typeKSId = 4, value = 1.55}
+CoefKS {uid = 25, companyPolicyLinkId = 13, typeKSId = 5, value = 1.85}
+CoefKS {uid = 26, companyPolicyLinkId = 13, typeKSId = 6, value = 2.0}
+CoefKS {uid = 27, companyPolicyLinkId = 13, typeKSId = 7, value = 2.1}
+CoefKS {uid = 28, companyPolicyLinkId = 13, typeKSId = 8, value = 2.15}
+CoefKS {uid = 29, companyPolicyLinkId = 13, typeKSId = 9, value = 2.25}
