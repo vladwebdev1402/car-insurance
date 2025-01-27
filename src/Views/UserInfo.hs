@@ -1,4 +1,4 @@
-module Views.UserInfo (UserInfo(..)) where
+module Views.UserInfo (UserInfo(..), nullUserInfo) where
 
 import Enteties.Regions
 import Enteties.Territories

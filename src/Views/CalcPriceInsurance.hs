@@ -2,7 +2,9 @@ module Views.CalcPriceInsurance (calcPriceInsurance) where
 
 import Text.Printf (printf)
 import Views.InputOsagoData
+import Views.InputDsagoData
 import Views.InputKaskoData
+import Views.UserInfo
 import Views.Helpers.ChooseOsagoEditStep
 import Views.Helpers.ChooseKaskoEditStep
 import Views.CalcOsagoPrices
@@ -19,6 +21,7 @@ calcPriceInsurance = do
   case (Enteties.PolicyTypes.uid policyType) of
     0 -> calcOsagoPrice Nothing (-1)
     1 -> calcKaskoPrice Nothing (-1)
+    2 -> calcDsagoPrice Nothing (-1)
     _ -> return ()
 
 calcOsagoPrice :: Maybe OsagoUserInfo -> Int -> IO ()
@@ -57,6 +60,24 @@ calcKaskoPrice oldKaskoUserInfo editPunkt = do
   case updatePunkt of 
     -1 -> return ()
     _ -> calcKaskoPrice (Just kaskoUserInfo) updatePunkt
+
+calcDsagoPrice :: Maybe UserInfo -> Int -> IO ()
+calcDsagoPrice oldDsagoUserInfo editPunkt = do
+  let dsagoUserInfo = case oldDsagoUserInfo of
+        Nothing -> nullUserInfo
+        Just userInfo -> userInfo
+
+  dsagoUserInfo <- inputDsagoData dsagoUserInfo editPunkt False "" 
+
+  -- companysWithPrice <- calcKaskoPrices dsagoUserInfo
+
+  -- let infoMessage = generateLogString companysWithPrice (\(company, price) -> (Enteties.Companys.name company) ++ " - " ++ (printf "%.2f" price))
+
+  -- updatePunkt <- chooseKaskoEditStep False infoMessage
+  return ()
+  -- case updatePunkt of 
+  --   -1 -> return ()
+  --   _ -> return ()
 
   
 

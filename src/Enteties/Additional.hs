@@ -1,8 +1,8 @@
-module Enteties.Additional (Additional(..), getAdditional) where
+module Enteties.Additional (Additional(..), getAdditionals) where
 
 import Shared.Api.GetAllData
 
 data Additional = Additional { uid :: Int, value :: Float } deriving (Read, Show)
 
-getAdditional :: IO [Additional]
-getAdditional = getAllData "database/Additional.hdb"
+getAdditionals :: IO [Additional]
+getAdditionals = getAllData "database/Additional.hdb"
