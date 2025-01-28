@@ -16,15 +16,15 @@ data Driver = Driver { uid :: Int,
     birthday :: String } deriving (Read, Show)
 
 getDriverStr :: Driver -> String
-getDriverStr driver = "{" ++ "uid" ++ " = " ++ (show (uid driver)) ++ "," ++
-    "surName" ++ " = " ++  (surName driver) ++ "," ++
-    "firstName" ++ " = " ++  (firstName driver) ++ "," ++
-    "patroName" ++ " = " ++  (firstName driver) ++ "," ++
+getDriverStr driver = "Driver {" ++ "uid" ++ " = " ++ (show (uid driver)) ++ "," ++
+    "surName" ++ " = " ++ "\"" ++ (surName driver) ++ "\"" ++ "," ++
+    "firstName" ++ " = " ++ "\"" ++ (firstName driver) ++ "\"" ++ "," ++
+    "patroName" ++ " = " ++ "\"" ++ (patroName driver) ++ "\"" ++ "," ++
     "experience" ++ " = " ++ (show (experience driver)) ++ "," ++
     "driverLevel" ++ " = " ++ (show (driverLevel driver)) ++ "," ++
     "numberPassport" ++ " = " ++ (show (numberPassport driver)) ++ "," ++
     "seriePassport" ++ " = " ++ (show (seriePassport driver)) ++ "," ++
-    "birthday" ++ " = " ++ (birthday driver) ++ "}"
+    "birthday" ++ " = "  ++ "\"" ++ (birthday driver)  ++ "\"" ++ "}"
 
 getDriverByPassport :: Int -> Int -> IO (Maybe Driver)
 getDriverByPassport serie number = do

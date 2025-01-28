@@ -8,24 +8,72 @@ import Shared.Inputs.InputPassport
 import Shared.Inputs.InputFio
 import Shared.Inputs.InputDayOfBirth
 import Shared.Calc.GetMaximumDrivingExpirience
+import Shared.Inputs.InputNumberRegistration
 import Shared.Inputs.InputRangeNumber
 import Entities.Drivers
+import Entities.TransportCertificate
+import Modules.ChooseTransportBrand
+import Modules.ChooseTransportModel
+import Modules.ChooseTransport
+import Entities.TransportBrands 
+import Entities.TransportModels 
+import Entities.Transports
 
 
 registrationUser :: IO ()
 registrationUser = do 
-    let punkts = ["Зарегестрировать данные паспорта", "Зарегестрировать транспорт"]
+    let punkts = ["Зарегистрировать данные паспорта", "Зарегистрировать транспорт"]
     index <- chooseData punkts (\array -> generateLogData array (\item -> item)) "\nВыберите выберите пункт меню:" ""
 
 
     case index of
         1 -> registrationDriver ""
-        2 -> registrationTransport
+        2 -> registrationTransport ""
         _ -> return ()
 
-registrationTransport :: IO ()
-registrationTransport = do
-    putStrLn ""
+registrationTransport :: String -> IO ()
+registrationTransport infoMessage = do
+
+    putStrLn infoMessage
+
+    regNum <- inputNumberRegistration ""
+
+
+    case regNum of 
+        "выход" -> return ()
+        _ -> do 
+            checkRegNum regNum
+            transportBrand <- chooseTransportBrand infoMessage
+            transportModel <- chooseTransportModel (Entities.TransportBrands.uid transportBrand) infoMessage
+            transport <- chooseTransport (Entities.TransportModels.uid transportModel) infoMessage
+            driver <- getDriver ""
+            let cert = TransportCertificate {Entities.TransportCertificate.uid = 0, 
+                    Entities.TransportCertificate.transportId = (Entities.Transports.uid transport),
+                    Entities.TransportCertificate.driverId = (Entities.Drivers.uid driver),
+                    Entities.TransportCertificate.registrationNumber = regNum
+                    }
+            addNewTransportCertificates cert
+            return ()
+
+getDriver :: String -> IO Driver 
+getDriver info = do
+    putStrLn info
+    (serie, number) <- inputPassport ""
+    driver <- getDriverByPassport serie number
+    case driver of 
+        Nothing -> do
+            getDriver "Водитель не найден в бд"
+        Just driv -> return driv
+
+checkRegNum :: String -> IO ()
+checkRegNum regNum = do
+    cert <- getTransportCertificateByNumber regNum
+
+    case cert of 
+        Nothing -> return ()
+        _ -> do 
+            callCommand "cls"
+            registrationTransport "Автомобиль с таким номером уже зарегистрирован"
 
 registrationDriver :: String -> IO ()
 registrationDriver infoMessage = do
@@ -34,15 +82,18 @@ registrationDriver infoMessage = do
     (serie, number) <- inputPassport ""
 
     checkDriver serie number
-
     
     case serie of 
         -1 -> return ()
         _ -> do
             (age, dayOfBirth) <- inputDayOfBirth 16 100
-            fio <- inputFio
-            let [surName, firstName, patroName] = splitOn " " fio
+
             drivingExpirience <- inputRangeNumber "" "Введите стаж вождения: " 0 (getMaximumDrivingExpirience age)
+
+            fio <- inputFio
+
+            let [surName, firstName, patroName] = splitOn " " fio
+
             addNewDriver (Driver {
                 Entities.Drivers.uid = 0, 
                 Entities.Drivers.surName = surName, 
@@ -64,7 +115,7 @@ checkDriver serie number = do
         Nothing -> return ()
         _ -> do
             callCommand "cls"
-            registrationDriver "Данный паспорт уже существует в системе. Нажмите Enter, чтобы продолжить"
+            registrationDriver "Данный паспорт уже существует в системе"
             return ()
         
             
