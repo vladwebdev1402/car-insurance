@@ -1,6 +1,7 @@
 module Views.RegistrationUser (registrationUser) where
 
 import System.Process (callCommand)
+import Data.List.Split (splitOn) 
 import Shared.Inputs.ChooseData (chooseData)
 import Shared.Logs.LogData
 import Shared.Inputs.InputPassport
@@ -40,12 +41,21 @@ registrationDriver infoMessage = do
         _ -> do
             (age, dayOfBirth) <- inputDayOfBirth 16 100
             fio <- inputFio
+            let [surName, firstName, patroName] = splitOn " " fio
             drivingExpirience <- inputRangeNumber "" "Введите стаж вождения: " 0 (getMaximumDrivingExpirience age)
-            return ()
+            addNewDriver (Driver {
+                Entities.Drivers.uid = 0, 
+                Entities.Drivers.surName = surName, 
+                Entities.Drivers.firstName = firstName, 
+                Entities.Drivers.patroName = patroName, 
+                Entities.Drivers.experience = drivingExpirience, 
+                Entities.Drivers.driverLevel = 3, 
+                Entities.Drivers.numberPassport = number, 
+                Entities.Drivers.seriePassport = serie, 
+                Entities.Drivers.birthday = dayOfBirth
+            })
 
-addNewDriver :: Driver -> IO ()
-addNewDriver driver = do
-    return ()
+            return ()
 
 checkDriver :: Int -> Int -> IO ()
 checkDriver serie number = do

@@ -26,6 +26,7 @@ dependencies:
   - process
   - ansi-terminal
   - time
+  - with-utf8
 
 ghc-options:
   - -Wall
