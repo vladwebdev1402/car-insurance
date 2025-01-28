@@ -6,3 +6,5 @@ CoefKO {uid = 4, companyPolicyLinkId = 12, typeKOId = 0, value = 1}
 CoefKO {uid = 5, companyPolicyLinkId = 12, typeKOId = 1, value = 4}
 CoefKO {uid = 6, companyPolicyLinkId = 13, typeKOId = 0, value = 1}
 CoefKO {uid = 7, companyPolicyLinkId = 13, typeKOId = 1, value = 2}
+CoefKO {uid = 6, companyPolicyLinkId = 14, typeKOId = 0, value = 1}
+CoefKO {uid = 7, companyPolicyLinkId = 14, typeKOId = 1, value = 2}

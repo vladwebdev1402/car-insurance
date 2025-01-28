@@ -152,3 +152,14 @@ CoefTB {uid = 151, companyPolicyLinkId = 13, typeTransportId = 7, value = 3700}
 CoefTB {uid = 152, companyPolicyLinkId = 13, typeTransportId = 8, value = 10500}
 CoefTB {uid = 153, companyPolicyLinkId = 13, typeTransportId = 9, value = 1750}
 CoefTB {uid = 154, companyPolicyLinkId = 13, typeTransportId = 10, value = 3000}
+CoefTB {uid = 155, companyPolicyLinkId = 14, typeTransportId = 0, value = 3400}
+CoefTB {uid = 156, companyPolicyLinkId = 14, typeTransportId = 1, value = 2500}
+CoefTB {uid = 157, companyPolicyLinkId = 14, typeTransportId = 2, value = 6200}
+CoefTB {uid = 158, companyPolicyLinkId = 14, typeTransportId = 3, value = 2300}
+CoefTB {uid = 159, companyPolicyLinkId = 14, typeTransportId = 4, value = 9400}
+CoefTB {uid = 160, companyPolicyLinkId = 14, typeTransportId = 5, value = 10100}
+CoefTB {uid = 161, companyPolicyLinkId = 14, typeTransportId = 6, value = 6900}
+CoefTB {uid = 162, companyPolicyLinkId = 14, typeTransportId = 7, value = 3600}
+CoefTB {uid = 163, companyPolicyLinkId = 14, typeTransportId = 8, value = 10700}
+CoefTB {uid = 164, companyPolicyLinkId = 14, typeTransportId = 9, value = 1800}
+CoefTB {uid = 165, companyPolicyLinkId = 14, typeTransportId = 10, value = 2900}
