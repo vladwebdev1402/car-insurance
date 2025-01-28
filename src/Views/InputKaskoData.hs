@@ -119,6 +119,7 @@ inputKaskoData kaskoUserInfo editStep False _ = do
 inputKaskoData kaskoUserInfo editStep True errorMessage = do 
   callCommand "cls" 
   putStrLn errorMessage
+
   (enginePower, transportBrand, transportModel, transport, category, certificate) <- if editStep == 1
     then inputAutoInfo True errorMessage
     else maybe (inputAutoInfo True errorMessage) return (autoInfo kaskoUserInfo)

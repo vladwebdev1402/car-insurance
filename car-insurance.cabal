@@ -108,6 +108,7 @@ library
       Views.InputKaskoData
       Views.InputOsagoData
       Views.RegistrationInsurance
+      Views.RegistrationUser
       Views.UserInfo
   other-modules:
       Paths_car_insurance

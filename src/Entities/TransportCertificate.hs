@@ -1,6 +1,7 @@
 module Entities.TransportCertificate (TransportCertificate(..), getTransportCertificateByNumber, getTransportCertificatesByDriver) where
 
 import Shared.Api.GetFilterData
+import Shared.Api.GetAllData
 
 data TransportCertificate = TransportCertificate {uid :: Int, transportId :: Int, driverId :: Int, registrationNumber :: String} deriving (Read, Show)
 
@@ -15,3 +16,7 @@ getTransportCertificatesByDriver :: Int -> IO [TransportCertificate]
 getTransportCertificatesByDriver userId = do 
     transportCertificates <- getFilterData "database/TransportCertificate.hdb" 0 10000 "" (\_ -> "") (\transportCertificate -> driverId transportCertificate == userId)
     return transportCertificates
+
+getAllTransportCertificates :: IO [TransportCertificate]
+getAllTransportCertificates = getAllData "database/TransportCertificate.hdb"
+    
