@@ -37,62 +37,62 @@ import Views.Helpers.ConfirmIdentity
 
 inputDsagoData :: UserInfo -> Int -> Bool -> String -> IO UserInfo
 inputDsagoData dsagoUserInfo editStep False _ = do
-  callCommand "cls" 
+  callCommand "clear" 
   (age, birthDate) <- if editStep == 1
     then inputDayOfBirth 16 100 
     else maybe (inputDayOfBirth 16 100) return (Views.UserInfo.birthDate dsagoUserInfo)
 
   let infoMessage1 = "Выбран вид страхования для расчёта: КАСКО\nДата рождения: " ++ birthDate ++ "\nВозраст: " ++ show age
     
-  callCommand "cls" 
+  callCommand "clear" 
   drivingExpirience <- if editStep == 1
     then inputRangeNumber infoMessage1 "Введите стаж вождения: " 0 (getMaximumDrivingExpirience age) 
     else maybe (inputRangeNumber infoMessage1 "Введите стаж вождения: " 0 (getMaximumDrivingExpirience age)) return (drivingExpirience dsagoUserInfo)
 
   let infoMessage2 = infoMessage1 ++ "\nСтаж вождения: " ++ show drivingExpirience
 
-  callCommand "cls" 
+  callCommand "clear" 
   (enginePower, transportBrand, transportModel, transport, category, _) <- if editStep == 2
     then inputAutoInfo False infoMessage2 
     else maybe (inputAutoInfo False infoMessage2) return (autoInfo dsagoUserInfo)
 
   let infoMessage3 = infoMessage2 ++ (getAutoInfo enginePower transportBrand transportModel transport category Nothing)
 
-  callCommand "cls" 
+  callCommand "clear" 
   region <- if editStep == 3
     then chooseRegion infoMessage3 
     else maybe (chooseRegion infoMessage3)  return (region dsagoUserInfo)
 
   let infoMessage4 = infoMessage3 ++ "\nРегион: " ++ (Entities.Regions.name region)
 
-  callCommand "cls" 
+  callCommand "clear" 
   territorie <- if editStep == 3
     then chooseTerritorie (Entities.Regions.uid region) infoMessage4 
     else maybe (chooseTerritorie (Entities.Regions.uid region) infoMessage4) return (territorie dsagoUserInfo)
 
   let infoMessage5 = infoMessage4 ++ "\nМесто проживания: " ++ (Entities.Territories.name territorie)
 
-  callCommand "cls" 
+  callCommand "clear" 
   typeKs <- if editStep == 4
     then сhooseTypeKS infoMessage5 
     else maybe (сhooseTypeKS infoMessage5) return (typeKS dsagoUserInfo)
 
   let infoMessage6 = infoMessage5 ++ "\nСрок страхования: " ++ (Entities.TypeKS.description typeKs)
 
-  callCommand "cls" 
+  callCommand "clear" 
   typeKo <- if editStep == 5
     then сhooseTypeKO infoMessage6 
     else maybe (сhooseTypeKO infoMessage6) return (typeKO dsagoUserInfo)
 
   let infoMessage7 = infoMessage6 ++ "\nКоличество водителей: " ++ (Entities.TypeKO.description typeKo)
 
-  callCommand "cls" 
+  callCommand "clear" 
   additional <- if editStep == 6
     then chooseAdditional infoMessage7 
     else maybe (chooseAdditional infoMessage7) return (Views.UserInfo.additional dsagoUserInfo)
 
   let infoMessage8 = infoMessage7 ++ "\nДополнительная сумма: " ++ (show (Entities.Additional.value additional))
-  callCommand "cls" 
+  callCommand "clear" 
   editPunkt <- chooseDsagoEditStep False infoMessage8
   
   let dsagoInfo = UserInfo {Views.UserInfo.birthDate = Just (age, birthDate), 
@@ -110,7 +110,7 @@ inputDsagoData dsagoUserInfo editStep False _ = do
     _ -> inputDsagoData dsagoInfo editPunkt False ""
 
 inputDsagoData dsagoUserInfo editStep True errorMessage = do
-  callCommand "cls" 
+  callCommand "clear" 
   putStrLn errorMessage
   (enginePower, transportBrand, transportModel, transport, category, certificate) <- if editStep == 1
     then inputAutoInfo True errorMessage
@@ -126,13 +126,13 @@ inputDsagoData dsagoUserInfo editStep True errorMessage = do
 
       case activeOsago of 
         Nothing -> do
-          callCommand "cls"
+          callCommand "clear"
           inputDsagoData (dsagoUserInfo {Views.UserInfo.birthDate = Nothing, 
                                 Views.UserInfo.drivingExpirience = Nothing,
                                 Views.UserInfo.autoInfo = Nothing } ) (-1) True "У данного автомобиля нет активного ОСАГО полиса"
         _ -> case activeDsago of 
           Nothing -> do
-            callCommand "cls"
+            callCommand "clear"
             driver <- getDriverById (Entities.TransportCertificate.driverId cert) 
 
             isSusscessfulIdentification <- if editStep == 1 || editStep == -1
@@ -146,41 +146,41 @@ inputDsagoData dsagoUserInfo editStep True errorMessage = do
               let infoMessage1 = "\nВыбран вид страхования для оформления: ДСАГО" ++
                                 getAutoInfo enginePower transportBrand transportModel transport category (Just cert)
               
-              callCommand "cls" 
+              callCommand "clear" 
               region <- if editStep == 2
                 then chooseRegion infoMessage1 
                 else maybe (chooseRegion infoMessage1)  return (region dsagoUserInfo)
 
               let infoMessage2 = infoMessage1 ++ "\nРегион: " ++ (Entities.Regions.name region)
 
-              callCommand "cls" 
+              callCommand "clear" 
               territorie <- if editStep == 2
                 then chooseTerritorie (Entities.Regions.uid region) infoMessage2 
                 else maybe (chooseTerritorie (Entities.Regions.uid region) infoMessage2) return (territorie dsagoUserInfo)
 
               let infoMessage3 = infoMessage2 ++ "\nМесто проживания: " ++ (Entities.Territories.name territorie)
 
-              callCommand "cls" 
+              callCommand "clear" 
               typeKs <- if editStep == 3
                 then сhooseTypeKS infoMessage3 
                 else maybe (сhooseTypeKS infoMessage3) return (typeKS dsagoUserInfo)
 
               let infoMessage4 = infoMessage3 ++ "\nСрок страхования: " ++ (Entities.TypeKS.description typeKs)
 
-              callCommand "cls" 
+              callCommand "clear" 
               typeKo <- if editStep == 3
                 then сhooseTypeKO infoMessage4 
                 else maybe (сhooseTypeKO infoMessage4) return (typeKO dsagoUserInfo)
 
               let infoMessage5 = infoMessage4 ++ "\nКоличество водителей: " ++ (Entities.TypeKO.description typeKo)
 
-              callCommand "cls" 
+              callCommand "clear" 
               additional <- if editStep == 6
                 then chooseAdditional infoMessage5 
                 else maybe (chooseAdditional infoMessage5) return (Views.UserInfo.additional dsagoUserInfo)
 
               let infoMessage6 = infoMessage5 ++ "\nДополнительная сумма: " ++ (show (Entities.Additional.value additional))
-              callCommand "cls" 
+              callCommand "clear" 
               editPunkt <- chooseDsagoEditStep False infoMessage6
 
               let dsagoInfo = UserInfo {Views.UserInfo.birthDate = Just (age, (Entities.Drivers.birthday driver)), 

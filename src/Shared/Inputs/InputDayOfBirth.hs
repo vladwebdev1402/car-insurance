@@ -11,6 +11,6 @@ inputDayOfBirth minAge maxAge = do
     age <- calcAgeFromDate date
     if age >= minAge && age <= maxAge then return (age, date)
     else do
-        callCommand "cls"
+        callCommand "clear"
         consoleError ("Ошибка: возраст должен быть в диапазоне от " ++ (show minAge) ++ " до "  ++ (show maxAge) ++ " лет.")
         inputDayOfBirth minAge maxAge

@@ -21,7 +21,7 @@ import Shared.Calc.CalcDaysSince
 
 informationInsurance :: String -> IO ()
 informationInsurance infoMessage = do 
-    callCommand "cls" 
+    callCommand "clear" 
     (serie, number) <- inputPassport (infoMessage ++ "\nЧтобы выйти, введите 'выход'")
 
     case (serie) of 
@@ -72,7 +72,7 @@ getPoliciesWithCertificates certificates = do
 
 showPolicies :: [TransportCertificate] -> Maybe [FullPolicyInfo] -> IO ()
 showPolicies certificates oldFullInfos = do
-    callCommand "cls"
+    callCommand "clear"
     
     fullInfos <- maybe (getPoliciesWithCertificates certificates >>= getFullInfoForPolicy) return oldFullInfos
 

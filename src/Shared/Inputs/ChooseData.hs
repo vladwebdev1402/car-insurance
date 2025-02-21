@@ -10,7 +10,7 @@ import Shared.Logs.Console
 
 chooseData :: [a] -> ([a] -> IO ()) -> String -> String -> IO Int
 chooseData arrayData displayFunction inputMessage infoMessage = do
-    callCommand "cls"
+    callCommand "clear"
     putStrLn infoMessage
     consoleInfo inputMessage
     displayFunction arrayData
@@ -19,7 +19,7 @@ chooseData arrayData displayFunction inputMessage infoMessage = do
     else case validateNumberRangeInput 1 (length arrayData) input of
             Just num -> return num
             Nothing -> do
-                callCommand "cls" 
+                callCommand "clear" 
                 consoleError ("Ошибка: введите число от 1 до " ++ show (length arrayData) ++ ".")
                 chooseData arrayData displayFunction inputMessage infoMessage
 
@@ -32,7 +32,7 @@ multyplyChooseData arrayData displayFunction inputMessage infoMessage = do
     let parts = splitOn " " input
     if (length input /= 0) && (all (\num -> validateStringNumber num 1 (length arrayData)) parts) then return (map (read) parts)
     else do 
-        callCommand "cls" 
+        callCommand "clear" 
         consoleError ("Ошибка: введите числа от 1 до " ++ show (length arrayData) ++ ".")
         multyplyChooseData arrayData displayFunction inputMessage infoMessage
    
@@ -52,21 +52,21 @@ choosePaginatedData arrayData displayFunction = do
                     if "поиск" `isInfixOf` input then do
                         let parts = splitOn " " input
                         if length parts /= 2 then do
-                            callCommand "cls" 
+                            callCommand "clear" 
                             consoleError ("Введите название для поиска")
                             choosePaginatedData arrayData displayFunction
                         else do
                             let [_, name] = parts
                             return (-1, name)
                     else do
-                        callCommand "cls" 
+                        callCommand "clear" 
                         consoleError ("Ошибка: введите число от 1 до " ++ show (length arrayData) ++ ".")
                         choosePaginatedData arrayData displayFunction
 
 -- страница, поисковое имя, функция запроса, куда передаётся максимальный и минимальный индекс, функция для получении имени
 chooseApiPaginatedData :: Int -> String -> Int -> (Int -> Int -> String -> IO [a]) -> (a -> String) -> String -> String -> IO a
 chooseApiPaginatedData page search pageSize getData getName inputMessage infoMessage = do 
-    callCommand "cls"
+    callCommand "clear"
     putStrLn infoMessage
     putStrLn "Команды:\nназад - предыдущая страница,\nвперёд - следующая страница,\nпоиск %name%- поиск по названию,\nсбросить - сбросить фильтры\n"
     consoleInfo inputMessage
@@ -86,7 +86,7 @@ chooseApiPaginatedData page search pageSize getData getName inputMessage infoMes
 -- страница, поисковое имя,  функция запроса, куда передаётся максимальный и минимальный индекс, функция для получении имени
 chooseApiParamPaginatedData :: Int -> String -> Int -> b -> (Int -> Int -> String -> b -> IO [a]) -> (a -> String) -> String -> String ->  IO a
 chooseApiParamPaginatedData page search pageSize paramId getData getName inputMessage infoMessage = do 
-    callCommand "cls"
+    callCommand "clear"
     putStrLn infoMessage
     putStrLn "Команды:\nназад - предыдущая страница,\nвперёд - следующая страница,\nпоиск %name%- поиск по названию,\nсбросить - сбросить фильтры\n"
     consoleInfo inputMessage

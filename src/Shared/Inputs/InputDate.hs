@@ -33,7 +33,7 @@ inputDate = do
     input <- getLine
     let parts = splitOn "." input
     if length parts /= 3 then do
-        callCommand "cls"
+        callCommand "clear"
         consoleError "Ошибка: должно быть введено три значения (день, месяц, год)."
         inputDate  
     else do
@@ -43,27 +43,27 @@ inputDate = do
         let yearNum = read year :: Int
 
         if not (isNumber day) || length day /= 2 then do
-            callCommand "cls"
+            callCommand "clear"
             consoleError "Ошибка: день должен содержать 2 цифры (например: 01, 14, 31)."
             inputDate  
         else if not (isNumber month) || length month /= 2 then do
-            callCommand "cls"
+            callCommand "clear"
             consoleError "Ошибка: месяц должен содержать 2 цифры (например: 01, 02, 10)."
             inputDate  
         else if not (isNumber year) || length year /= 4 then do
-            callCommand "cls"
+            callCommand "clear"
             consoleError "Ошибка: год должен содержать 4 цифры. (например: 2003, 1964, 2000)."
             inputDate  
         else if not (validateYear yearNum) then do
-            callCommand "cls"
+            callCommand "clear"
             consoleError "Ошибка: год введён неверно"
             inputDate  
         else if not (validateMonth monthNum) then do
-            callCommand "cls"
+            callCommand "clear"
             consoleError "Ошибка: месяц введён неверно"
             inputDate  
         else if not (validateDay dayNum monthNum yearNum) then do
-            callCommand "cls"
+            callCommand "clear"
             consoleError "Ошибка: день введён неверно"
             inputDate  
         else do return (day ++ "." ++ month ++ "." ++ year)

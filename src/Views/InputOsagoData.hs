@@ -28,7 +28,7 @@ import Views.Helpers.ConfirmIdentity
 
 inputOsagoData :: UserInfo -> Int -> Bool -> String -> IO UserInfo
 inputOsagoData osagoUserInfo editStep False _ = do
-  callCommand "cls" 
+  callCommand "clear" 
 
   (age, birthDate) <- if editStep == 1
     then inputDayOfBirth 16 100 
@@ -36,14 +36,14 @@ inputOsagoData osagoUserInfo editStep False _ = do
 
   let infoMessage1 = "Выбран вид страхования: ОСАГО\nДата рождения: " ++ birthDate ++ "\nВозраст: " ++ show age
 
-  callCommand "cls" 
+  callCommand "clear" 
   drivingExpirience <- if editStep == 1
     then inputRangeNumber infoMessage1 "Введите стаж вождения: " 0 (getMaximumDrivingExpirience age) 
     else maybe (inputRangeNumber infoMessage1 "Введите стаж вождения: " 0 (getMaximumDrivingExpirience age)) return (drivingExpirience osagoUserInfo)
 
   let infoMessage2 = infoMessage1 ++ "\nСтаж вождения: " ++ show drivingExpirience
 
-  callCommand "cls" 
+  callCommand "clear" 
   (enginePower, transportBrand, transportModel, transport, category, _) <- if editStep == 2
     then inputAutoInfo False infoMessage2 
     else maybe (inputAutoInfo False infoMessage2) return (autoInfo osagoUserInfo)
@@ -75,7 +75,7 @@ inputOsagoData osagoUserInfo editStep False _ = do
 
   let infoMessage7 = infoMessage6 ++ "\nКоличество водителей: " ++ (Entities.TypeKO.description typeKo)
 
-  callCommand "cls" 
+  callCommand "clear" 
   editPunkt <- chooseOsagoEditStep False infoMessage7
   
   let osagoInfo = UserInfo {Views.UserInfo.birthDate = Just (age, birthDate), 
@@ -88,7 +88,7 @@ inputOsagoData osagoUserInfo editStep False _ = do
 
 inputOsagoData osagoUserInfo editStep True errorMessage = do
 
-  callCommand "cls" 
+  callCommand "clear" 
   putStrLn errorMessage
   (enginePower, transportBrand, transportModel, transport, category, certificate) <- if editStep == 1
     then inputAutoInfo True errorMessage

@@ -9,15 +9,15 @@ import Views.RegistrationInsurance
 
 main :: IO ()
 main = do
-  callCommand "cls" 
+  callCommand "clear" 
   putStrLn "Выберите пункт меню:\n1. Рассчитать стоимость страхования\n2. Оформить страховой полис\n3. Получить информацию о страховых полисах\n4. Зарегестрироваться в системе\n5. Выход"
   input <- getLine
   case validateNumberRangeInput 1 5 input of
     Just choice -> do 
-      callCommand "cls" 
+      callCommand "clear" 
       executeChoice choice
     Nothing -> do
-      callCommand "cls" 
+      callCommand "clear" 
       putStrLn "Ошибка: введите число от 1 до 3."
       main
 
@@ -39,5 +39,4 @@ executeChoice 4 = do
   main
 
 executeChoice 5 = do 
-  registrationUser
-  main
+  putStrLn "До свидания"

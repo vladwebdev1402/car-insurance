@@ -23,15 +23,15 @@ inputFio = do
         let [surName, firstName, patroName] = parts
 
         if not (isValidNamePart surName) then do  
-            callCommand "cls"
+            callCommand "clear"
             consoleError "Ошибка: фамилия введена неверно."
             inputFio
         else if not (isValidNamePart firstName) then do  
-            callCommand "cls"
+            callCommand "clear"
             consoleError "Ошибка: имя введено неверно."
             inputFio
         else if not (isValidNamePart patroName) then do  
-            callCommand "cls"
+            callCommand "clear"
             consoleError "Ошибка: отчество введено неверно."
             inputFio
         else return (surName ++ " " ++ firstName ++ " " ++ patroName)

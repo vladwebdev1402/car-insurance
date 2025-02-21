@@ -11,7 +11,7 @@ confirmIdentity driver = do
     if (serie == -1 && number == -1) then return False
     else if (serie == (Entities.Drivers.seriePassport driver) && number == (Entities.Drivers.numberPassport driver)) then return True
     else do 
-        callCommand "cls"
+        callCommand "clear"
         consoleError "Введённые данные не соответствуют водителю в базе данных."
         confirmIdentity driver
     

@@ -72,7 +72,7 @@ checkRegNum regNum = do
     case cert of 
         Nothing -> return ()
         _ -> do 
-            callCommand "cls"
+            callCommand "clear"
             registrationTransport "Автомобиль с таким номером уже зарегистрирован"
 
 registrationDriver :: String -> IO ()
@@ -114,7 +114,7 @@ checkDriver serie number = do
     case driver of 
         Nothing -> return ()
         _ -> do
-            callCommand "cls"
+            callCommand "clear"
             registrationDriver "Данный паспорт уже существует в системе"
             return ()
         

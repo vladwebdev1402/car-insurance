@@ -20,11 +20,11 @@ inputAutoInfo False infoMessage = do
     
     (enginePower, transportBrand, transportModel, transport) <- case autoInfoMode of
         1 -> do
-            callCommand "cls" 
+            callCommand "clear" 
             enginePower <- inputRangeNumber infoMessage "Введите мощность двигателя: " 16 450
             return (enginePower, Nothing, Nothing, Nothing)
         2 -> do 
-            callCommand "cls"
+            callCommand "clear"
             transportBrand <- chooseTransportBrand infoMessage
             transportModel <- chooseTransportModel (Entities.TransportBrands.uid transportBrand) infoMessage
             transport <- chooseTransport (Entities.TransportModels.uid transportModel) infoMessage
@@ -32,7 +32,7 @@ inputAutoInfo False infoMessage = do
     
     category <- case transport of
         Nothing -> do
-            callCommand "cls"
+            callCommand "clear"
             category <- chooseTypeTransport infoMessage
             return category
         Just transport -> getTypeTransportById (Entities.Transports.typeTransportId transport)
@@ -49,7 +49,7 @@ inputAutoInfo True infoMessage = do
         _ -> do
             case certificate of
                 Nothing -> do
-                    callCommand "cls"
+                    callCommand "clear"
                     consoleError "Ошибка: автомобиль с таким регистрационным номером не найден в базе данных."
                     inputAutoInfo True infoMessage
                 Just certificate -> do 

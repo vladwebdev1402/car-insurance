@@ -13,6 +13,6 @@ inputRangeNumber infoMessage inputMessage minVal maxVal = do
     case readMaybe input of
         Just value | value >= minVal && value <= maxVal -> return value
         _ -> do
-            callCommand "cls"
+            callCommand "clear"
             consoleError ("Ошибка: введите число в диапазоне от " ++ show minVal ++ " до " ++ show maxVal ++ ".")
             inputRangeNumber infoMessage inputMessage minVal maxVal

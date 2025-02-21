@@ -6,3 +6,4 @@ TransportCertificate {uid = 5, transportId = 4, driverId = 4, registrationNumber
 TransportCertificate {uid = 6,transportId = 5,driverId = 3,registrationNumber = "В123ВВ70"}
 TransportCertificate {uid = 7,transportId = 67,driverId = 6,registrationNumber = "С123СС70"}
 TransportCertificate {uid = 8,transportId = 5,driverId = 3,registrationNumber = "М123ММ70"}
+TransportCertificate {uid = 9,transportId = 5,driverId = 3,registrationNumber = "У123УУ12"}

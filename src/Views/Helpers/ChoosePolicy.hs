@@ -30,7 +30,7 @@ choosePolicy fullInfos page status policyType = do
     putStrLn ("\nТекущая страница: " ++ (show (page + 1)) ++ "\n")
     generateLogData takedPolicies (\item -> getFullInfoForPolicyString item)
     input <- getLine
-    callCommand "cls"
+    callCommand "clear"
 
     if (map toLower input) `elem` ["осаго", "дсаго", "каско"] then choosePolicy fullInfos 0 status input
     else if (map toLower input) `elem` ["активен", "не активен"] then choosePolicy fullInfos 0 (policyStatusEngTranslate input) policyType
@@ -44,11 +44,11 @@ choosePolicy fullInfos page status policyType = do
         num -> if validateStringNumber num 1 (length filteredPolicies) then do
                     let policy = filteredPolicies !! ((read num) - 1)
                     if (Entities.Policies.status (Modules.FullPolicyInfo.policy policy)) == "deactive" then do 
-                        callCommand "cls"
+                        callCommand "clear"
                         putStrLn "Полис уже не активен, выберите другой"
                         choosePolicy fullInfos page status policyType
                     else return (Just policy)
             else do
-                callCommand "cls"
+                callCommand "clear"
                 consoleError "Неверно введённые данные"
                 choosePolicy fullInfos page status policyType

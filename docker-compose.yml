@@ -1,0 +1,12 @@
+version: '3'
+services:
+  car-insurance:
+    container_name: car-insurance
+    build: .
+    volumes:
+      - dependcies:/root/.stack
+      - ./database:/app/database
+    stdin_open: true
+    tty: true
+volumes:
+  dependcies: ~
